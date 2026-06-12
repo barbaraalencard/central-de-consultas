@@ -1,0 +1,41 @@
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+    margin:0;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:30px;
+}
+
+h1{
+    text-align:center;
+}
+
+#busca{
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.card{
+    background:white;
+    margin-top:15px;
+    padding:15px;
+    border-radius:8px;
+    box-shadow:0 0 5px rgba(0,0,0,.1);
+}
+
+.codigo{
+    color:#0056b3;
+    font-weight:bold;
+}
+
+button{
+    padding:8px 12px;
+    cursor:pointer;
+}

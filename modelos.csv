@@ -1,0 +1,56 @@
+Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave
+6612;Certidão Genérica SEJUD;Certidão;Servidor;ertidão genérica,certificar,informar nos autos,registro processual
+6001;Intimação de Testemunha Sigilosa;Certidão;Servidor;testemunha sigilosa,proteger testemunha,dados sigilosos,endereço sigiloso
+6003;Histórico - Revisão de Prisão;Certidão;Servidor;revisão de prisão,analisar prisão,reavaliação da prisão,prazo prisão
+6005;Remessa ao Gabinete;Certidão;Servidor;remessa gabinete,conclusão para juiz,enviar ao gabinete
+6007;Endereço em Outra Comarca;Certidão;Servidor;outra comarca,endereço fora da comarca,mudança de endereço,endereço diverso
+6009;BNMP - Regra Automática;Certidão;Servidor;bnmp,mandado prisão,banco nacional de mandados,regra automática
+6011;BNMP - Regularização Mandado;Certidão;Servidor;regularizar bnmp,corrigir mandado,ajuste mandado prisão
+6013;Intimação por Telefone;Certidão;Servidor;intimação telefone,contato telefônico,ligação para parte
+6015;Controle de Eventos Diversos;Certidão;Servidor;evento processual,controle de prazo,controle interno,evento diverso
+6017;Ausência de Autos Principais;Certidão;Servidor;autos principais ausentes,processo principal não localizado,falta autos
+6019;Falta de Clareza;Certidão;Servidor;falta clareza,dúvida processual,informação insuficiente,documento incompleto
+6021;Alvará de Soltura;Certidão;Servidor;alvará de soltura,soltura do preso,colocação em liberdade
+6023;Designação de Audiência;Certidão;Servidor;audiência designada,marcação audiência,agendamento audiência
+6025;Apensamento de Autos;Certidão;Servidor;apensamento,juntar processos,processos relacionados
+6027;Traslado de Documentos;Certidão;Servidor;traslado,cópia de documentos,encaminhamento documentos
+6029;Apensamento, traslado e histórico;Certidão;Servidor;apensamento e traslado,histórico processual,juntar processos
+6031;Mídias Processuais;Certidão;Servidor;mídia processual,vídeo,áudio,arquivo digital,mídia audiência
+6033;Demanda Análise Processual;Certidão;Servidor;análise processual,demanda gabinete,verificação processo
+6035;Certidão Narrativa;Certidão;Servidor;certidão narrativa,resumo processual,histórico detalhado
+6037;Sistemas de Uso do Gabinete;Certidão;Servidor;sistema gabinete,saj,pje,sistema interno,ferramenta gabinete
+6039;Audiência Designada Fora do Prazo;Certidão;Servidor;audiência fora prazo,audiência atrasada,excesso prazo
+6041;Emissão de Mandado de Prisão;Certidão;Servidor;emissão mandado prisão,expedir mandado prisão,prisão decretada
+6043;Audiência por Video Sem Link;Certidão;Servidor;audiência sem link,videoconferência sem link,problema audiência virtual
+6045;Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav
+964;MANDADO DE CITAÇÃO;MANDADO;Servidor;citação,reu solto,denuncia,citar acusado,resposta acusacao,chamar reu
+4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE;MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso
+1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Servidor;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia
+1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA         ;MANDADO;Servidor;vitima,conducao coercitiva,vitima faltosa,audiencia
+1876;MANDADO DE INTIMAÇÃO GENÉRICO;MANDADO;Servidor;intimacao generica,intimar parte,intimar acusado,comunicacao processual
+1874;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO – URGENTE;MANDADO;Servidor;novo advogado,defensor renunciou,advogado renunciou,constituir advogado,reu preso
+1461;MANDADO DE AVALIAÇÃO;MANDADO;Servidor;avaliacao,bem apreendido,avaliar objeto,avaliar patrimonio
+4942;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE;MANDADO;Servidor;testemunha,videoconferencia,audiencia online,oitiva de testemunha
+501127;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;oficio,email,comunicacao,requisicao generica
+3216;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;oficio,malote digital,comunicacao generica
+3365;Requisição de Perícia Genérica - PEFOCE;OFÍCIO;Servidor;pefoce,pericia,exame pericial,perito,pericia generica
+3911;CRIME - DE ORDEM - Requisição de Laudo Pericial Genérico (E-mail);OFÍCIO;Servidor;laudo pericial,pefoce,resultado pericia,laudo,exame
+3913;Concessão de uso de monitoramento eletrônico                                                                                                                           ;OFÍCIO;Servidor;tornozeleira,monitoramento eletronico,instalar tornozeleira
+3914;Retirada do monitoramento eletrônico;OFÍCIO;Servidor;retirar tornozeleira,encerrar monitoramento eletronico
+2672;Requisição de Servidor Público;OFÍCIO;Magistrado;servidor publico,funcionario publico,requisicao servidor
+3988;Encaminhamento de Mandado de Condução Coercitiva - AAPJ;OFÍCIO;Magistrado;conducao coercitiva,encaminhar mandado,aapj,testemunha faltosa
+2670;Requisição de Policial Rodoviário Federal;OFÍCIO;Magistrado;prf,policial rodoviario federal,agente da prf,oitiva policial
+2669;Requisição de Policial Federal;OFÍCIO;Magistrado;policia federal,pf,agente federal,oitiva policial
+2671;Requisição de Guarda Municipal;OFÍCIO;Magistrado;guarda municipal,gcm,agente municipal
+4951;Solicitação de devolução de mandado - CEMAN;OFÍCIO;Servidor;devolucao mandado,ceman,mandado devolvido
+4063;Ato Ordinatório - PCCE;ATO ORDINATÓRIO;Servidor;pcce,policia civil,oficiar pcce
+40;Ato Ordinatório [Genérico]            ;ATO ORDINATÓRIO;Servidor;ato ordinatorio generico,andamento processual
+6506;Carta Precatória Citatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,citacao,reu em outra comarca
+6508;Carta Precatória para intimar réu a comparecer a audiência                                                                     ;CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu
+6509;Carta Precatória para intimar réu para constituir novo advogado                                                                ;CARTA PRECATÓRIA;Magistrado;carta precatoria,novo advogado,advogado renunciou
+6510;Carta Precatória genérica                                                                                                      ;CARTA PRECATÓRIA;Magistrado;carta precatoria generica,outra comarca
+500826;Carta Precatória Notificatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,notificacao,notificar pessoa
+501313;Edital de Citação (15 dias)                                                                                                                                                                     ;EDITAL;Magistrado;edital de citacao,reu nao localizado,paradeiro ignorado
+500028;Edital Genérico                                                                                                                                                                                 ;EDITAL;Magistrado;edital generico,publicacao,dje
+5435;TODOS - 50271- Carta de Arrematação;CARTA;Magistrado;carta de arrematação,arrematação,bem arrematado,leilão judicial,hasta pública,adjudicação,comprador do bem,transferência de propriedade
+6670;Alvará de Restituição de Bem Apreendido;ALVARÁ;Magistrado;devolver bem,restituicao de bem,bem apreendido,objeto apreendido
