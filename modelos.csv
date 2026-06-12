@@ -43,6 +43,7 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave
 2669;Requisição de Policial Federal;OFÍCIO;Magistrado;policia federal,pf,agente federal,oitiva policial
 2671;Requisição de Guarda Municipal;OFÍCIO;Magistrado;guarda municipal,gcm,agente municipal
 4951;Solicitação de devolução de mandado - CEMAN;OFÍCIO;Servidor;devolucao mandado,ceman,mandado devolvido
+3331;Solicitação de devolução de Carta Precatória;OFÍCIO;Magistrado;devolucao carta precatoria, devolucao, cp cumprida, informacoes
 4063;Ato Ordinatório - PCCE;ATO ORDINATÓRIO;Servidor;pcce,policia civil,oficiar pcce
 40;Ato Ordinatório [Genérico]            ;ATO ORDINATÓRIO;Servidor;ato ordinatorio generico,andamento processual
 6506;Carta Precatória Citatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,citacao,reu em outra comarca
