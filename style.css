@@ -1,146 +1,185 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-margin:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#f3f5f8;
-}
-
-header {
-    background: white;
-    color: #003b7a;
-    padding: 30px 20px;
-    text-align: center;
-}
-
-header h1{
-margin:0;
-font-size:3rem;
-}
-
-header p{
-margin-top:10px;
-font-size:1.2rem;
-}
-
-.abas{
-display:flex;
-justify-content:center;
-gap:15px;
-padding:30px 20px;
-flex-wrap:wrap;
-}
-
-.aba{
-border:none;
-background:white;
-padding:18px 25px;
-border-radius:15px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-transition:0.2s;
-}
-
-.aba:hover{
-transform:translateY(-2px);
-}
-
-.aba.ativa{
-background:#003b78;
-color:white;
-}
-
-.container{
-width:90%;
-max-width:1400px;
-margin:auto;
-}
-
-#busca{
-width:100%;
-padding:25px;
-font-size:22px;
-border-radius:15px;
-border:1px solid #ccc;
-box-sizing:border-box;
-}
-
-.card{
-background:white;
-margin-top:25px;
-padding:30px;
-border-radius:18px;
-box-shadow:0 3px 12px rgba(0,0,0,0.08);
-}
-
-.card h2{
-color:#003b78;
-margin-top:0;
-}
-
-.codigo{
-font-size:28px;
-font-weight:bold;
-color:#0057b8;
-}
-
-.copiar{
-margin-top:15px;
-background:#0057b8;
-color:white;
-border:none;
-padding:12px 18px;
-border-radius:10px;
-cursor:pointer;
-font-size:16px;
-}
-
-.copiar:hover
-
-@media(max-width:768px){
-
-
-header h1{
-    font-size:2rem;
-}
-
-.aba{
-    width:100%;
-}
-
-#busca{
-    font-size:18px;
-    padding:18px;
-}
-
-.logo{
-    width:60px;
-    height:60px;
-    object-fit:contain;
-    display:block;
-    margin:0 auto 10px auto;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#333;
 }
 
 header{
-    background:#083b75;
-    color:white;
     text-align:center;
-    padding:40px 20px;
+    padding:30px 20px;
+    background:#ffffff;
+}
+
+.logo{
+    width:120px;
+    height:auto;
+    display:block;
+    margin:0 auto 15px;
 }
 
 header h1{
-    margin:0;
-    font-size:48px;
+    font-size:4rem;
+    color:#003f88;
+    margin-bottom:10px;
 }
 
 header p{
-    margin-top:10px;
-    font-size:22px;
-    opacity:0.9;
+    font-size:1.2rem;
+    color:#003f88;
 }
 
-.botoes-convenio {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+.abas{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding:25px;
+}
+
+.aba{
+    border:none;
+    border-radius:20px;
+    padding:20px 35px;
+    background:#fff;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+    transition:.2s;
+}
+
+.aba:hover{
+    transform:translateY(-2px);
+}
+
+.aba.ativa{
+    background:#003f88;
+    color:white;
+}
+
+.container{
+    width:95%;
+    max-width:1800px;
+    margin:auto;
+}
+
+#busca{
+    width:100%;
+    padding:25px;
+    font-size:1.2rem;
+    border:1px solid #ccc;
+    border-radius:20px;
+    margin-bottom:25px;
+}
+
+#resultados{
+    display:grid;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.card h2{
+    color:#003f88;
+    margin-bottom:15px;
+}
+
+.card p{
+    margin-bottom:10px;
+    line-height:1.5;
+}
+
+.codigo{
+    font-size:1.1rem;
+    font-weight:bold;
+}
+
+.copiar{
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    padding:12px 20px;
+    background:#0056b3;
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.copiar:hover{
+    background:#003f88;
+}
+
+.botoes-convenio{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.badge-pje{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#d4edda;
+    color:#155724;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.badge-saj{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#f8d7da;
+    color:#721c24;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.badge-ambos{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#fff3cd;
+    color:#856404;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.badge-antigo{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    background:#e9ecef;
+    color:#495057;
+    font-size:.9rem;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+@media (max-width:768px){
+
+    header h1{
+        font-size:2.2rem;
+    }
+
+    .aba{
+        width:100%;
+    }
+
+    .botoes-convenio{
+        flex-direction:column;
+    }
+
 }

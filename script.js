@@ -15,175 +15,228 @@ carregarDados("analise");
 
 async function carregarDados(tipo) {
 
+    abaAtual = tipo;
 
-abaAtual = tipo;
+    dados = [];
 
-dados = [];
+    resultados.innerHTML = "";
 
-resultados.innerHTML = "";
+    try {
 
-try {
+        const resposta = await fetch(arquivos[tipo]);
 
-    const resposta = await fetch(arquivos[tipo]);
+        const buffer = await resposta.arrayBuffer();
 
-    const buffer = await resposta.arrayBuffer();
+        const texto = new TextDecoder("windows-1252").decode(buffer);
 
-    const texto = new TextDecoder("windows-1252").decode(buffer);
+        const linhas = texto.split(/\r?\n/);
 
-    const linhas = texto.split(/\r?\n/);
+        linhas.shift();
 
-    linhas.shift();
+        linhas.forEach(linha => {
 
-    linhas.forEach(linha => {
+            if (!linha.trim()) return;
 
-        if (!linha.trim()) return;
+            const colunas = linha.split(";");
 
-        const colunas = linha.split(";");
+            dados.push(colunas.map(c => c.trim()));
 
-        dados.push(colunas.map(c => c.trim()));
+        });
 
-    });
+        console.log("Registros carregados:", dados.length);
 
-    console.log("Registros carregados:", dados.length);
+        mostrarResultados(dados);
 
-    mostrarResultados(dados);
+    } catch (erro) {
 
-} catch (erro) {
+        console.error("Erro:", erro);
 
-    console.error("Erro:", erro);
-
-}
-
+    }
 
 }
 
 function mostrarResultados(lista) {
 
+    resultados.innerHTML = "";
 
-resultados.innerHTML = "";
+    if (lista.length === 0) {
 
-if (lista.length === 0) {
-
-    resultados.innerHTML = `
-        <div class="card">
-            <h2>Nenhum resultado encontrado.</h2>
-        </div>
-    `;
-
-    return;
-}
-
-lista.forEach(item => {
-
-    if (
-        abaAtual === "analise" ||
-        abaAtual === "possentenca"
-    ) {
-
-        resultados.innerHTML += `
-
-        <div class="card">
-
-            <h2>${item[1]}</h2>
-
-            <p class="codigo">
-                Código: ${item[0]}
-            </p>
-
-            <p>
-                Categoria: ${item[2]}
-            </p>
-
-            <p>
-                Perfil: ${item[3]}
-            </p>
-
-            <button
-                class="copiar"
-                onclick="copiar('${item[0]}')">
-                Copiar Código
-            </button>
-
-        </div>
-
+        resultados.innerHTML = `
+            <div class="card">
+                <h2>Nenhum resultado encontrado.</h2>
+            </div>
         `;
+
+        return;
 
     }
 
-    else if (abaAtual === "contatos") {
+    lista.forEach(item => {
 
-    resultados.innerHTML += `
+        // MODELOS
 
-    <div class="card">
+        if (
+            abaAtual === "analise" ||
+            abaAtual === "possentenca"
+        ) {
 
-        <h2>${item[0]}</h2>
+            let seloSistema = "";
 
-        <p>
-            📧 ${item[1]}
-        </p>
+            const sistema = item[5]?.toUpperCase() || "";
 
-        <button
-            class="copiar"
-            onclick="copiar('${item[1]}')">
+            if (
+                sistema.includes("PJE") &&
+                !sistema.includes("SAJ")
+            ) {
 
-            Copiar E-mail
+                seloSistema = `
+                    <span class="badge-pje">
+                        🟢 PJe
+                    </span>
+                `;
 
-        </button>
+            }
 
-    </div>
+            else if (
+                sistema.includes("SAJ") &&
+                !sistema.includes("PJE")
+            ) {
 
-    `;
+                seloSistema = `
+                    <span class="badge-saj">
+                        🔴 SAJ
+                    </span>
+                `;
 
-}
+            }
 
-    else if (abaAtual === "convenios") {
+            else {
 
-    resultados.innerHTML += `
+                seloSistema = `
+                    <span class="badge-ambos">
+                        🟡 SAJ e PJe
+                    </span>
+                `;
 
-    <div class="card">
+            }
 
-        <h2>${item[0]}</h2>
+            resultados.innerHTML += `
 
-        <p>
-            CNPJ: ${item[1]}
-        </p>
+            <div class="card">
 
-        <p>
-            Código: ${item[2]}
-        </p>
+                <h2>${item[1]}</h2>
 
-        <p>
-            Categoria: ${item[3]}
-        </p>
+                ${seloSistema}
 
-        <div class="botoes-convenio">
+                <p class="codigo">
+                    Código: ${item[0]}
+                </p>
 
-            <button
-                class="copiar"
-                onclick="copiar('${item[1]}')">
+                <p>
+                    Categoria: ${item[2]}
+                </p>
 
-                Copiar CNPJ
+                <p>
+                    Perfil: ${item[3]}
+                </p>
 
-            </button>
+                <button
+                    class="copiar"
+                    onclick="copiar('${item[0]}')">
 
-            <button
-                class="copiar"
-                onclick="copiar('${item[2]}')">
+                    Copiar Código
 
-                Copiar Código
+                </button>
 
-            </button>
+            </div>
 
-        </div>
+            `;
 
-    </div>
+        }
 
-    `;
+        // CONTATOS
 
-}
+        else if (abaAtual === "contatos") {
 
-});
+            resultados.innerHTML += `
 
+            <div class="card">
+
+                <h2>${item[0]}</h2>
+
+                ${item[2] ? `
+                    <span class="badge-antigo">
+                        Nome antigo: ${item[2]}
+                    </span>
+                ` : ""}
+
+                <p>
+                    📧 ${item[1]}
+                </p>
+
+                <button
+                    class="copiar"
+                    onclick="copiar('${item[1]}')">
+
+                    Copiar E-mail
+
+                </button>
+
+            </div>
+
+            `;
+
+        }
+
+        // CONVÊNIOS
+
+        else if (abaAtual === "convenios") {
+
+            resultados.innerHTML += `
+
+            <div class="card">
+
+                <h2>${item[0]}</h2>
+
+                <p>
+                    CNPJ: ${item[1]}
+                </p>
+
+                <p>
+                    Código: ${item[2]}
+                </p>
+
+                <p>
+                    Categoria: ${item[3]}
+                </p>
+
+                <div class="botoes-convenio">
+
+                    <button
+                        class="copiar"
+                        onclick="copiar('${item[1]}')">
+
+                        Copiar CNPJ
+
+                    </button>
+
+                    <button
+                        class="copiar"
+                        onclick="copiar('${item[2]}')">
+
+                        Copiar Código
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }
+
+    });
 
 }
 
@@ -191,25 +244,24 @@ busca.addEventListener("input", pesquisar);
 
 function pesquisar() {
 
+    const termo = busca.value.toLowerCase().trim();
 
-const termo = busca.value.toLowerCase().trim();
+    if (termo.length === 0) {
 
-if (termo.length === 0) {
+        mostrarResultados(dados);
 
-    mostrarResultados(dados);
+        return;
 
-    return;
+    }
 
-}
+    const encontrados = dados.filter(item =>
+        item.some(campo =>
+            campo &&
+            campo.toLowerCase().includes(termo)
+        )
+    );
 
-const encontrados = dados.filter(item =>
-    item.some(campo =>
-        campo.toLowerCase().includes(termo)
-    )
-);
-
-mostrarResultados(encontrados);
-
+    mostrarResultados(encontrados);
 
 }
 
@@ -226,8 +278,7 @@ function trocarAba(tipo, elemento) {
     document
         .querySelectorAll(".aba")
         .forEach(btn =>
-            btn.classList.remove("ativa")
-        );
+            btn.classList.remove("ativa"));
 
     elemento.classList.add("ativa");
 

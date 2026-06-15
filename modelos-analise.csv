@@ -1,112 +1,112 @@
-Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave
-6612;Certidão Genérica SEJUD;Certidão;Servidor;ertidão genérica,certificar,informar nos autos,registro processual
-6001;Intimação de Testemunha Sigilosa;Certidão;Servidor;testemunha sigilosa,proteger testemunha,dados sigilosos,endereço sigiloso
-6003;Histórico - Revisão de Prisão;Certidão;Servidor;revisão de prisão,analisar prisão,reavaliação da prisão,prazo prisão
-6005;Remessa ao Gabinete;Certidão;Servidor;remessa gabinete,conclusão para juiz,enviar ao gabinete
-6007;Endereço em Outra Comarca;Certidão;Servidor;outra comarca,endereço fora da comarca,mudança de endereço,endereço diverso
-6009;BNMP - Regra Automática;Certidão;Servidor;bnmp,mandado prisão,banco nacional de mandados,regra automática
-6011;BNMP - Regularização Mandado;Certidão;Servidor;regularizar bnmp,corrigir mandado,ajuste mandado prisão
-6013;Intimação por Telefone;Certidão;Servidor;intimação telefone,contato telefônico,ligação para parte
-6015;Controle de Eventos Diversos;Certidão;Servidor;evento processual,controle de prazo,controle interno,evento diverso
-6017;Ausência de Autos Principais;Certidão;Servidor;autos principais ausentes,processo principal não localizado,falta autos
-6019;Falta de Clareza;Certidão;Servidor;falta clareza,dúvida processual,informação insuficiente,documento incompleto
-6021;Alvará de Soltura;Certidão;Servidor;alvará de soltura,soltura do preso,colocação em liberdade
-6023;Designação de Audiência;Certidão;Servidor;audiência designada,marcação audiência,agendamento audiência
-6025;Apensamento de Autos;Certidão;Servidor;apensamento,juntar processos,processos relacionados
-6027;Traslado de Documentos;Certidão;Servidor;traslado,cópia de documentos,encaminhamento documentos
-6029;Apensamento, traslado e histórico;Certidão;Servidor;apensamento e traslado,histórico processual,juntar processos
-6031;Mídias Processuais;Certidão;Servidor;mídia processual,vídeo,áudio,arquivo digital,mídia audiência
-6033;Demanda Análise Processual;Certidão;Servidor;análise processual,demanda gabinete,verificação processo
-6035;Certidão Narrativa;Certidão;Servidor;certidão narrativa,resumo processual,histórico detalhado
-6037;Sistemas de Uso do Gabinete;Certidão;Servidor;sistema gabinete,saj,pje,sistema interno,ferramenta gabinete
-6039;Audiência Designada Fora do Prazo;Certidão;Servidor;audiência fora prazo,audiência atrasada,excesso prazo
-6041;Emissão de Mandado de Prisão;Certidão;Servidor;emissão mandado prisão,expedir mandado prisão,prisão decretada
-6043;Audiência por Video Sem Link;Certidão;Servidor;audiência sem link,videoconferência sem link,problema audiência virtual
-6045;Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav
-964;MANDADO DE CITAÇÃO (Réu Solto);MANDADO;Servidor;citação,reu solto,denuncia,citar acusado,resposta acusacao,chamar reu
-4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso
-1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Servidor;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia
-1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA         ;MANDADO;Servidor;vitima,conducao coercitiva,vitima faltosa,audiencia
-1876;MANDADO DE INTIMAÇÃO GENÉRICO (Réu Preso);MANDADO;Servidor;intimacao generica,intimar parte,intimar acusado,comunicacao processual
-1874;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO – URGENTE (Réu Preso);MANDADO;Servidor;novo advogado,defensor renunciou,advogado renunciou,constituir advogado,reu preso
-1461;MANDADO DE AVALIAÇÃO;MANDADO;Servidor;avaliacao,bem apreendido,avaliar objeto,avaliar patrimonio
-4942;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;testemunha,videoconferencia,audiencia online,oitiva de testemunha
-501127;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;oficio,email,comunicacao,requisicao generica
-3216;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;oficio,malote digital,comunicacao generica
-3365;Requisição de Perícia Genérica - PEFOCE;OFÍCIO;Servidor;pefoce,pericia,exame pericial,perito,pericia generica
-3911;CRIME - DE ORDEM - Requisição de Laudo Pericial Genérico (E-mail);OFÍCIO;Servidor;laudo pericial,pefoce,resultado pericia,laudo,exame
-3913;Concessão de uso de monitoramento eletrônico                                                                                                                           ;OFÍCIO;Servidor;tornozeleira,monitoramento eletronico,instalar tornozeleira
-3914;Retirada do monitoramento eletrônico;OFÍCIO;Servidor;retirar tornozeleira,encerrar monitoramento eletronico
-2672;Requisição de Servidor Público;OFÍCIO;Magistrado;servidor publico,funcionario publico,requisicao servidor
-3988;Encaminhamento de Mandado de Condução Coercitiva - AAPJ;OFÍCIO;Magistrado;conducao coercitiva,encaminhar mandado,aapj,testemunha faltosa
-2670;Requisição de Policial Rodoviário Federal;OFÍCIO;Magistrado;prf,policial rodoviario federal,agente da prf,oitiva policial
-2669;Requisição de Policial Federal;OFÍCIO;Magistrado;policia federal,pf,agente federal,oitiva policial
-2671;Requisição de Guarda Municipal;OFÍCIO;Magistrado;guarda municipal,gcm,agente municipal
-4951;Solicitação de devolução de mandado - CEMAN;OFÍCIO;Servidor;devolucao mandado,ceman,mandado devolvido
-3331;Solicitação de devolução de Carta Precatória;OFÍCIO;Magistrado;devolucao carta precatoria, devolucao, cp cumprida, informacoes
-4063;Ato Ordinatório - PCCE;ATO ORDINATÓRIO;Servidor;pcce,policia civil,oficiar pcce
-40;Ato Ordinatório [Genérico]            ;ATO ORDINATÓRIO;Servidor;ato ordinatorio generico,andamento processual
-6506;Carta Precatória Citatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,citacao,reu em outra comarca
-6508;Carta Precatória para intimar réu a comparecer a audiência                                                                     ;CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu
-6509;Carta Precatória para intimar réu para constituir novo advogado                                                                ;CARTA PRECATÓRIA;Magistrado;carta precatoria,novo advogado,advogado renunciou
-6510;Carta Precatória genérica                                                                                                      ;CARTA PRECATÓRIA;Magistrado;carta precatoria generica,outra comarca
-500826;Carta Precatória Notificatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,notificacao,notificar pessoa
-501313;Edital de Citação (15 dias)                                                                                                                                                                     ;EDITAL;Magistrado;edital de citacao,reu nao localizado,paradeiro ignorado
-500028;Edital Genérico                                                                                                                                                                                 ;EDITAL;Magistrado;edital generico,publicacao,dje
-5435;TODOS - 50271- Carta de Arrematação;CARTA;Magistrado;carta de arrematação,arrematação,bem arrematado,leilão judicial,hasta pública,adjudicação,comprador do bem,transferência de propriedade
-6670;Alvará de Restituição de Bem Apreendido;ALVARÁ;Magistrado;devolver bem,restituicao de bem,bem apreendido,objeto apreendido
-500057;[CORREIOS-AR] - Ofício Genérico;OFÍCIO;Magistrado;correios, ar, ofício, aviso recebimento
-500313;Apresentação de testemunha de acusação - AAJ;OFÍCIO;Magistrado;testemunha acusação, aaj
-500311;Apresentação de testemunha de defesa - AAJ;OFÍCIO;Magistrado;testemunha defesa, aaj
-500312;Apresentação de Vítima - AAJ;OFÍCIO;Magistrado;vítima, aaj
-3315;Comunicação de Designação de Audiência - Juízo deprecante;OFÍCIO;Magistrado;audiência deprecante, designação audiência
-501257;Restituição de bem;OFÍCIO;Magistrado;restituição bem, devolução bem
-500344;Solicitação de arma;OFÍCIO;Magistrado;solicitação arma, requisição arma
-21;Comunicação de recebimento de Carta Precatória;OFÍCIO;Magistrado;recebimento precatória, carta precatória
-3217;Declínio de Competência;OFÍCIO;Magistrado;declínio competência, incompetência
-501371;Informação de que o réu voltou a delinquir;OFÍCIO;Magistrado;voltou delinquir, reincidência
-500039;[CORREIOS-AR] - Ofício Genérico;OFÍCIO;Servidor;correios, ar, ofício
-3225;Solicitação de laudo de exame de corpo de delito - PEFOCE ;OFÍCIO;Servidor;corpo delito, laudo pefoce
-3363;Solicitação de Identificação Civil-Criminal - PEFOCE;OFÍCIO;Servidor;identificação criminal, pefoce
-3911;Requisição de Laudo Pericial Genérico;OFÍCIO;Servidor;laudo pericial, perícia genérica
-3367;Pericia de automóvel - PEFOCE;OFÍCIO;Servidor;perícia veículo, automóvel
-3366;Solicitação de perícia de arma - PEFOCE;OFÍCIO;Servidor;perícia arma
-501897;Solicitação de Diligências;OFÍCIO;Servidor;diligências, diligência
-3361;Fiscalização do benefício da suspensão condicional do processo;OFÍCIO;Servidor;suspensão condicional, fiscalização sursis
-3222;Solicitação de Certidão de Óbito - Cartórios de Fortaleza;OFÍCIO;Servidor;certidão óbito, óbito
-3915;Solicitação de documentos ao Juízo Deprecante  ;OFÍCIO;Servidor;documentos deprecante
-4950;[CORREIOS-AR] - Solicitação de endereço;OFÍCIO;Servidor;endereço correios, localizar endereço
-4017;[E-MAIL] - Solicitação de endereço;OFÍCIO;Servidor;endereço email, localizar endereço
-3349;Requisição de arma para restituição;OFÍCIO;Servidor;restituição arma
-4952;Comunicação ao Depósito Público;OFÍCIO;Servidor;depósito público
-3352;Destruição de arma;OFÍCIO;Servidor;destruição arma
-3916;Condução do réu para audiência por videoconferência;OFÍCIO;Servidor;videoconferência réu, condução réu
-5620;Informação de que o réu voltou a delinquir                                                                                                                 ;OFÍCIO;Servidor;voltou delinquir, reincidência
-4679;[ATO VINCULADO] - Comunicação para fins de registros nos sistemas policiais                                                                                                            ;ATO ORDINATÓRIO;Servidor;sistemas policiais, registros policiais
-6676;[ÁREA CRIMINAL] – Edital para publicação no DJEN;ATO ORDINATÓRIO;Servidor;edital djen
-1865;MANDADO DE CITAÇÃO - URGENTE (Réu Preso);Mandado;Servidor;citação preso
-4941;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo acusado
-4943;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo testemunha
-4944;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);Mandado;Servidor;audiência vídeo vítima preso
-4945;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo vítima
-2962;Mandado de Busca e Apreensão - SEM COMAN                                                                                                                                          ;Mandado;Servidor;busca apreensão
-5617;Requisição de réu para audiência;Ofício;Servidor;requisição réu audiência
-3276;JÚRI - COMAN DIGITAL - Mandado de Citação - URGENTE (Réu Preso);Mandado;Magistrado;júri citação preso
-3283;JÚRI - COMAN DIGITAL- Mandado de Citação (Réu Solto);Mandado;Magistrado;júri citação solto
-3148;JÚRI - Mandado de NOTIFICAÇÃO - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri sessão julgamento
-3147;JÚRI - Mandado de INTIMAÇÃO de TESTEMUNHA - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri testemunha sessão
-3948;JÚRI - Mandado de INTIMAÇÃO de RÉU para SESSÃO DE JULGAMENTO - URGENTE (Réu Preso);Mandado;Magistrado;júri julgamento preso
-3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri testemunha audiência
-3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri testemunha audiência urgente
-3267;JÚRI - Mandado de INTIMAÇÃO do ACUSADO para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri acusado audiência
-3624;JÚRI - Mandado de INTIMAÇÃO de ACUSADO para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri acusado audiência urgente
-3266;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri vítima audiência
-3274;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri vítima audiência urgente
-501128;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;email ofício
-3912;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;malote digital
-1010;Mandado de Intimação Genérico (Réu Solto);Mandado;Servidor;intimação genérica
-1012;JÚRI - Mandado de INTIMAÇÃO - Genérico (Réu Solto);Mandado;Magistrado;júri intimação genérica
-1877;JÚRI - Mandado de INTIMAÇÃO - Genérico – URGENTE (Réu Preso);Mandado;Magistrado;júri intimação genérica urgente
-5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);Mandado;Servidor;desclassificatória
-991;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Solto);Mandado;Magistrado;novo advogado solto
-1875;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Preso);Mandado;Magistrado;novo advogado preso
+Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
+6612;Certidão Genérica SEJUD;Certidão;Servidor;ertidão genérica,certificar,informar nos autos,registro processual;SAJ e PJe
+6001;Intimação de Testemunha Sigilosa;Certidão;Servidor;testemunha sigilosa,proteger testemunha,dados sigilosos,endereço sigiloso;SAJ e PJe
+6003;Histórico - Revisão de Prisão;Certidão;Servidor;revisão de prisão,analisar prisão,reavaliação da prisão,prazo prisão;SAJ e PJe
+6005;Remessa ao Gabinete;Certidão;Servidor;remessa gabinete,conclusão para juiz,enviar ao gabinete;SAJ e PJe
+6007;Endereço em Outra Comarca;Certidão;Servidor;outra comarca,endereço fora da comarca,mudança de endereço,endereço diverso;SAJ e PJe
+6009;BNMP - Regra Automática;Certidão;Servidor;bnmp,mandado prisão,banco nacional de mandados,regra automática;SAJ e PJe
+6011;BNMP - Regularização Mandado;Certidão;Servidor;regularizar bnmp,corrigir mandado,ajuste mandado prisão;SAJ e PJe
+6013;Intimação por Telefone;Certidão;Servidor;intimação telefone,contato telefônico,ligação para parte;SAJ e PJe
+6015;Controle de Eventos Diversos;Certidão;Servidor;evento processual,controle de prazo,controle interno,evento diverso;SAJ e PJe
+6017;Ausência de Autos Principais;Certidão;Servidor;autos principais ausentes,processo principal não localizado,falta autos;SAJ e PJe
+6019;Falta de Clareza;Certidão;Servidor;falta clareza,dúvida processual,informação insuficiente,documento incompleto;SAJ e PJe
+6021;Alvará de Soltura;Certidão;Servidor;alvará de soltura,soltura do preso,colocação em liberdade;SAJ e PJe
+6023;Designação de Audiência;Certidão;Servidor;audiência designada,marcação audiência,agendamento audiência;SAJ e PJe
+6025;Apensamento de Autos;Certidão;Servidor;apensamento,juntar processos,processos relacionados;SAJ e PJe
+6027;Traslado de Documentos;Certidão;Servidor;traslado,cópia de documentos,encaminhamento documentos;SAJ e PJe
+6029;Apensamento, traslado e histórico;Certidão;Servidor;apensamento e traslado,histórico processual,juntar processos;SAJ e PJe
+6031;Mídias Processuais;Certidão;Servidor;mídia processual,vídeo,áudio,arquivo digital,mídia audiência;SAJ e PJe
+6033;Demanda Análise Processual;Certidão;Servidor;análise processual,demanda gabinete,verificação processo;SAJ e PJe
+6035;Certidão Narrativa;Certidão;Servidor;certidão narrativa,resumo processual,histórico detalhado;SAJ e PJe
+6037;Sistemas de Uso do Gabinete;Certidão;Servidor;sistema gabinete,saj,pje,sistema interno,ferramenta gabinete;SAJ e PJe
+6039;Audiência Designada Fora do Prazo;Certidão;Servidor;audiência fora prazo,audiência atrasada,excesso prazo;SAJ e PJe
+6041;Emissão de Mandado de Prisão;Certidão;Servidor;emissão mandado prisão,expedir mandado prisão,prisão decretada;SAJ e PJe
+6043;Audiência por Video Sem Link;Certidão;Servidor;audiência sem link,videoconferência sem link,problema audiência virtual;SAJ e PJe
+6045;Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav;SAJ e PJe
+964;MANDADO DE CITAÇÃO (Réu Solto);MANDADO;Servidor;citação,reu solto,denuncia,citar acusado,resposta acusacao,chamar reu;SAJ e PJe
+4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso;SAJ e PJe
+1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Servidor;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia;SAJ e PJe
+1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA         ;MANDADO;Servidor;vitima,conducao coercitiva,vitima faltosa,audiencia;SAJ e PJe
+1876;MANDADO DE INTIMAÇÃO GENÉRICO (Réu Preso);MANDADO;Servidor;intimacao generica,intimar parte,intimar acusado,comunicacao processual;SAJ e PJe
+1874;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO – URGENTE (Réu Preso);MANDADO;Servidor;novo advogado,defensor renunciou,advogado renunciou,constituir advogado,reu preso;SAJ e PJe
+1461;MANDADO DE AVALIAÇÃO;MANDADO;Servidor;avaliacao,bem apreendido,avaliar objeto,avaliar patrimonio;SAJ e PJe
+4942;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;testemunha,videoconferencia,audiencia online,oitiva de testemunha;SAJ e PJe
+501127;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;oficio,email,comunicacao,requisicao generica;SAJ e PJe
+3216;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;oficio,malote digital,comunicacao generica;SAJ e PJe
+3365;Requisição de Perícia Genérica - PEFOCE;OFÍCIO;Servidor;pefoce,pericia,exame pericial,perito,pericia generica;SAJ e PJe
+3911;CRIME - DE ORDEM - Requisição de Laudo Pericial Genérico (E-mail);OFÍCIO;Servidor;laudo pericial,pefoce,resultado pericia,laudo,exame;SAJ e PJe
+3913;Concessão de uso de monitoramento eletrônico                                                                                                                           ;OFÍCIO;Servidor;tornozeleira,monitoramento eletronico,instalar tornozeleira;SAJ e PJe
+3914;Retirada do monitoramento eletrônico;OFÍCIO;Servidor;retirar tornozeleira,encerrar monitoramento eletronico;SAJ e PJe
+2672;Requisição de Servidor Público;OFÍCIO;Magistrado;servidor publico,funcionario publico,requisicao servidor;SAJ e PJe
+3988;Encaminhamento de Mandado de Condução Coercitiva - AAPJ;OFÍCIO;Magistrado;conducao coercitiva,encaminhar mandado,aapj,testemunha faltosa;SAJ e PJe
+2670;Requisição de Policial Rodoviário Federal;OFÍCIO;Magistrado;prf,policial rodoviario federal,agente da prf,oitiva policial;SAJ e PJe
+2669;Requisição de Policial Federal;OFÍCIO;Magistrado;policia federal,pf,agente federal,oitiva policial;SAJ e PJe
+2671;Requisição de Guarda Municipal;OFÍCIO;Magistrado;guarda municipal,gcm,agente municipal;SAJ e PJe
+4951;Solicitação de devolução de mandado - CEMAN;OFÍCIO;Servidor;devolucao mandado,ceman,mandado devolvido;SAJ e PJe
+3331;Solicitação de devolução de Carta Precatória;OFÍCIO;Magistrado;devolucao carta precatoria, devolucao, cp cumprida, informacoes;Apenas SAJ
+4063;Ato Ordinatório - PCCE;ATO ORDINATÓRIO;Servidor;pcce,policia civil,oficiar pcce;SAJ e PJe
+40;Ato Ordinatório [Genérico]            ;ATO ORDINATÓRIO;Servidor;ato ordinatorio generico,andamento processual;SAJ e PJe
+6506;Carta Precatória Citatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,citacao,reu em outra comarca;SAJ e PJe
+6508;Carta Precatória para intimar réu a comparecer a audiência                                                                     ;CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu;SAJ e PJe
+6509;Carta Precatória para intimar réu para constituir novo advogado                                                                ;CARTA PRECATÓRIA;Magistrado;carta precatoria,novo advogado,advogado renunciou;SAJ e PJe
+6510;Carta Precatória genérica                                                                                                      ;CARTA PRECATÓRIA;Magistrado;carta precatoria generica,outra comarca;SAJ e PJe
+500826;Carta Precatória Notificatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,notificacao,notificar pessoa;SAJ e PJe
+501313;Edital de Citação (15 dias)                                                                                                                                                                     ;EDITAL;Magistrado;edital de citacao,reu nao localizado,paradeiro ignorado;SAJ e PJe
+500028;Edital Genérico                                                                                                                                                                                 ;EDITAL;Magistrado;edital generico,publicacao,dje;SAJ e PJe
+5435;TODOS - 50271- Carta de Arrematação;CARTA;Magistrado;carta de arrematação,arrematação,bem arrematado,leilão judicial,hasta pública,adjudicação,comprador do bem,transferência de propriedade;SAJ e PJe
+6670;Alvará de Restituição de Bem Apreendido;ALVARÁ;Magistrado;devolver bem,restituicao de bem,bem apreendido,objeto apreendido;SAJ e PJe
+500057;[CORREIOS-AR] - Ofício Genérico;OFÍCIO;Magistrado;correios, ar, ofício, aviso recebimento;Apenas SAJ
+500313;Apresentação de testemunha de acusação - AAJ;OFÍCIO;Magistrado;testemunha acusação, aaj;Apenas SAJ
+500311;Apresentação de testemunha de defesa - AAJ;OFÍCIO;Magistrado;testemunha defesa, aaj;Apenas SAJ
+500312;Apresentação de Vítima - AAJ;OFÍCIO;Magistrado;vítima, aaj;Apenas SAJ
+3315;Comunicação de Designação de Audiência - Juízo deprecante;OFÍCIO;Magistrado;audiência deprecante, designação audiência;Apenas SAJ
+501257;Restituição de bem;OFÍCIO;Magistrado;restituição bem, devolução bem;Apenas SAJ
+500344;Solicitação de arma;OFÍCIO;Magistrado;solicitação arma, requisição arma;Apenas SAJ
+21;Comunicação de recebimento de Carta Precatória;OFÍCIO;Magistrado;recebimento precatória, carta precatória;Apenas SAJ
+3217;Declínio de Competência;OFÍCIO;Magistrado;declínio competência, incompetência;Apenas SAJ
+501371;Informação de que o réu voltou a delinquir;OFÍCIO;Magistrado;voltou delinquir, reincidência;Apenas SAJ
+500039;[CORREIOS-AR] - Ofício Genérico;OFÍCIO;Servidor;correios, ar, ofício;Apenas SAJ
+3225;Solicitação de laudo de exame de corpo de delito - PEFOCE ;OFÍCIO;Servidor;corpo delito, laudo pefoce;Apenas SAJ
+3363;Solicitação de Identificação Civil-Criminal - PEFOCE;OFÍCIO;Servidor;identificação criminal, pefoce;Apenas SAJ
+3911;Requisição de Laudo Pericial Genérico;OFÍCIO;Servidor;laudo pericial, perícia genérica;SAJ e PJe
+3367;Pericia de automóvel - PEFOCE;OFÍCIO;Servidor;perícia veículo, automóvel;Apenas SAJ
+3366;Solicitação de perícia de arma - PEFOCE;OFÍCIO;Servidor;perícia arma;Apenas SAJ
+501897;Solicitação de Diligências;OFÍCIO;Servidor;diligências, diligência;Apenas SAJ
+3361;Fiscalização do benefício da suspensão condicional do processo;OFÍCIO;Servidor;suspensão condicional, fiscalização sursis;Apenas SAJ
+3222;Solicitação de Certidão de Óbito - Cartórios de Fortaleza;OFÍCIO;Servidor;certidão óbito, óbito;Apenas SAJ
+3915;Solicitação de documentos ao Juízo Deprecante  ;OFÍCIO;Servidor;documentos deprecante;Apenas SAJ
+4950;[CORREIOS-AR] - Solicitação de endereço;OFÍCIO;Servidor;endereço correios, localizar endereço;Apenas SAJ
+4017;[E-MAIL] - Solicitação de endereço;OFÍCIO;Servidor;endereço email, localizar endereço;Apenas SAJ
+3349;Requisição de arma para restituição;OFÍCIO;Servidor;restituição arma;Apenas SAJ
+4952;Comunicação ao Depósito Público;OFÍCIO;Servidor;depósito público;Apenas SAJ
+3352;Destruição de arma;OFÍCIO;Servidor;destruição arma;Apenas SAJ
+3916;Condução do réu para audiência por videoconferência;OFÍCIO;Servidor;videoconferência réu, condução réu;Apenas SAJ
+5620;Informação de que o réu voltou a delinquir                                                                                                                 ;OFÍCIO;Servidor;voltou delinquir, reincidência;Apenas SAJ
+4679;[ATO VINCULADO] - Comunicação para fins de registros nos sistemas policiais                                                                                                            ;ATO ORDINATÓRIO;Servidor;sistemas policiais, registros policiais;Apenas SAJ
+6676;[ÁREA CRIMINAL] – Edital para publicação no DJEN;ATO ORDINATÓRIO;Servidor;edital djen;Apenas SAJ
+1865;MANDADO DE CITAÇÃO - URGENTE (Réu Preso);Mandado;Servidor;citação preso;Apenas SAJ
+4941;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo acusado;Apenas SAJ
+4943;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo testemunha;Apenas SAJ
+4944;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);Mandado;Servidor;audiência vídeo vítima preso;Apenas SAJ
+4945;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo vítima;Apenas SAJ
+2962;Mandado de Busca e Apreensão - SEM COMAN                                                                                                                                          ;Mandado;Servidor;busca apreensão;Apenas SAJ
+5617;Requisição de réu para audiência;Ofício;Servidor;requisição réu audiência;Apenas SAJ
+3276;JÚRI - COMAN DIGITAL - Mandado de Citação - URGENTE (Réu Preso);Mandado;Magistrado;júri citação preso;Apenas SAJ
+3283;JÚRI - COMAN DIGITAL- Mandado de Citação (Réu Solto);Mandado;Magistrado;júri citação solto;Apenas SAJ
+3148;JÚRI - Mandado de NOTIFICAÇÃO - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri sessão julgamento;Apenas SAJ
+3147;JÚRI - Mandado de INTIMAÇÃO de TESTEMUNHA - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri testemunha sessão;Apenas SAJ
+3948;JÚRI - Mandado de INTIMAÇÃO de RÉU para SESSÃO DE JULGAMENTO - URGENTE (Réu Preso);Mandado;Magistrado;júri julgamento preso;Apenas SAJ
+3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri testemunha audiência;Apenas SAJ
+3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri testemunha audiência urgente;Apenas SAJ
+3267;JÚRI - Mandado de INTIMAÇÃO do ACUSADO para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri acusado audiência;Apenas SAJ
+3624;JÚRI - Mandado de INTIMAÇÃO de ACUSADO para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri acusado audiência urgente;Apenas SAJ
+3266;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri vítima audiência;Apenas SAJ
+3274;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri vítima audiência urgente;Apenas SAJ
+501128;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;email ofício;Apenas SAJ
+3912;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;malote digital;Apenas SAJ
+1010;Mandado de Intimação Genérico (Réu Solto);Mandado;Servidor;intimação genérica;Apenas SAJ
+1012;JÚRI - Mandado de INTIMAÇÃO - Genérico (Réu Solto);Mandado;Magistrado;júri intimação genérica;Apenas SAJ
+1877;JÚRI - Mandado de INTIMAÇÃO - Genérico – URGENTE (Réu Preso);Mandado;Magistrado;júri intimação genérica urgente;Apenas SAJ
+5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);Mandado;Servidor;desclassificatória;Apenas SAJ
+991;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Solto);Mandado;Magistrado;novo advogado solto;Apenas SAJ
+1875;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Preso);Mandado;Magistrado;novo advogado preso;Apenas SAJ
