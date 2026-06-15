@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central de Consultas</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,26 +12,53 @@
 
     <header>
 
-        <h1>⚖️ Central de Consultas</h1>
+        <img
+            src="logo-diretoria.jpeg"
+            class="logo"
+            alt="Diretoria Criminal Especializada"
+            style="width:120px;"
+        >
+
+        <h1>Central de Consultas</h1>
 
         <p>
-            Consulta rápida de Modelos, Contatos e Convênios
+            Diretoria Criminal Especializada
         </p>
 
     </header>
 
     <div class="abas">
 
-        <button class="aba ativa" onclick="trocarAba('modelos')">
-            📄 Modelos
+        <button
+            class="aba ativa"
+            onclick="trocarAba('analise', this)">
+
+            📄 Modelos - Análise e Cumprimento
+
         </button>
 
-        <button class="aba" onclick="trocarAba('contatos')">
+        <button
+            class="aba"
+            onclick="trocarAba('possentenca', this)">
+
+            ⚖️ Modelos - Pós-Sentença
+
+        </button>
+
+        <button
+            class="aba"
+            onclick="trocarAba('contatos', this)">
+
             📧 Contatos
+
         </button>
 
-        <button class="aba" onclick="trocarAba('convenios')">
+        <button
+            class="aba"
+            onclick="trocarAba('convenios', this)">
+
             🏢 Convênios
+
         </button>
 
     </div>

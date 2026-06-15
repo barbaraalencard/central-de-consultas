@@ -1,219 +1,212 @@
-let abaAtual = "modelos";
-
-let modelos = [];
-let contatos = [];
-let convenios = [];
+let dados = [];
+let abaAtual = "analise";
 
 const busca = document.getElementById("busca");
 const resultados = document.getElementById("resultados");
 
-carregarTudo();
+const arquivos = {
+    analise: "modelos-analise.csv",
+    possentenca: "modelos-pos-sentenca.csv",
+    contatos: "contatos.csv",
+    convenios: "convenios.csv"
+};
+
+carregarDados("analise");
+
+async function carregarDados(tipo) {
+
+
+abaAtual = tipo;
+
+dados = [];
+
+resultados.innerHTML = "";
+
+try {
+
+    const resposta = await fetch(arquivos[tipo]);
+
+    const buffer = await resposta.arrayBuffer();
+
+    const texto = new TextDecoder("windows-1252").decode(buffer);
+
+    const linhas = texto.split(/\r?\n/);
+
+    linhas.shift();
+
+    linhas.forEach(linha => {
+
+        if (!linha.trim()) return;
+
+        const colunas = linha.split(";");
+
+        dados.push(colunas.map(c => c.trim()));
+
+    });
+
+    console.log("Registros carregados:", dados.length);
+
+    mostrarResultados(dados);
+
+} catch (erro) {
+
+    console.error("Erro:", erro);
+
+}
+
+
+}
+
+function mostrarResultados(lista) {
+
+
+resultados.innerHTML = "";
+
+if (lista.length === 0) {
+
+    resultados.innerHTML = `
+        <div class="card">
+            <h2>Nenhum resultado encontrado.</h2>
+        </div>
+    `;
+
+    return;
+}
+
+lista.forEach(item => {
+
+    if (
+        abaAtual === "analise" ||
+        abaAtual === "possentenca"
+    ) {
+
+        resultados.innerHTML += `
+
+        <div class="card">
+
+            <h2>${item[1]}</h2>
+
+            <p class="codigo">
+                Código: ${item[0]}
+            </p>
+
+            <p>
+                Categoria: ${item[2]}
+            </p>
+
+            <p>
+                Perfil: ${item[3]}
+            </p>
+
+            <button
+                class="copiar"
+                onclick="copiar('${item[0]}')">
+                Copiar Código
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+    else if (abaAtual === "contatos") {
+
+        resultados.innerHTML += `
+
+        <div class="card">
+
+            <h2>${item[0]}</h2>
+
+            <p>
+                📧 ${item[1]}
+            </p>
+
+        </div>
+
+        `;
+
+    }
+
+    else if (abaAtual === "convenios") {
+
+        resultados.innerHTML += `
+
+        <div class="card">
+
+            <h2>${item[0]}</h2>
+
+            <p>
+                CNPJ: ${item[1]}
+            </p>
+
+            <p>
+                Código: ${item[2]}
+            </p>
+
+            <p>
+                Categoria: ${item[3]}
+            </p>
+
+        </div>
+
+        `;
+
+    }
+
+});
+
+
+}
 
 busca.addEventListener("input", pesquisar);
 
-async function carregarTudo(){
+function pesquisar() {
 
-    modelos = await carregarCSV("modelos.csv");
-    contatos = await carregarCSV("contatos.csv");
-    convenios = await carregarCSV("convenios.csv");
 
-    console.log("Modelos:", modelos.length);
-    console.log("Contatos:", contatos.length);
-    console.log("Convênios:", convenios.length);
+const termo = busca.value.toLowerCase().trim();
 
-}
+if (termo.length === 0) {
 
-async function carregarCSV(arquivo){
+    mostrarResultados(dados);
 
-    try{
-
-        const resposta = await fetch(arquivo);
-
-        const buffer = await resposta.arrayBuffer();
-
-        const texto = new TextDecoder("windows-1252").decode(buffer);
-
-        const linhas = texto.split(/\r?\n/);
-
-        const cabecalho = linhas.shift().split(";");
-
-        const dados = [];
-
-        linhas.forEach(linha=>{
-
-            if(!linha.trim()) return;
-
-            const colunas = linha.split(";");
-
-            const objeto = {};
-
-            cabecalho.forEach((campo,index)=>{
-
-                objeto[campo.trim()] =
-                colunas[index]?.trim() || "";
-
-            });
-
-            dados.push(objeto);
-
-        });
-
-        return dados;
-
-    }
-
-    catch(erro){
-
-        console.error(arquivo, erro);
-
-        return [];
-
-    }
+    return;
 
 }
 
-function trocarAba(nome){
+const encontrados = dados.filter(item =>
+    item.some(campo =>
+        campo.toLowerCase().includes(termo)
+    )
+);
 
-    abaAtual = nome;
+mostrarResultados(encontrados);
+
+
+}
+
+function copiar(codigo) {
+
+
+navigator.clipboard.writeText(codigo);
+
+alert("Código copiado: " + codigo);
+
+
+}
+
+function trocarAba(tipo, elemento) {
 
     document
-    .querySelectorAll(".aba")
-    .forEach(btn=>btn.classList.remove("ativa"));
+        .querySelectorAll(".aba")
+        .forEach(btn =>
+            btn.classList.remove("ativa")
+        );
 
-    event.target.classList.add("ativa");
+    elemento.classList.add("ativa");
 
-    resultados.innerHTML = "";
     busca.value = "";
 
-}
-
-function pesquisar(){
-
-    const texto = busca.value.toLowerCase();
-
-    resultados.innerHTML = "";
-
-    if(texto.length < 2) return;
-
-    if(abaAtual === "modelos") pesquisarModelos(texto);
-
-    if(abaAtual === "contatos") pesquisarContatos(texto);
-
-    if(abaAtual === "convenios") pesquisarConvenios(texto);
-
-}
-
-function pesquisarModelos(texto){
-
-    modelos.forEach(modelo=>{
-
-        const dados = JSON.stringify(modelo)
-        .toLowerCase();
-
-        if(dados.includes(texto)){
-
-            resultados.innerHTML += `
-            <div class="card">
-
-                <h2>${modelo["Nome do Modelo"]}</h2>
-
-                <p class="codigo">
-                    Código: ${modelo["Codigo"]}
-                </p>
-
-                <p>
-                    Categoria: ${modelo["Categoria"]}
-                </p>
-
-                <p>
-                    Perfil: ${modelo["Perfil"]}
-                </p>
-
-                <button
-                class="copiar"
-                onclick="copiar('${modelo["Codigo"]}')">
-                    Copiar Código
-                </button>
-
-            </div>
-            `;
-
-        }
-
-    });
-
-}
-
-function pesquisarContatos(texto){
-
-    contatos.forEach(contato=>{
-
-        const dados = JSON.stringify(contato)
-        .toLowerCase();
-
-        if(dados.includes(texto)){
-
-            resultados.innerHTML += `
-            <div class="card">
-
-                <h2>
-                    ${contato["Delegacia"]}
-                </h2>
-
-                <p>
-                    📧 ${contato["E-mail"]}
-                </p>
-
-            </div>
-            `;
-
-        }
-
-    });
-
-}
-
-function pesquisarConvenios(texto){
-
-    convenios.forEach(convenio=>{
-
-        const dados = JSON.stringify(convenio)
-        .toLowerCase();
-
-        if(dados.includes(texto)){
-
-            resultados.innerHTML += `
-            <div class="card">
-
-                <h2>
-                    ${convenio["Convênio"]}
-                </h2>
-
-                <p>
-                    CNPJ: ${convenio["CNPJ"]}
-                </p>
-
-                <p>
-                    Código: ${convenio["Código"]}
-                </p>
-
-                <p>
-                    Categoria: ${convenio["Categoria"]}
-                </p>
-
-            </div>
-            `;
-
-        }
-
-    });
-
-}
-
-function copiar(codigo){
-
-    navigator.clipboard.writeText(codigo);
-
-    alert("Código copiado: " + codigo);
+    carregarDados(tipo);
 
 }

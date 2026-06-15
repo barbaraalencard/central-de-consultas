@@ -1,86 +1,140 @@
 body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f6f9;
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f3f5f8;
+}
+
+header {
+    background: white;
+    color: #003b7a;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1{
+margin:0;
+font-size:3rem;
+}
+
+header p{
+margin-top:10px;
+font-size:1.2rem;
+}
+
+.abas{
+display:flex;
+justify-content:center;
+gap:15px;
+padding:30px 20px;
+flex-wrap:wrap;
+}
+
+.aba{
+border:none;
+background:white;
+padding:18px 25px;
+border-radius:15px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+transition:0.2s;
+}
+
+.aba:hover{
+transform:translateY(-2px);
+}
+
+.aba.ativa{
+background:#003b78;
+color:white;
+}
+
+.container{
+width:90%;
+max-width:1400px;
+margin:auto;
+}
+
+#busca{
+width:100%;
+padding:25px;
+font-size:22px;
+border-radius:15px;
+border:1px solid #ccc;
+box-sizing:border-box;
+}
+
+.card{
+background:white;
+margin-top:25px;
+padding:30px;
+border-radius:18px;
+box-shadow:0 3px 12px rgba(0,0,0,0.08);
+}
+
+.card h2{
+color:#003b78;
+margin-top:0;
+}
+
+.codigo{
+font-size:28px;
+font-weight:bold;
+color:#0057b8;
+}
+
+.copiar{
+margin-top:15px;
+background:#0057b8;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+}
+
+.copiar:hover
+
+@media(max-width:768px){
+
+
+header h1{
+    font-size:2rem;
+}
+
+.aba{
+    width:100%;
+}
+
+#busca{
+    font-size:18px;
+    padding:18px;
+}
+
+.logo{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 10px auto;
 }
 
 header{
-    background:#003366;
+    background:#083b75;
     color:white;
     text-align:center;
-    padding:30px;
+    padding:40px 20px;
 }
 
 header h1{
     margin:0;
+    font-size:48px;
 }
 
 header p{
     margin-top:10px;
-}
-
-.abas{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    padding:20px;
-    flex-wrap:wrap;
-}
-
-.aba{
-    border:none;
-    padding:12px 25px;
-    cursor:pointer;
-    border-radius:10px;
-    background:white;
-    font-weight:bold;
-    box-shadow:0 2px 5px rgba(0,0,0,.1);
-}
-
-.aba.ativa{
-    background:#003366;
-    color:white;
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:20px;
-}
-
-#busca{
-    width:100%;
-    padding:18px;
-    font-size:18px;
-    border-radius:10px;
-    border:1px solid #ccc;
-}
-
-.card{
-    background:white;
-    margin-top:20px;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
-}
-
-.card h2{
-    margin-top:0;
-    color:#003366;
-}
-
-.codigo{
     font-size:22px;
-    font-weight:bold;
-    color:#0057b8;
-}
-
-button.copiar{
-    margin-top:10px;
-    background:#0057b8;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:pointer;
+    opacity:0.9;
 }
