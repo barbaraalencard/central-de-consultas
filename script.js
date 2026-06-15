@@ -112,47 +112,75 @@ lista.forEach(item => {
 
     else if (abaAtual === "contatos") {
 
-        resultados.innerHTML += `
+    resultados.innerHTML += `
 
-        <div class="card">
+    <div class="card">
 
-            <h2>${item[0]}</h2>
+        <h2>${item[0]}</h2>
 
-            <p>
-                📧 ${item[1]}
-            </p>
+        <p>
+            📧 ${item[1]}
+        </p>
 
-        </div>
+        <button
+            class="copiar"
+            onclick="copiar('${item[1]}')">
 
-        `;
+            Copiar E-mail
 
-    }
+        </button>
+
+    </div>
+
+    `;
+
+}
 
     else if (abaAtual === "convenios") {
 
-        resultados.innerHTML += `
+    resultados.innerHTML += `
 
-        <div class="card">
+    <div class="card">
 
-            <h2>${item[0]}</h2>
+        <h2>${item[0]}</h2>
 
-            <p>
-                CNPJ: ${item[1]}
-            </p>
+        <p>
+            CNPJ: ${item[1]}
+        </p>
 
-            <p>
-                Código: ${item[2]}
-            </p>
+        <p>
+            Código: ${item[2]}
+        </p>
 
-            <p>
-                Categoria: ${item[3]}
-            </p>
+        <p>
+            Categoria: ${item[3]}
+        </p>
+
+        <div class="botoes-convenio">
+
+            <button
+                class="copiar"
+                onclick="copiar('${item[1]}')">
+
+                Copiar CNPJ
+
+            </button>
+
+            <button
+                class="copiar"
+                onclick="copiar('${item[2]}')">
+
+                Copiar Código
+
+            </button>
 
         </div>
 
-        `;
+    </div>
 
-    }
+    `;
+
+}
 
 });
 
@@ -185,13 +213,11 @@ mostrarResultados(encontrados);
 
 }
 
-function copiar(codigo) {
+function copiar(texto) {
 
+    navigator.clipboard.writeText(texto);
 
-navigator.clipboard.writeText(codigo);
-
-alert("Código copiado: " + codigo);
-
+    alert("Copiado com sucesso!");
 
 }
 
