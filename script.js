@@ -1,127 +1,219 @@
+let abaAtual = "modelos";
+
 let modelos = [];
+let contatos = [];
+let convenios = [];
 
 const busca = document.getElementById("busca");
 const resultados = document.getElementById("resultados");
 
-carregarCSV();
+carregarTudo();
 
-async function carregarCSV() {
-    try {
-        const resposta = await fetch("modelos.csv");
+busca.addEventListener("input", pesquisar);
+
+async function carregarTudo(){
+
+    modelos = await carregarCSV("modelos.csv");
+    contatos = await carregarCSV("contatos.csv");
+    convenios = await carregarCSV("convenios.csv");
+
+    console.log("Modelos:", modelos.length);
+    console.log("Contatos:", contatos.length);
+    console.log("Convênios:", convenios.length);
+
+}
+
+async function carregarCSV(arquivo){
+
+    try{
+
+        const resposta = await fetch(arquivo);
 
         const buffer = await resposta.arrayBuffer();
+
         const texto = new TextDecoder("windows-1252").decode(buffer);
 
         const linhas = texto.split(/\r?\n/);
 
-        linhas.shift();
+        const cabecalho = linhas.shift().split(";");
 
-        linhas.forEach(linha => {
-            if (!linha.trim()) return;
+        const dados = [];
+
+        linhas.forEach(linha=>{
+
+            if(!linha.trim()) return;
 
             const colunas = linha.split(";");
 
-            if (colunas.length < 5) return;
+            const objeto = {};
 
-            modelos.push({
-                codigo: colunas[0].trim(),
-                nome: colunas[1].trim(),
-                categoria: colunas[2].trim(),
-                perfil: colunas[3].trim(),
-                palavras: colunas[4].trim()
+            cabecalho.forEach((campo,index)=>{
+
+                objeto[campo.trim()] =
+                colunas[index]?.trim() || "";
+
             });
+
+            dados.push(objeto);
+
         });
 
-        console.log("Modelos carregados:", modelos.length);
+        return dados;
 
-    } catch (erro) {
-        console.error("Erro ao carregar CSV:", erro);
     }
+
+    catch(erro){
+
+        console.error(arquivo, erro);
+
+        return [];
+
+    }
+
 }
 
-busca.addEventListener("input", pesquisar);
+function trocarAba(nome){
 
-function pesquisar() {
+    abaAtual = nome;
 
-    const texto = busca.value.toLowerCase().trim();
+    document
+    .querySelectorAll(".aba")
+    .forEach(btn=>btn.classList.remove("ativa"));
+
+    event.target.classList.add("ativa");
+
+    resultados.innerHTML = "";
+    busca.value = "";
+
+}
+
+function pesquisar(){
+
+    const texto = busca.value.toLowerCase();
 
     resultados.innerHTML = "";
 
-    if (texto.length < 2) return;
+    if(texto.length < 2) return;
 
-    const termos = texto.split(" ");
+    if(abaAtual === "modelos") pesquisarModelos(texto);
 
-    const encontrados = modelos
-        .map(modelo => {
+    if(abaAtual === "contatos") pesquisarContatos(texto);
 
-            let pontuacao = 0;
+    if(abaAtual === "convenios") pesquisarConvenios(texto);
 
-            termos.forEach(termo => {
+}
 
-                if (modelo.codigo.toLowerCase().includes(termo))
-                    pontuacao += 10;
+function pesquisarModelos(texto){
 
-                if (modelo.nome.toLowerCase().includes(termo))
-                    pontuacao += 5;
+    modelos.forEach(modelo=>{
 
-                if (modelo.categoria.toLowerCase().includes(termo))
-                    pontuacao += 2;
+        const dados = JSON.stringify(modelo)
+        .toLowerCase();
 
-                if (modelo.perfil.toLowerCase().includes(termo))
-                    pontuacao += 1;
+        if(dados.includes(texto)){
 
-                if (modelo.palavras.toLowerCase().includes(termo))
-                    pontuacao += 8;
-
-            });
-
-            return {
-                ...modelo,
-                pontuacao
-            };
-
-        })
-        .filter(modelo => modelo.pontuacao > 0)
-        .sort((a, b) => b.pontuacao - a.pontuacao);
-
-    if (encontrados.length === 0) {
-        resultados.innerHTML = `
+            resultados.innerHTML += `
             <div class="card">
-                <h3>Nenhum resultado encontrado.</h3>
-            </div>
-        `;
-        return;
-    }
 
-    encontrados.forEach(modelo => {
-
-        resultados.innerHTML += `
-            <div class="card">
-                <h2>${modelo.nome}</h2>
+                <h2>${modelo["Nome do Modelo"]}</h2>
 
                 <p class="codigo">
-                    Código: ${modelo.codigo}
+                    Código: ${modelo["Codigo"]}
                 </p>
 
                 <p>
-                    Categoria: ${modelo.categoria}
+                    Categoria: ${modelo["Categoria"]}
                 </p>
 
                 <p>
-                    Perfil: ${modelo.perfil}
+                    Perfil: ${modelo["Perfil"]}
                 </p>
 
-                <button onclick="copiar('${modelo.codigo}')">
+                <button
+                class="copiar"
+                onclick="copiar('${modelo["Codigo"]}')">
                     Copiar Código
                 </button>
+
             </div>
-        `;
+            `;
+
+        }
 
     });
 
 }
 
-function copiar(codigo) {
+function pesquisarContatos(texto){
+
+    contatos.forEach(contato=>{
+
+        const dados = JSON.stringify(contato)
+        .toLowerCase();
+
+        if(dados.includes(texto)){
+
+            resultados.innerHTML += `
+            <div class="card">
+
+                <h2>
+                    ${contato["Delegacia"]}
+                </h2>
+
+                <p>
+                    📧 ${contato["E-mail"]}
+                </p>
+
+            </div>
+            `;
+
+        }
+
+    });
+
+}
+
+function pesquisarConvenios(texto){
+
+    convenios.forEach(convenio=>{
+
+        const dados = JSON.stringify(convenio)
+        .toLowerCase();
+
+        if(dados.includes(texto)){
+
+            resultados.innerHTML += `
+            <div class="card">
+
+                <h2>
+                    ${convenio["Convênio"]}
+                </h2>
+
+                <p>
+                    CNPJ: ${convenio["CNPJ"]}
+                </p>
+
+                <p>
+                    Código: ${convenio["Código"]}
+                </p>
+
+                <p>
+                    Categoria: ${convenio["Categoria"]}
+                </p>
+
+            </div>
+            `;
+
+        }
+
+    });
+
+}
+
+function copiar(codigo){
+
     navigator.clipboard.writeText(codigo);
+
     alert("Código copiado: " + codigo);
+
 }

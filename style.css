@@ -1,41 +1,86 @@
 body{
-    font-family: Arial, sans-serif;
-    background:#f4f6f9;
     margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
 }
 
-.container{
-    max-width:900px;
-    margin:auto;
+header{
+    background:#003366;
+    color:white;
+    text-align:center;
     padding:30px;
 }
 
-h1{
-    text-align:center;
+header h1{
+    margin:0;
+}
+
+header p{
+    margin-top:10px;
+}
+
+.abas{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    padding:20px;
+    flex-wrap:wrap;
+}
+
+.aba{
+    border:none;
+    padding:12px 25px;
+    cursor:pointer;
+    border-radius:10px;
+    background:white;
+    font-weight:bold;
+    box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.aba.ativa{
+    background:#003366;
+    color:white;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
 }
 
 #busca{
     width:100%;
-    padding:15px;
+    padding:18px;
     font-size:18px;
+    border-radius:10px;
     border:1px solid #ccc;
-    border-radius:8px;
 }
 
 .card{
     background:white;
-    margin-top:15px;
-    padding:15px;
-    border-radius:8px;
-    box-shadow:0 0 5px rgba(0,0,0,.1);
+    margin-top:20px;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+.card h2{
+    margin-top:0;
+    color:#003366;
 }
 
 .codigo{
-    color:#0056b3;
+    font-size:22px;
     font-weight:bold;
+    color:#0057b8;
 }
 
-button{
-    padding:8px 12px;
+button.copiar{
+    margin-top:10px;
+    background:#0057b8;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:8px;
     cursor:pointer;
 }
