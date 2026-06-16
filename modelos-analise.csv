@@ -89,27 +89,27 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 4943;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo testemunha;Apenas SAJ
 4944;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);Mandado;Servidor;audiência vídeo vítima preso;Apenas SAJ
 4945;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo vítima;Apenas SAJ
-2962;Mandado de Busca e Apreensão - SEM COMAN                                                                                                                                          ;Mandado;Servidor;busca apreensão;Apenas SAJ
+2962;Mandado de Busca e Apreensão - SEM COMAN                                                                                                                                          ;Mandado;Servidor;busca apreensão;SAJ e PJe
 5617;Requisição de réu para audiência;Ofício;Servidor;requisição réu audiência;Apenas SAJ
-3276;JÚRI - COMAN DIGITAL - Mandado de Citação - URGENTE (Réu Preso);Mandado;Magistrado;júri citação preso;Apenas SAJ
+3276;JÚRI - COMAN DIGITAL - Mandado de Citação - URGENTE (Réu Preso);Mandado;Magistrado;júri citação preso;SAJ e PJe
 3283;JÚRI - COMAN DIGITAL- Mandado de Citação (Réu Solto);Mandado;Magistrado;júri citação solto;Apenas SAJ
-3148;JÚRI - Mandado de NOTIFICAÇÃO - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri sessão julgamento;Apenas SAJ
-3147;JÚRI - Mandado de INTIMAÇÃO de TESTEMUNHA - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri testemunha sessão;Apenas SAJ
-3948;JÚRI - Mandado de INTIMAÇÃO de RÉU para SESSÃO DE JULGAMENTO - URGENTE (Réu Preso);Mandado;Magistrado;júri julgamento preso;Apenas SAJ
-3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri testemunha audiência;Apenas SAJ
+3148;JÚRI - Mandado de NOTIFICAÇÃO - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri sessão julgamento;SAJ e PJe
+3147;JÚRI - Mandado de INTIMAÇÃO de TESTEMUNHA - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri testemunha sessão;SAJ e PJe
+3948;JÚRI - Mandado de INTIMAÇÃO de RÉU para SESSÃO DE JULGAMENTO - URGENTE (Réu Preso);Mandado;Magistrado;júri julgamento preso;SAJ e PJe
+3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri testemunha audiência;SAJ e PJe
 3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri testemunha audiência urgente;Apenas SAJ
 3267;JÚRI - Mandado de INTIMAÇÃO do ACUSADO para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri acusado audiência;Apenas SAJ
-3624;JÚRI - Mandado de INTIMAÇÃO de ACUSADO para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri acusado audiência urgente;Apenas SAJ
+3624;JÚRI - Mandado de INTIMAÇÃO de ACUSADO para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri acusado audiência urgente;SAJ e PJe
 3266;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri vítima audiência;Apenas SAJ
-3274;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri vítima audiência urgente;Apenas SAJ
+3274;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri vítima audiência urgente;SAJ e PJe
 501128;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;email ofício;Apenas SAJ
 3912;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;malote digital;Apenas SAJ
 1010;Mandado de Intimação Genérico (Réu Solto);Mandado;Servidor;intimação genérica;Apenas SAJ
 1012;JÚRI - Mandado de INTIMAÇÃO - Genérico (Réu Solto);Mandado;Magistrado;júri intimação genérica;Apenas SAJ
-1877;JÚRI - Mandado de INTIMAÇÃO - Genérico – URGENTE (Réu Preso);Mandado;Magistrado;júri intimação genérica urgente;Apenas SAJ
-5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);Mandado;Servidor;desclassificatória;Apenas SAJ
+1877;JÚRI - Mandado de INTIMAÇÃO - Genérico – URGENTE (Réu Preso);Mandado;Magistrado;júri intimação genérica urgente;SAJ e PJe
+5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);Mandado;Servidor;desclassificatória;SAJ e PJe
 991;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Solto);Mandado;Magistrado;novo advogado solto;Apenas SAJ
-1875;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Preso);Mandado;Magistrado;novo advogado preso;Apenas SAJ
+1875;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Preso);Mandado;Magistrado;novo advogado preso;SAJ e PJe
 500853;Certidão de Decurso de Prazo                                                                                                                                                             ;Certidão;Servidor;decurso de prazo, certidão de prazo, término de prazo, sem manifestação, certificar decurso;Apenas SAJ
 501843;Certidão de Atualização de Histórico de Partes                                                                                                                                          ;Certidão;Servidor;atualização de histórico, histórico de partes, certidão de atualização, atualização cadastral, histórico processual, certificar atualização;Apenas SAJ
 3027;Atualização de cadastro de partes e representantes                                                                                                                                   ;Certidão;Servidor;atualização cadastral, cadastro de partes, cadastro de representantes, alteração de dados, atualização de partes, procurador, advogado, representante processual;Apenas SAJ

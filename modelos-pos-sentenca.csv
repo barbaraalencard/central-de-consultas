@@ -16,7 +16,7 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 3511;Edital de Intimação de Sentença (prazo de 90 dias);EDITAL;Magistrado;edital sentença, edital 90 dias, 90 dias;Apenas SAJ
 3215;Edital de Intimação de Sentença Prazo de 60 (Sessenta) dias;EDITAL;Magistrado;edital sentença, edital 60 dias, 60 dias;Apenas SAJ
 3314;Mandado de INTIMAÇÃO de PRONÚNCIA (Réu Solto);MANDADO;Magistrado;pronúncia, pronuncia, júri, réu solto;Apenas SAJ
-3281;Mandado de INTIMAÇÃO de PRONÚNCIA - URGENTE (Réu Preso);MANDADO;Magistrado;pronúncia, pronuncia, júri, urgente, réu preso;Apenas SAJ
+3281;Mandado de INTIMAÇÃO de PRONÚNCIA - URGENTE (Réu Preso);MANDADO;Magistrado;pronúncia, pronuncia, júri, urgente, réu preso;SAJ e PJE
 1012;Mandado de INTIMAÇÃO - Genérico (Réu Solto);MANDADO;Magistrado;genérico, intimação genérica, réu solto;Apenas SAJ
 1877;Mandado de INTIMAÇÃO - Genérico – URGENTE (Réu Preso);MANDADO;Magistrado;genérico, urgente, réu preso;Apenas SAJ
 5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);MANDADO;Servidor;desclassificatória, desclassificação, decisão desclassificatória;Apenas SAJ
