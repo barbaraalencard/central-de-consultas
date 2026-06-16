@@ -13,6 +13,50 @@ const arquivos = {
 
 carregarDados("analise");
 
+function normalizar(texto) {
+
+    return (texto || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+}
+
+function obterFavoritos() {
+
+    return JSON.parse(
+        localStorage.getItem("favoritos")
+    ) || [];
+
+}
+
+function favoritar(codigo, botao) {
+
+    let favoritos = obterFavoritos();
+
+    if (favoritos.includes(codigo)) {
+
+        favoritos = favoritos.filter(
+            f => f !== codigo
+        );
+
+        botao.textContent = "☆ Favoritar";
+
+    } else {
+
+        favoritos.push(codigo);
+
+        botao.textContent = "★ Favorito";
+
+    }
+
+    localStorage.setItem(
+        "favoritos",
+        JSON.stringify(favoritos)
+    );
+
+}
+
 async function carregarDados(tipo) {
 
     abaAtual = tipo;
@@ -40,6 +84,7 @@ async function carregarDados(tipo) {
             const colunas = linha.split(";");
 
             dados.push(colunas.map(c => c.trim()));
+            
 
         });
 
@@ -74,51 +119,49 @@ function mostrarResultados(lista) {
     lista.forEach(item => {
 
         // MODELOS
-
         if (
-            abaAtual === "analise" ||
-            abaAtual === "possentenca"
-        ) {
+    abaAtual === "analise" ||
+    abaAtual === "possentenca" ||
+    abaAtual === "favoritos"
+) {
 
-            let seloSistema = "";
+            const sistema = item[5] || "";
 
-            const sistema = item[5]?.toUpperCase() || "";
+            let badgeSistema = "";
 
-            if (
-                sistema.includes("PJE") &&
-                !sistema.includes("SAJ")
-            ) {
+            if (sistema.toUpperCase().includes("SAJ") &&
+                sistema.toUpperCase().includes("PJE")) {
 
-                seloSistema = `
-                    <span class="badge-pje">
-                        🟢 PJe
-                    </span>
-                `;
+                badgeSistema =
+                    `<span class="badge sistema-pje">
+                        🟡 SAJ e PJe
+                    </span>`;
 
             }
 
-            else if (
-                sistema.includes("SAJ") &&
-                !sistema.includes("PJE")
-            ) {
+            else if (sistema.toUpperCase().includes("PJE")) {
 
-                seloSistema = `
-                    <span class="badge-saj">
-                        🔴 SAJ
-                    </span>
-                `;
+                badgeSistema =
+                    `<span class="badge sistema-pje">
+                        🟢 PJe
+                    </span>`;
 
             }
 
             else {
 
-                seloSistema = `
-                    <span class="badge-ambos">
-                        🟡 SAJ e PJe
-                    </span>
-                `;
+                badgeSistema =
+                    `<span class="badge sistema-saj">
+                        🔴 SAJ
+                    </span>`;
 
             }
+
+            const favoritos =
+    obterFavoritos();
+
+const ehFavorito =
+    favoritos.includes(item[0]);
 
             resultados.innerHTML += `
 
@@ -126,7 +169,7 @@ function mostrarResultados(lista) {
 
                 <h2>${item[1]}</h2>
 
-                ${seloSistema}
+                ${badgeSistema}
 
                 <p class="codigo">
                     Código: ${item[0]}
@@ -140,23 +183,34 @@ function mostrarResultados(lista) {
                     Perfil: ${item[3]}
                 </p>
 
-                <button
-                    class="copiar"
-                    onclick="copiar('${item[0]}')">
+                <div class="acoes-modelo">
+<button
+    class="favorito"
+    onclick="favoritar('${item[0]}', this)">
 
-                    Copiar Código
+    ${ehFavorito ? "★ Favorito" : "☆ Favoritar"}
 
-                </button>
+</button>
 
-            </div>
+  
+    <button
+        class="copiar"
+        onclick="copiar('${item[0]}')">
+
+        Copiar Código
+
+    </button>
+
+</div>
 
             `;
 
         }
 
         // CONTATOS
-
         else if (abaAtual === "contatos") {
+
+            const nomeAntigo = item[2] || "";
 
             resultados.innerHTML += `
 
@@ -164,11 +218,11 @@ function mostrarResultados(lista) {
 
                 <h2>${item[0]}</h2>
 
-                ${item[2] ? `
-                    <span class="badge-antigo">
-                        Nome antigo: ${item[2]}
-                    </span>
-                ` : ""}
+                ${
+                    nomeAntigo
+                    ? `<p><strong>Nome antigo:</strong> ${nomeAntigo}</p>`
+                    : ""
+                }
 
                 <p>
                     📧 ${item[1]}
@@ -189,7 +243,6 @@ function mostrarResultados(lista) {
         }
 
         // CONVÊNIOS
-
         else if (abaAtual === "convenios") {
 
             resultados.innerHTML += `
@@ -210,25 +263,21 @@ function mostrarResultados(lista) {
                     Categoria: ${item[3]}
                 </p>
 
-                <div class="botoes-convenio">
+                <button
+                    class="copiar"
+                    onclick="copiar('${item[2]}')">
 
-                    <button
-                        class="copiar"
-                        onclick="copiar('${item[1]}')">
+                    Copiar Código
 
-                        Copiar CNPJ
+                </button>
 
-                    </button>
+                <button
+                    class="copiar"
+                    onclick="copiar('${item[1]}')">
 
-                    <button
-                        class="copiar"
-                        onclick="copiar('${item[2]}')">
+                    Copiar CNPJ
 
-                        Copiar Código
-
-                    </button>
-
-                </div>
+                </button>
 
             </div>
 
@@ -244,7 +293,9 @@ busca.addEventListener("input", pesquisar);
 
 function pesquisar() {
 
-    const termo = busca.value.toLowerCase().trim();
+    const termo = normalizar(
+        busca.value.trim()
+    );
 
     if (termo.length === 0) {
 
@@ -254,14 +305,136 @@ function pesquisar() {
 
     }
 
-    const encontrados = dados.filter(item =>
-        item.some(campo =>
-            campo &&
-            campo.toLowerCase().includes(termo)
-        )
-    );
+    const palavrasPesquisa = termo.split(/\s+/);
 
-    mostrarResultados(encontrados);
+    const encontrados = dados
+        .map(item => {
+
+            let score = 0;
+
+            const codigo =
+                normalizar(item[0]);
+
+            const nome =
+                normalizar(item[1]);
+
+            const categoria =
+                normalizar(item[2]);
+
+            const perfil =
+                normalizar(item[3]);
+
+            const palavrasChave =
+                normalizar(item[4] || "");
+
+            const palavrasNome = nome
+                .replace(/[^\w\s]/g, " ")
+                .split(/\s+/);
+
+            const palavrasChaveArray = palavrasChave
+                .replace(/[^\w\s,]/g, " ")
+                .replaceAll(",", " ")
+                .split(/\s+/);
+
+            // EXIGE correspondência exata
+            const corresponde = palavrasPesquisa.every(palavra =>
+
+                palavrasNome.includes(palavra) ||
+
+                palavrasChaveArray.includes(palavra) ||
+
+                codigo === palavra
+
+            );
+
+            if (!corresponde) {
+
+                return {
+                    item,
+                    score: 0
+                };
+
+            }
+
+            palavrasPesquisa.forEach(palavra => {
+
+                if (
+                    palavrasNome.includes(
+                        palavra
+                    )
+                ) {
+
+                    score += 100;
+
+                }
+
+                if (
+                    palavrasChaveArray.includes(
+                        palavra
+                    )
+                ) {
+
+                    score += 20;
+
+                }
+
+                if (
+                    codigo === palavra
+                ) {
+
+                    score += 500;
+
+                }
+
+            });
+
+            // Prioridades
+
+            if (
+                nome.includes("citacao") &&
+                nome.includes("reu preso")
+            ) {
+
+                score += 300;
+
+            }
+
+            else if (
+                nome.includes("citacao") &&
+                nome.includes("reu solto")
+            ) {
+
+                score += 150;
+
+            }
+
+            else if (
+                nome.includes("mandado")
+            ) {
+
+                score += 50;
+
+            }
+
+            return {
+                item,
+                score
+            };
+
+        })
+
+        .filter(r => r.score > 0)
+
+        .sort(
+            (a, b) =>
+                b.score - a.score
+        )
+
+        .map(r => r.item);
+
+    mostrarResultados(
+        encontrados
+    );
 
 }
 
@@ -269,7 +442,73 @@ function copiar(texto) {
 
     navigator.clipboard.writeText(texto);
 
-    alert("Copiado com sucesso!");
+    alert("Copiado: " + texto);
+
+}
+
+async function carregarFavoritos() {
+
+    abaAtual = "favoritos";
+
+    const favoritos =
+        obterFavoritos();
+
+    let todosModelos = [];
+
+    const arquivosModelos = [
+        "modelos-analise.csv",
+        "modelos-pos-sentenca.csv"
+    ];
+
+    for (const arquivo of arquivosModelos) {
+
+        const resposta =
+            await fetch(arquivo);
+
+        const buffer =
+            await resposta.arrayBuffer();
+
+        const texto =
+            new TextDecoder(
+                "windows-1252"
+            ).decode(buffer);
+
+        const linhas =
+            texto.split(/\r?\n/);
+
+        linhas.shift();
+
+        linhas.forEach(linha => {
+
+            if (!linha.trim())
+                return;
+
+            const colunas =
+                linha.split(";");
+
+            todosModelos.push(
+                colunas.map(c =>
+                    c.trim()
+                )
+            );
+
+        });
+
+    }
+
+    abaAtual = "favoritos";
+
+    mostrarResultados(
+
+        todosModelos.filter(item =>
+
+            favoritos.includes(
+                item[0]
+            )
+
+        )
+
+    );
 
 }
 
@@ -278,11 +517,22 @@ function trocarAba(tipo, elemento) {
     document
         .querySelectorAll(".aba")
         .forEach(btn =>
-            btn.classList.remove("ativa"));
+            btn.classList.remove("ativa")
+        );
 
     elemento.classList.add("ativa");
 
     busca.value = "";
+
+    if (
+        tipo === "favoritos"
+    ) {
+
+        carregarFavoritos();
+
+        return;
+
+    }
 
     carregarDados(tipo);
 
