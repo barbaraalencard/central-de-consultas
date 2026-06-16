@@ -1,28 +1,28 @@
 Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 6612;Certidão Genérica SEJUD;Certidão;Servidor;ertidão genérica,certificar,informar nos autos,registro processual;SAJ e PJe
-6001;Intimação de Testemunha Sigilosa;Certidão;Servidor;testemunha sigilosa,proteger testemunha,dados sigilosos,endereço sigiloso;SAJ e PJe
-6003;Histórico - Revisão de Prisão;Certidão;Servidor;revisão de prisão,analisar prisão,reavaliação da prisão,prazo prisão;SAJ e PJe
-6005;Remessa ao Gabinete;Certidão;Servidor;remessa gabinete,conclusão para juiz,enviar ao gabinete;SAJ e PJe
-6007;Endereço em Outra Comarca;Certidão;Servidor;outra comarca,endereço fora da comarca,mudança de endereço,endereço diverso;SAJ e PJe
-6009;BNMP - Regra Automática;Certidão;Servidor;bnmp,mandado prisão,banco nacional de mandados,regra automática;SAJ e PJe
-6011;BNMP - Regularização Mandado;Certidão;Servidor;regularizar bnmp,corrigir mandado,ajuste mandado prisão;SAJ e PJe
-6013;Intimação por Telefone;Certidão;Servidor;intimação telefone,contato telefônico,ligação para parte;SAJ e PJe
-6015;Controle de Eventos Diversos;Certidão;Servidor;evento processual,controle de prazo,controle interno,evento diverso;SAJ e PJe
-6017;Ausência de Autos Principais;Certidão;Servidor;autos principais ausentes,processo principal não localizado,falta autos;SAJ e PJe
-6019;Falta de Clareza;Certidão;Servidor;falta clareza,dúvida processual,informação insuficiente,documento incompleto;SAJ e PJe
-6021;Alvará de Soltura;Certidão;Servidor;alvará de soltura,soltura do preso,colocação em liberdade;SAJ e PJe
-6023;Designação de Audiência;Certidão;Servidor;audiência designada,marcação audiência,agendamento audiência;SAJ e PJe
-6025;Apensamento de Autos;Certidão;Servidor;apensamento,juntar processos,processos relacionados;SAJ e PJe
-6027;Traslado de Documentos;Certidão;Servidor;traslado,cópia de documentos,encaminhamento documentos;SAJ e PJe
-6029;Apensamento, traslado e histórico;Certidão;Servidor;apensamento e traslado,histórico processual,juntar processos;SAJ e PJe
-6031;Mídias Processuais;Certidão;Servidor;mídia processual,vídeo,áudio,arquivo digital,mídia audiência;SAJ e PJe
-6033;Demanda Análise Processual;Certidão;Servidor;análise processual,demanda gabinete,verificação processo;SAJ e PJe
-6035;Certidão Narrativa;Certidão;Servidor;certidão narrativa,resumo processual,histórico detalhado;SAJ e PJe
-6037;Sistemas de Uso do Gabinete;Certidão;Servidor;sistema gabinete,saj,pje,sistema interno,ferramenta gabinete;SAJ e PJe
-6039;Audiência Designada Fora do Prazo;Certidão;Servidor;audiência fora prazo,audiência atrasada,excesso prazo;SAJ e PJe
-6041;Emissão de Mandado de Prisão;Certidão;Servidor;emissão mandado prisão,expedir mandado prisão,prisão decretada;SAJ e PJe
-6043;Audiência por Video Sem Link;Certidão;Servidor;audiência sem link,videoconferência sem link,problema audiência virtual;SAJ e PJe
-6045;Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav;SAJ e PJe
+6001;Intimação de Testemunha Sigilosa;Certidão;Servidor;testemunha sigilosa,proteger testemunha,dados sigilosos,endereço sigiloso;Apenas PJE
+6003;Histórico - Revisão de Prisão;Certidão;Servidor;revisão de prisão,analisar prisão,reavaliação da prisão,prazo prisão;Apenas PJE
+6005;Remessa ao Gabinete;Certidão;Servidor;remessa gabinete,conclusão para juiz,enviar ao gabinete;Apenas PJE
+6007;Endereço em Outra Comarca;Certidão;Servidor;outra comarca,endereço fora da comarca,mudança de endereço,endereço diverso;Apenas PJE
+6009;BNMP - Regra Automática;Certidão;Servidor;bnmp,mandado prisão,banco nacional de mandados,regra automática;Apenas PJE
+6011;BNMP - Regularização Mandado;Certidão;Servidor;regularizar bnmp,corrigir mandado,ajuste mandado prisão;Apenas PJE
+6013;Intimação por Telefone;Certidão;Servidor;intimação telefone,contato telefônico,ligação para parte;Apenas PJE
+6015;Controle de Eventos Diversos;Certidão;Servidor;evento processual,controle de prazo,controle interno,evento diverso;Apenas PJE
+6017;Ausência de Autos Principais;Certidão;Servidor;autos principais ausentes,processo principal não localizado,falta autos;Apenas PJE
+6019;Falta de Clareza;Certidão;Servidor;falta clareza,dúvida processual,informação insuficiente,documento incompleto;Apenas PJE
+6021;Alvará de Soltura;Certidão;Servidor;alvará de soltura,soltura do preso,colocação em liberdade;Apenas PJE
+6023;Designação de Audiência;Certidão;Servidor;audiência designada,marcação audiência,agendamento audiência;Apenas PJE
+6025;Apensamento de Autos;Certidão;Servidor;apensamento,juntar processos,processos relacionados;Apenas PJE
+6027;Traslado de Documentos;Certidão;Servidor;traslado,cópia de documentos,encaminhamento documentos;Apenas PJE
+6029;Apensamento, traslado e histórico;Certidão;Servidor;apensamento e traslado,histórico processual,juntar processos;Apenas PJE
+6031;Mídias Processuais;Certidão;Servidor;mídia processual,vídeo,áudio,arquivo digital,mídia audiência;Apenas PJE
+6033;Demanda Análise Processual;Certidão;Servidor;análise processual,demanda gabinete,verificação processo;Apenas PJE
+6035;Certidão Narrativa;Certidão;Servidor;certidão narrativa,resumo processual,histórico detalhado;Apenas PJE
+6037;Sistemas de Uso do Gabinete;Certidão;Servidor;sistema gabinete,saj,pje,sistema interno,ferramenta gabinete;Apenas PJE
+6039;Audiência Designada Fora do Prazo;Certidão;Servidor;audiência fora prazo,audiência atrasada,excesso prazo;Apenas PJE
+6041;Emissão de Mandado de Prisão;Certidão;Servidor;emissão mandado prisão,expedir mandado prisão,prisão decretada;Apenas PJE
+6043;Audiência por Video Sem Link;Certidão;Servidor;audiência sem link,videoconferência sem link,problema audiência virtual;Apenas PJE
+6045;Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav;Apenas PJE
 964;MANDADO DE CITAÇÃO (Réu Solto);MANDADO;Servidor;citação,reu solto,denuncia,citar acusado,resposta acusacao,chamar reu;SAJ e PJe
 4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso;SAJ e PJe
 1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Servidor;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia;SAJ e PJe
