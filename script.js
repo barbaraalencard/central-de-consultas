@@ -307,6 +307,25 @@ function pesquisar() {
 
     const palavrasPesquisa = termo.split(/\s+/);
 
+    if (
+    abaAtual === "contatos" ||
+    abaAtual === "convenios"
+) {
+
+    const encontrados = dados.filter(item =>
+
+        normalizar(
+            item.join(" ")
+        ).includes(termo)
+
+    );
+
+    mostrarResultados(encontrados);
+
+    return;
+
+}
+
     const encontrados = dados
         .map(item => {
 
@@ -337,15 +356,37 @@ function pesquisar() {
                 .split(/\s+/);
 
             // EXIGE correspondência exata
-            const corresponde = palavrasPesquisa.every(palavra =>
+          let corresponde;
 
-                palavrasNome.includes(palavra) ||
+if (
+    abaAtual === "contatos" ||
+    abaAtual === "convenios"
+) {
 
-                palavrasChaveArray.includes(palavra) ||
+    const textoCompleto = normalizar(
+        item.join(" ")
+    );
 
-                codigo === palavra
+    corresponde =
+        palavrasPesquisa.every(
+            palavra =>
+                textoCompleto.includes(palavra)
+        );
 
-            );
+} else {
+
+    corresponde =
+        palavrasPesquisa.every(palavra =>
+
+            palavrasNome.includes(palavra) ||
+
+            palavrasChaveArray.includes(palavra) ||
+
+            codigo === palavra
+
+        );
+
+}
 
             if (!corresponde) {
 
