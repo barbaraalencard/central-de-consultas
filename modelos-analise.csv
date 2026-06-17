@@ -27,7 +27,7 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso;SAJ e PJe
 1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Servidor;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia;SAJ e PJe
 1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA         ;MANDADO;Servidor;vitima,conducao coercitiva,vitima faltosa,audiencia;SAJ e PJe
-1876;MANDADO DE INTIMAÇÃO GENÉRICO (Réu Preso);MANDADO;Servidor;intimacao generica,intimar parte,intimar acusado,comunicacao processual;SAJ e PJe
+1876;MANDADO DE INTIMAÇÃO GENÉRICO - URGENTE (Réu Preso);MANDADO;Servidor;intimacao generica,intimar parte,intimar acusado,comunicacao processual;SAJ e PJe
 1874;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO – URGENTE (Réu Preso);MANDADO;Servidor;novo advogado,defensor renunciou,advogado renunciou,constituir advogado,reu preso;SAJ e PJe
 1461;MANDADO DE AVALIAÇÃO;MANDADO;Servidor;avaliacao,bem apreendido,avaliar objeto,avaliar patrimonio;SAJ e PJe
 4942;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;testemunha,videoconferencia,audiencia online,oitiva de testemunha;SAJ e PJe
@@ -68,7 +68,6 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 500039;[CORREIOS-AR] - Ofício Genérico;OFÍCIO;Servidor;correios, ar, ofício;Apenas SAJ
 3225;Solicitação de laudo de exame de corpo de delito - PEFOCE ;OFÍCIO;Servidor;corpo delito, laudo pefoce;Apenas SAJ
 3363;Solicitação de Identificação Civil-Criminal - PEFOCE;OFÍCIO;Servidor;identificação criminal, pefoce;Apenas SAJ
-3911;Requisição de Laudo Pericial Genérico;OFÍCIO;Servidor;laudo pericial, perícia genérica;SAJ e PJe
 3367;Pericia de automóvel - PEFOCE;OFÍCIO;Servidor;perícia veículo, automóvel;Apenas SAJ
 3366;Solicitação de perícia de arma - PEFOCE;OFÍCIO;Servidor;perícia arma;Apenas SAJ
 501897;Solicitação de Diligências;OFÍCIO;Servidor;diligências, diligência;Apenas SAJ
@@ -96,8 +95,7 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 3148;JÚRI - Mandado de NOTIFICAÇÃO - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri sessão julgamento;SAJ e PJe
 3147;JÚRI - Mandado de INTIMAÇÃO de TESTEMUNHA - SESSÃO DO JURI (Réu Solto);Mandado;Magistrado;júri testemunha sessão;SAJ e PJe
 3948;JÚRI - Mandado de INTIMAÇÃO de RÉU para SESSÃO DE JULGAMENTO - URGENTE (Réu Preso);Mandado;Magistrado;júri julgamento preso;SAJ e PJe
-3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri testemunha audiência;SAJ e PJe
-3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri testemunha audiência urgente;Apenas SAJ
+3949;JÚRI - Mandado de NOTIFICAÇÃO da TESTEMUNHA para AUDIÊNCIA (Réu Solto e Réu Preso);Mandado;Magistrado;júri testemunha audiência;SAJ e PJe
 3267;JÚRI - Mandado de INTIMAÇÃO do ACUSADO para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri acusado audiência;Apenas SAJ
 3624;JÚRI - Mandado de INTIMAÇÃO de ACUSADO para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri acusado audiência urgente;SAJ e PJe
 3266;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri vítima audiência;Apenas SAJ
