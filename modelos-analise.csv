@@ -32,7 +32,7 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 1461;MANDADO DE AVALIAÇÃO;MANDADO;Servidor;avaliacao,bem apreendido,avaliar objeto,avaliar patrimonio;SAJ e PJe
 4942;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;testemunha,videoconferencia,audiencia online,oitiva de testemunha;SAJ e PJe
 501127;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;oficio,email,comunicacao,requisicao generica;SAJ e PJe
-3216;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;oficio,malote digital,comunicacao generica;SAJ e PJe
+3216;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Magistrado;oficio,malote digital,comunicacao generica;SAJ e PJe
 3365;Requisição de Perícia Genérica - PEFOCE;OFÍCIO;Servidor;pefoce,pericia,exame pericial,perito,pericia generica;SAJ e PJe
 3911;CRIME - DE ORDEM - Requisição de Laudo Pericial Genérico (E-mail);OFÍCIO;Servidor;laudo pericial,pefoce,resultado pericia,laudo,exame;SAJ e PJe
 3913;Concessão de uso de monitoramento eletrônico                                                                                                                           ;OFÍCIO;Servidor;tornozeleira,monitoramento eletronico,instalar tornozeleira;SAJ e PJe
