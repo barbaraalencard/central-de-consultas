@@ -108,7 +108,7 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 1012;JÚRI - Mandado de INTIMAÇÃO - Genérico (Réu Solto);Mandado;Magistrado;júri intimação genérica;Apenas SAJ
 1877;JÚRI - Mandado de INTIMAÇÃO - Genérico – URGENTE (Réu Preso);Mandado;Magistrado;júri intimação genérica urgente;SAJ e PJe
 5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);Mandado;Servidor;desclassificatória;SAJ e PJe
-991;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Solto);Mandado;Magistrado;novo advogado solto;Apenas SAJ
+991;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO (Réu Solto);Mandado;Magistrado;novo advogado solto;Apenas SAJ
 1875;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Preso);Mandado;Magistrado;novo advogado preso;SAJ e PJe
 500853;Certidão de Decurso de Prazo                                                                                                                                                             ;Certidão;Servidor;decurso de prazo, certidão de prazo, término de prazo, sem manifestação, certificar decurso;Apenas SAJ
 501843;Certidão de Atualização de Histórico de Partes                                                                                                                                          ;Certidão;Servidor;atualização de histórico, histórico de partes, certidão de atualização, atualização cadastral, histórico processual, certificar atualização;Apenas SAJ
