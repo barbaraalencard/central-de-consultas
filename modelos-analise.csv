@@ -25,8 +25,8 @@ Codigo;Nome do Modelo;Categoria;Perfill;Palavras_Chave;Sistema
 6045;Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav;Apenas PJE
 964;MANDADO DE CITAÇÃO (Réu Solto);MANDADO;Servidor;citação,reu solto,denuncia,citar acusado,resposta acusacao,chamar reu;SAJ e PJe
 4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso;SAJ e PJe
-1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Servidor;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia;SAJ e PJe
-1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA         ;MANDADO;Servidor;vitima,conducao coercitiva,vitima faltosa,audiencia;SAJ e PJe
+1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Magistrado;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia;SAJ e PJe
+1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA         ;MANDADO;Magistrado;vitima,conducao coercitiva,vitima faltosa,audiencia;SAJ e PJe
 1876;MANDADO DE INTIMAÇÃO GENÉRICO - URGENTE (Réu Preso);MANDADO;Servidor;intimacao generica,intimar parte,intimar acusado,comunicacao processual;SAJ e PJe
 1874;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO – URGENTE (Réu Preso);MANDADO;Servidor;novo advogado,defensor renunciou,advogado renunciou,constituir advogado,reu preso;SAJ e PJe
 1461;MANDADO DE AVALIAÇÃO;MANDADO;Servidor;avaliacao,bem apreendido,avaliar objeto,avaliar patrimonio;SAJ e PJe
