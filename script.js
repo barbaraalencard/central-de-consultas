@@ -264,20 +264,28 @@ const ehFavorito =
                 </p>
 
                 <button
-                    class="copiar"
-                    onclick="copiar('${item[2]}')">
+    class="copiar"
+    onclick="copiar('${item[0]}')">
 
-                    Copiar Código
+    Copiar Nome
 
-                </button>
+</button>
 
-                <button
-                    class="copiar"
-                    onclick="copiar('${item[1]}')">
+<button
+    class="copiar"
+    onclick="copiar('${item[2]}')">
 
-                    Copiar CNPJ
+    Copiar Código
 
-                </button>
+</button>
+
+<button
+    class="copiar"
+    onclick="copiar('${item[1]}')">
+
+    Copiar CNPJ
+
+</button>
 
             </div>
 
