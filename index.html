@@ -75,14 +75,30 @@
     <div class="container">
 
         <input
-            type="text"
-            id="busca"
-            placeholder="Digite sua pesquisa..."
-        >
+    type="text"
+    id="busca"
+    placeholder="Digite sua pesquisa..."
+>
 
-        <div id="resultados"></div>
+<div class="grupo-filtro">
 
-    </div>
+    <label for="filtroCategoria">
+
+        Categoria
+
+    </label>
+
+    <select id="filtroCategoria">
+
+        <option value="">
+            Todas as categorias
+        </option>
+
+    </select>
+
+</div>
+
+<div id="resultados"></div>
 
     <script src="script.js"></script>
 

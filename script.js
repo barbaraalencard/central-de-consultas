@@ -90,13 +90,15 @@ async function carregarDados(tipo) {
 
         console.log("Registros carregados:", dados.length);
 
-        mostrarResultados(dados);
+mostrarResultados(dados);
 
-    } catch (erro) {
+atualizarFiltroCategorias();
 
-        console.error("Erro:", erro);
+} catch (erro) {
 
-    }
+    console.error("Erro:", erro);
+
+}
 
 }
 
@@ -297,195 +299,146 @@ const ehFavorito =
 
 }
 
+function atualizarFiltroCategorias() {
+
+    const filtro =
+        document.getElementById("filtroCategoria");
+
+    // Nas abas que não são modelos, esconde
+    if (
+        abaAtual !== "analise" &&
+        abaAtual !== "possentenca"
+    ) {
+
+        filtro.style.display = "none";
+        return;
+
+    }
+
+    filtro.style.display = "block";
+
+    filtro.innerHTML =
+        `<option value="">Todas as categorias</option>`;
+
+    const categorias = [
+    ...new Set(
+
+        dados.map(item =>
+
+            item[2]
+                .trim()
+                .toUpperCase()
+
+        )
+
+    )
+
+].sort();
+
+    categorias.forEach(categoria => {
+
+        filtro.innerHTML += `
+            <option value="${categoria}">
+                ${categoria}
+            </option>
+        `;
+
+    });
+
+}
+
 busca.addEventListener("input", pesquisar);
 
-function pesquisar() {
+document
+    .getElementById("filtroCategoria")
+    .addEventListener(
+        "change",
+        pesquisar
+    );
+
+    function pesquisar() {
 
     const termo = normalizar(
         busca.value.trim()
     );
 
-    if (termo.length === 0) {
+    const filtroCategoria =
+        document.getElementById("filtroCategoria").value;
 
-        mostrarResultados(dados);
+    let lista = dados;
 
+    // Aplica o filtro de categoria mesmo sem texto pesquisado
+    if (
+        filtroCategoria &&
+        (abaAtual === "analise" ||
+         abaAtual === "possentenca")
+    ) {
+
+        lista = lista.filter(item =>
+            normalizar(item[2]) ===
+            normalizar(filtroCategoria)
+        );
+
+    }
+
+    // Se não digitou nada, mostra apenas o resultado do filtro
+    if (termo === "") {
+
+        mostrarResultados(lista);
         return;
 
     }
 
-    const palavrasPesquisa = termo.split(/\s+/);
+    const ignorar = [
+    "de",
+    "da",
+    "do",
+    "das",
+    "dos",
+    "e",
+    "em",
+    "para",
+    "por",
+    "com",
+    "a",
+    "o",
+    "as",
+    "os"
+];
 
-    if (
-    abaAtual === "contatos" ||
-    abaAtual === "convenios"
-) {
-
-    const encontrados = dados.filter(item =>
-
-        normalizar(
-            item.join(" ")
-        ).includes(termo)
-
+const palavras = termo
+    .split(/\s+/)
+    .filter(palavra => palavra.length > 1)
+    .filter(palavra =>
+        !ignorar.includes(palavra)
     );
+
+    const encontrados = lista.filter(item => {
+
+        const texto = normalizar(
+            item.join(" ")
+        );
+
+        return palavras.every(palavra =>
+            texto.includes(palavra)
+        );
+
+    });
 
     mostrarResultados(encontrados);
 
-    return;
-
 }
 
-    const encontrados = dados
-        .map(item => {
+function formatarCategoria(texto) {
 
-            let score = 0;
-
-            const codigo =
-                normalizar(item[0]);
-
-            const nome =
-                normalizar(item[1]);
-
-            const categoria =
-                normalizar(item[2]);
-
-            const perfil =
-                normalizar(item[3]);
-
-            const palavrasChave =
-                normalizar(item[4] || "");
-
-            const palavrasNome = nome
-                .replace(/[^\w\s]/g, " ")
-                .split(/\s+/);
-
-            const palavrasChaveArray = palavrasChave
-                .replace(/[^\w\s,]/g, " ")
-                .replaceAll(",", " ")
-                .split(/\s+/);
-
-            // EXIGE correspondência exata
-          let corresponde;
-
-if (
-    abaAtual === "contatos" ||
-    abaAtual === "convenios"
-) {
-
-    const textoCompleto = normalizar(
-        item.join(" ")
-    );
-
-    corresponde =
-        palavrasPesquisa.every(
-            palavra =>
-                textoCompleto.includes(palavra)
-        );
-
-} else {
-
-    corresponde =
-        palavrasPesquisa.every(palavra =>
-
-            palavrasNome.includes(palavra) ||
-
-            palavrasChaveArray.includes(palavra) ||
-
-            codigo === palavra
-
+    return texto
+        .toLowerCase()
+        .replace(/\b\w/g, letra =>
+            letra.toUpperCase()
         );
 
 }
 
-            if (!corresponde) {
-
-                return {
-                    item,
-                    score: 0
-                };
-
-            }
-
-            palavrasPesquisa.forEach(palavra => {
-
-                if (
-                    palavrasNome.includes(
-                        palavra
-                    )
-                ) {
-
-                    score += 100;
-
-                }
-
-                if (
-                    palavrasChaveArray.includes(
-                        palavra
-                    )
-                ) {
-
-                    score += 20;
-
-                }
-
-                if (
-                    codigo === palavra
-                ) {
-
-                    score += 500;
-
-                }
-
-            });
-
-            // Prioridades
-
-            if (
-                nome.includes("citacao") &&
-                nome.includes("reu preso")
-            ) {
-
-                score += 300;
-
-            }
-
-            else if (
-                nome.includes("citacao") &&
-                nome.includes("reu solto")
-            ) {
-
-                score += 150;
-
-            }
-
-            else if (
-                nome.includes("mandado")
-            ) {
-
-                score += 50;
-
-            }
-
-            return {
-                item,
-                score
-            };
-
-        })
-
-        .filter(r => r.score > 0)
-
-        .sort(
-            (a, b) =>
-                b.score - a.score
-        )
-
-        .map(r => r.item);
-
-    mostrarResultados(
-        encontrados
-    );
-
-}
 
 function copiar(texto) {
 
