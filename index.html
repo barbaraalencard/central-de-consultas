@@ -12,12 +12,10 @@
 <body>
 
     <header>
-
         <img
             src="logo-diretoria.jpeg"
             class="logo"
             alt="Diretoria Criminal Especializada"
-            style="width:120px;"
         >
 
         <h1>Central de Consultas</h1>
@@ -25,80 +23,95 @@
         <p>
             Diretoria Criminal Especializada
         </p>
-
     </header>
 
     <div class="abas">
-
         <button
+            type="button"
             class="aba"
             onclick="trocarAba('favoritos', this)">
-
-            ⭐ Favoritos
-
+            &#9733; Favoritos
         </button>
 
         <button
+            type="button"
             class="aba ativa"
             onclick="trocarAba('analise', this)">
-
-            📄 Modelos - Análise e Cumprimento
-
+            &#128196; Modelos - Análise e Cumprimento
         </button>
 
         <button
+            type="button"
             class="aba"
             onclick="trocarAba('possentenca', this)">
-
-            ⚖️ Modelos - Pós-Sentença
-
+            &#9878; Modelos - Pós-Sentença
         </button>
 
         <button
+            type="button"
             class="aba"
             onclick="trocarAba('contatos', this)">
-
-            📧 Contatos
-
+            &#128231; Contatos
         </button>
 
         <button
+            type="button"
             class="aba"
             onclick="trocarAba('convenios', this)">
-
-            🏢 Convênios
-
+            &#127970; Convênios
         </button>
-
     </div>
 
-    <div class="container">
+    <main class="container">
+        <section class="painel-controles" aria-label="Controles de pesquisa">
+            <div class="linha-pesquisa">
+                <input
+                    type="text"
+                    id="busca"
+                    placeholder="Digite sua pesquisa..."
+                >
 
-        <input
-    type="text"
-    id="busca"
-    placeholder="Digite sua pesquisa..."
->
+                <button
+                    type="button"
+                    id="limparBusca"
+                    class="botao-secundario">
+                    Limpar
+                </button>
+            </div>
 
-<div class="grupo-filtro">
+            <div class="linha-filtros">
+                <div class="grupo-filtro">
+                    <label for="filtroCategoria">
+                        Categoria
+                    </label>
 
-    <label for="filtroCategoria">
+                    <select id="filtroCategoria">
+                        <option value="">
+                            Todas as categorias
+                        </option>
+                    </select>
+                </div>
 
-        Categoria
+                <div class="resumo-acoes">
+                    <p id="contadorResultados" class="contador-resultados">
+                        Carregando...
+                    </p>
 
-    </label>
+                    <button
+                        type="button"
+                        id="modoCompacto"
+                        class="botao-secundario"
+                        aria-pressed="false">
+                        Modo compacto
+                    </button>
+                </div>
+            </div>
+        </section>
 
-    <select id="filtroCategoria">
+        <div id="resultados"></div>
+    </main>
 
-        <option value="">
-            Todas as categorias
-        </option>
-
-    </select>
-
-</div>
-
-<div id="resultados"></div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
     <script src="script.js"></script>
 

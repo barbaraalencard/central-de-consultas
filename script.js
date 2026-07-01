@@ -1,8 +1,16 @@
 let dados = [];
 let abaAtual = "analise";
+let palavrasPesquisaAtual = [];
+let timeoutToast = null;
 
 const busca = document.getElementById("busca");
 const resultados = document.getElementById("resultados");
+const filtroCategoria = document.getElementById("filtroCategoria");
+const grupoFiltro = document.querySelector(".grupo-filtro");
+const limparBusca = document.getElementById("limparBusca");
+const contadorResultados = document.getElementById("contadorResultados");
+const modoCompacto = document.getElementById("modoCompacto");
+const toast = document.getElementById("toast");
 
 const arquivos = {
     analise: "modelos-analise.csv",
@@ -11,6 +19,7 @@ const arquivos = {
     convenios: "convenios.csv"
 };
 
+inicializarPreferencias();
 carregarDados("analise");
 
 function normalizar(texto) {
@@ -22,33 +31,140 @@ function normalizar(texto) {
 
 }
 
-function obterFavoritos() {
+function escaparHtml(valor) {
 
-    return JSON.parse(
-        localStorage.getItem("favoritos")
-    ) || [];
+    return String(valor || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
 
 }
 
-function favoritar(codigo, botao) {
+function escaparAtributo(valor) {
 
-    let favoritos = obterFavoritos();
+    return escaparHtml(valor);
 
-    if (favoritos.includes(codigo)) {
+}
 
-        favoritos = favoritos.filter(
-            f => f !== codigo
-        );
+function criarMapaNormalizado(texto) {
 
-        botao.textContent = "☆ Favoritar";
+    let normalizado = "";
+    const mapa = [];
 
-    } else {
+    Array.from(String(texto || "")).forEach((caractere, indice) => {
 
-        favoritos.push(codigo);
+        const partes = normalizar(caractere);
 
-        botao.textContent = "★ Favorito";
+        Array.from(partes).forEach(parte => {
+
+            normalizado += parte;
+            mapa.push(indice);
+
+        });
+
+    });
+
+    return {
+        normalizado,
+        mapa
+    };
+
+}
+
+function destacarTexto(texto) {
+
+    const valor = String(texto || "");
+
+    if (palavrasPesquisaAtual.length === 0 || valor === "") {
+
+        return escaparHtml(valor);
 
     }
+
+    const { normalizado, mapa } = criarMapaNormalizado(valor);
+    const faixas = [];
+
+    palavrasPesquisaAtual.forEach(palavra => {
+
+        let inicio = normalizado.indexOf(palavra);
+
+        while (inicio !== -1) {
+
+            const fim = inicio + palavra.length - 1;
+
+            faixas.push({
+                inicio: mapa[inicio],
+                fim: mapa[fim] + 1
+            });
+
+            inicio = normalizado.indexOf(palavra, inicio + palavra.length);
+
+        }
+
+    });
+
+    if (faixas.length === 0) {
+
+        return escaparHtml(valor);
+
+    }
+
+    faixas.sort((a, b) => a.inicio - b.inicio);
+
+    const unidas = [];
+
+    faixas.forEach(faixa => {
+
+        const ultima = unidas[unidas.length - 1];
+
+        if (!ultima || faixa.inicio > ultima.fim) {
+
+            unidas.push({ ...faixa });
+
+        } else {
+
+            ultima.fim = Math.max(ultima.fim, faixa.fim);
+
+        }
+
+    });
+
+    let html = "";
+    let cursor = 0;
+
+    unidas.forEach(faixa => {
+
+        html += escaparHtml(valor.slice(cursor, faixa.inicio));
+        html += `<mark>${escaparHtml(valor.slice(faixa.inicio, faixa.fim))}</mark>`;
+        cursor = faixa.fim;
+
+    });
+
+    html += escaparHtml(valor.slice(cursor));
+
+    return html;
+
+}
+
+function obterFavoritos() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("favoritos")
+        ) || [];
+
+    } catch (erro) {
+
+        return [];
+
+    }
+
+}
+
+function salvarFavoritos(favoritos) {
 
     localStorage.setItem(
         "favoritos",
@@ -57,60 +173,187 @@ function favoritar(codigo, botao) {
 
 }
 
+function alternarFavorito(codigo) {
+
+    let favoritos = obterFavoritos();
+    const jaExiste = favoritos.includes(codigo);
+
+    if (jaExiste) {
+
+        favoritos = favoritos.filter(
+            favorito => favorito !== codigo
+        );
+
+        mostrarToast("Removido dos favoritos");
+
+    } else {
+
+        favoritos.push(codigo);
+        mostrarToast("Adicionado aos favoritos");
+
+    }
+
+    salvarFavoritos(favoritos);
+    pesquisar();
+
+}
+
+function lerCsv(texto) {
+
+    const registros = [];
+    let campo = "";
+    let linha = [];
+    let dentroDeAspas = false;
+
+    for (let indice = 0; indice < texto.length; indice++) {
+
+        const caractere = texto[indice];
+        const proximo = texto[indice + 1];
+
+        if (caractere === "\"") {
+
+            if (dentroDeAspas && proximo === "\"") {
+
+                campo += "\"";
+                indice++;
+
+            } else {
+
+                dentroDeAspas = !dentroDeAspas;
+
+            }
+
+            continue;
+
+        }
+
+        if (caractere === ";" && !dentroDeAspas) {
+
+            linha.push(campo.trim());
+            campo = "";
+            continue;
+
+        }
+
+        if ((caractere === "\n" || caractere === "\r") && !dentroDeAspas) {
+
+            if (caractere === "\r" && proximo === "\n") {
+
+                indice++;
+
+            }
+
+            linha.push(campo.trim());
+
+            if (linha.some(valor => valor !== "")) {
+
+                registros.push(linha);
+
+            }
+
+            linha = [];
+            campo = "";
+            continue;
+
+        }
+
+        campo += caractere;
+
+    }
+
+    linha.push(campo.trim());
+
+    if (linha.some(valor => valor !== "")) {
+
+        registros.push(linha);
+
+    }
+
+    return registros;
+
+}
+
+async function carregarCsv(arquivo) {
+
+    const resposta = await fetch(arquivo);
+
+    if (!resposta.ok) {
+
+        throw new Error(`Nao foi possivel carregar ${arquivo}`);
+
+    }
+
+    const buffer = await resposta.arrayBuffer();
+    const texto = new TextDecoder("windows-1252").decode(buffer);
+    const registros = lerCsv(texto);
+
+    registros.shift();
+
+    return registros;
+
+}
+
 async function carregarDados(tipo) {
 
     abaAtual = tipo;
-
     dados = [];
-
     resultados.innerHTML = "";
+    atualizarContador(0, true);
 
     try {
 
-        const resposta = await fetch(arquivos[tipo]);
+        dados = await carregarCsv(arquivos[tipo]);
 
-        const buffer = await resposta.arrayBuffer();
+        atualizarFiltroCategorias();
+        pesquisar();
 
-        const texto = new TextDecoder("windows-1252").decode(buffer);
+    } catch (erro) {
 
-        const linhas = texto.split(/\r?\n/);
+        console.error("Erro:", erro);
+        atualizarContador(0);
+        resultados.innerHTML = `
+            <div class="card card-vazio">
+                <h2>Não foi possível carregar os dados.</h2>
+            </div>
+        `;
 
-        linhas.shift();
-
-        linhas.forEach(linha => {
-
-            if (!linha.trim()) return;
-
-            const colunas = linha.split(";");
-
-            dados.push(colunas.map(c => c.trim()));
-            
-
-        });
-
-        console.log("Registros carregados:", dados.length);
-
-mostrarResultados(dados);
-
-atualizarFiltroCategorias();
-
-} catch (erro) {
-
-    console.error("Erro:", erro);
+    }
 
 }
+
+function obterBadgeSistema(sistema) {
+
+    const sistemaNormalizado = normalizar(sistema).toUpperCase();
+
+    if (
+        sistemaNormalizado.includes("SAJ") &&
+        sistemaNormalizado.includes("PJE")
+    ) {
+
+        return `<span class="badge badge-ambos">SAJ e PJe</span>`;
+
+    }
+
+    if (sistemaNormalizado.includes("PJE")) {
+
+        return `<span class="badge badge-pje">PJe</span>`;
+
+    }
+
+    return `<span class="badge badge-saj">SAJ</span>`;
 
 }
 
 function mostrarResultados(lista) {
 
     resultados.innerHTML = "";
+    atualizarContador(lista.length);
 
     if (lista.length === 0) {
 
         resultados.innerHTML = `
-            <div class="card">
-                <h2>Nenhum resultado encontrado.</h2>
+            <div class="card card-vazio">
+                <h2>${obterMensagemVazia()}</h2>
             </div>
         `;
 
@@ -120,177 +363,130 @@ function mostrarResultados(lista) {
 
     lista.forEach(item => {
 
-        // MODELOS
         if (
-    abaAtual === "analise" ||
-    abaAtual === "possentenca" ||
-    abaAtual === "favoritos"
-) {
+            abaAtual === "analise" ||
+            abaAtual === "possentenca" ||
+            abaAtual === "favoritos"
+        ) {
 
-            const sistema = item[5] || "";
-
-            let badgeSistema = "";
-
-            if (sistema.toUpperCase().includes("SAJ") &&
-                sistema.toUpperCase().includes("PJE")) {
-
-                badgeSistema =
-                    `<span class="badge sistema-pje">
-                        🟡 SAJ e PJe
-                    </span>`;
-
-            }
-
-            else if (sistema.toUpperCase().includes("PJE")) {
-
-                badgeSistema =
-                    `<span class="badge sistema-pje">
-                        🟢 PJe
-                    </span>`;
-
-            }
-
-            else {
-
-                badgeSistema =
-                    `<span class="badge sistema-saj">
-                        🔴 SAJ
-                    </span>`;
-
-            }
-
-            const favoritos =
-    obterFavoritos();
-
-const ehFavorito =
-    favoritos.includes(item[0]);
+            const favoritos = obterFavoritos();
+            const ehFavorito = favoritos.includes(item[0]);
+            const classeFavorito = ehFavorito ? " card-favorito" : "";
+            const textoFavorito = ehFavorito ? "★ Favorito" : "☆ Favoritar";
 
             resultados.innerHTML += `
+                <div class="card${classeFavorito}">
+                    <h2>${destacarTexto(item[1])}</h2>
 
-            <div class="card">
+                    ${obterBadgeSistema(item[5] || "")}
 
-                <h2>${item[1]}</h2>
+                    <p class="codigo">
+                        Código: ${destacarTexto(item[0])}
+                    </p>
 
-                ${badgeSistema}
+                    <p>
+                        Categoria: ${destacarTexto(item[2])}
+                    </p>
 
-                <p class="codigo">
-                    Código: ${item[0]}
-                </p>
+                    <p>
+                        Perfil: ${destacarTexto(item[3])}
+                    </p>
 
-                <p>
-                    Categoria: ${item[2]}
-                </p>
+                    <div class="acoes-modelo">
+                        <button
+                            type="button"
+                            class="favorito${ehFavorito ? " ativo" : ""}"
+                            data-favorito="${escaparAtributo(item[0])}">
+                            ${textoFavorito}
+                        </button>
 
-                <p>
-                    Perfil: ${item[3]}
-                </p>
-
-                <div class="acoes-modelo">
-<button
-    class="favorito"
-    onclick="favoritar('${item[0]}', this)">
-
-    ${ehFavorito ? "★ Favorito" : "☆ Favoritar"}
-
-</button>
-
-  
-    <button
-        class="copiar"
-        onclick="copiar('${item[0]}')">
-
-        Copiar Código
-
-    </button>
-
-</div>
-
+                        <button
+                            type="button"
+                            class="copiar"
+                            data-copiar="${escaparAtributo(item[0])}">
+                            Copiar Código
+                        </button>
+                    </div>
+                </div>
             `;
 
-        }
-
-        // CONTATOS
-        else if (abaAtual === "contatos") {
+        } else if (abaAtual === "contatos") {
 
             const nomeAntigo = item[2] || "";
 
             resultados.innerHTML += `
+                <div class="card">
+                    <h2>${destacarTexto(item[0])}</h2>
 
-            <div class="card">
+                    ${
+                        nomeAntigo
+                            ? `<p><strong>Nome antigo:</strong> ${destacarTexto(nomeAntigo)}</p>`
+                            : ""
+                    }
 
-                <h2>${item[0]}</h2>
+                    <p>
+                        <strong>E-mail:</strong> ${destacarTexto(item[1])}
+                    </p>
 
-                ${
-                    nomeAntigo
-                    ? `<p><strong>Nome antigo:</strong> ${nomeAntigo}</p>`
-                    : ""
-                }
+                    <div class="acoes-modelo">
+                        <button
+                            type="button"
+                            class="copiar"
+                            data-copiar="${escaparAtributo(item[1])}">
+                            Copiar E-mail
+                        </button>
 
-                <p>
-                    📧 ${item[1]}
-                </p>
-
-                <button
-                    class="copiar"
-                    onclick="copiar('${item[1]}')">
-
-                    Copiar E-mail
-
-                </button>
-
-            </div>
-
+                        <button
+                            type="button"
+                            class="botao-email"
+                            data-email="${escaparAtributo(item[1])}">
+                            Abrir e-mail
+                        </button>
+                    </div>
+                </div>
             `;
 
-        }
-
-        // CONVÊNIOS
-        else if (abaAtual === "convenios") {
+        } else if (abaAtual === "convenios") {
 
             resultados.innerHTML += `
+                <div class="card">
+                    <h2>${destacarTexto(item[0])}</h2>
 
-            <div class="card">
+                    <p>
+                        CNPJ: ${destacarTexto(item[1])}
+                    </p>
 
-                <h2>${item[0]}</h2>
+                    <p>
+                        Código: ${destacarTexto(item[2])}
+                    </p>
 
-                <p>
-                    CNPJ: ${item[1]}
-                </p>
+                    <p>
+                        Categoria: ${destacarTexto(item[3])}
+                    </p>
 
-                <p>
-                    Código: ${item[2]}
-                </p>
+                    <div class="botoes-convenio">
+                        <button
+                            type="button"
+                            class="copiar"
+                            data-copiar="${escaparAtributo(item[0])}">
+                            Copiar Nome
+                        </button>
 
-                <p>
-                    Categoria: ${item[3]}
-                </p>
+                        <button
+                            type="button"
+                            class="copiar"
+                            data-copiar="${escaparAtributo(item[2])}">
+                            Copiar Código
+                        </button>
 
-                <button
-    class="copiar"
-    onclick="copiar('${item[0]}')">
-
-    Copiar Nome
-
-</button>
-
-<button
-    class="copiar"
-    onclick="copiar('${item[2]}')">
-
-    Copiar Código
-
-</button>
-
-<button
-    class="copiar"
-    onclick="copiar('${item[1]}')">
-
-    Copiar CNPJ
-
-</button>
-
-            </div>
-
+                        <button
+                            type="button"
+                            class="copiar"
+                            data-copiar="${escaparAtributo(item[1])}">
+                            Copiar CNPJ
+                        </button>
+                    </div>
+                </div>
             `;
 
         }
@@ -299,47 +495,79 @@ const ehFavorito =
 
 }
 
-function atualizarFiltroCategorias() {
+function obterMensagemVazia() {
 
-    const filtro =
-        document.getElementById("filtroCategoria");
+    if (abaAtual === "favoritos") {
 
-    // Nas abas que não são modelos, esconde
-    if (
-        abaAtual !== "analise" &&
-        abaAtual !== "possentenca"
-    ) {
+        return "Nenhum modelo favorito ainda.";
 
-        filtro.style.display = "none";
+    }
+
+    return "Nenhum resultado encontrado.";
+
+}
+
+function atualizarContador(total, carregando = false) {
+
+    if (carregando) {
+
+        contadorResultados.textContent = "Carregando...";
         return;
 
     }
 
-    filtro.style.display = "block";
+    contadorResultados.textContent =
+        total === 1
+            ? "1 resultado encontrado"
+            : `${total} resultados encontrados`;
 
-    filtro.innerHTML =
+}
+
+function obterIndiceCategoria() {
+
+    if (abaAtual === "convenios") {
+
+        return 3;
+
+    }
+
+    return 2;
+
+}
+
+function atualizarFiltroCategorias() {
+
+    if (
+        abaAtual !== "analise" &&
+        abaAtual !== "possentenca" &&
+        abaAtual !== "convenios"
+    ) {
+
+        grupoFiltro.style.display = "none";
+        return;
+
+    }
+
+    grupoFiltro.style.display = "flex";
+
+    filtroCategoria.innerHTML =
         `<option value="">Todas as categorias</option>`;
 
+    const indiceCategoria = obterIndiceCategoria();
+
     const categorias = [
-    ...new Set(
-
-        dados.map(item =>
-
-            item[2]
-                .trim()
-                .toUpperCase()
-
+        ...new Set(
+            dados
+                .map(item => (item[indiceCategoria] || "").trim().toUpperCase())
+                .filter(Boolean)
         )
-
-    )
-
-].sort();
+    ].sort();
 
     categorias.forEach(categoria => {
 
-        filtro.innerHTML += `
-            <option value="${categoria}">
-                ${categoria}
+        filtroCategoria.innerHTML += `
+            <option value="${escaparAtributo(categoria)}">
+                ${escaparHtml(categoria)}
             </option>
         `;
 
@@ -347,71 +575,65 @@ function atualizarFiltroCategorias() {
 
 }
 
-busca.addEventListener("input", pesquisar);
+function obterPalavrasPesquisa(termo) {
 
-document
-    .getElementById("filtroCategoria")
-    .addEventListener(
-        "change",
-        pesquisar
-    );
+    const ignorar = [
+        "de",
+        "da",
+        "do",
+        "das",
+        "dos",
+        "e",
+        "em",
+        "para",
+        "por",
+        "com",
+        "a",
+        "o",
+        "as",
+        "os"
+    ];
 
-    function pesquisar() {
+    return normalizar(termo)
+        .split(/\s+/)
+        .filter(palavra => palavra.length > 1)
+        .filter(palavra =>
+            !ignorar.includes(palavra)
+        );
 
-    const termo = normalizar(
-        busca.value.trim()
-    );
+}
 
-    const filtroCategoria =
-        document.getElementById("filtroCategoria").value;
+function pesquisar() {
+
+    const termo = busca.value.trim();
+    const categoriaSelecionada = filtroCategoria.value;
+
+    palavrasPesquisaAtual = obterPalavrasPesquisa(termo);
 
     let lista = dados;
 
-    // Aplica o filtro de categoria mesmo sem texto pesquisado
     if (
-        filtroCategoria &&
+        categoriaSelecionada &&
         (abaAtual === "analise" ||
-         abaAtual === "possentenca")
+         abaAtual === "possentenca" ||
+         abaAtual === "convenios")
     ) {
 
+        const indiceCategoria = obterIndiceCategoria();
+
         lista = lista.filter(item =>
-            normalizar(item[2]) ===
-            normalizar(filtroCategoria)
+            normalizar(item[indiceCategoria]) ===
+            normalizar(categoriaSelecionada)
         );
 
     }
 
-    // Se não digitou nada, mostra apenas o resultado do filtro
-    if (termo === "") {
+    if (palavrasPesquisaAtual.length === 0) {
 
         mostrarResultados(lista);
         return;
 
     }
-
-    const ignorar = [
-    "de",
-    "da",
-    "do",
-    "das",
-    "dos",
-    "e",
-    "em",
-    "para",
-    "por",
-    "com",
-    "a",
-    "o",
-    "as",
-    "os"
-];
-
-const palavras = termo
-    .split(/\s+/)
-    .filter(palavra => palavra.length > 1)
-    .filter(palavra =>
-        !ignorar.includes(palavra)
-    );
 
     const encontrados = lista.filter(item => {
 
@@ -419,7 +641,7 @@ const palavras = termo
             item.join(" ")
         );
 
-        return palavras.every(palavra =>
+        return palavrasPesquisaAtual.every(palavra =>
             texto.includes(palavra)
         );
 
@@ -429,88 +651,117 @@ const palavras = termo
 
 }
 
-function formatarCategoria(texto) {
+function limparPesquisa() {
 
-    return texto
-        .toLowerCase()
-        .replace(/\b\w/g, letra =>
-            letra.toUpperCase()
-        );
+    busca.value = "";
+    filtroCategoria.value = "";
+    palavrasPesquisaAtual = [];
+    pesquisar();
+    busca.focus();
 
 }
 
+function mostrarToast(mensagem) {
 
-function copiar(texto) {
+    toast.textContent = mensagem;
+    toast.classList.add("visivel");
 
-    navigator.clipboard.writeText(texto);
+    window.clearTimeout(timeoutToast);
 
-    alert("Copiado: " + texto);
+    timeoutToast = window.setTimeout(() => {
+
+        toast.classList.remove("visivel");
+
+    }, 1800);
+
+}
+
+async function copiar(texto) {
+
+    try {
+
+        await navigator.clipboard.writeText(texto);
+        mostrarToast("Copiado!");
+
+    } catch (erro) {
+
+        const areaTemporaria = document.createElement("textarea");
+        areaTemporaria.value = texto;
+        areaTemporaria.setAttribute("readonly", "");
+        areaTemporaria.style.position = "fixed";
+        areaTemporaria.style.opacity = "0";
+
+        document.body.appendChild(areaTemporaria);
+        areaTemporaria.select();
+        document.execCommand("copy");
+        document.body.removeChild(areaTemporaria);
+
+        mostrarToast("Copiado!");
+
+    }
+
+}
+
+function abrirEmail(emails) {
+
+    const destinatarios = emails
+        .split(";")
+        .map(email => email.trim())
+        .filter(Boolean)
+        .join(",");
+
+    if (!destinatarios) {
+
+        mostrarToast("E-mail não encontrado");
+        return;
+
+    }
+
+    window.location.href = `mailto:${destinatarios}`;
 
 }
 
 async function carregarFavoritos() {
 
     abaAtual = "favoritos";
+    resultados.innerHTML = "";
+    atualizarContador(0, true);
 
-    const favoritos =
-        obterFavoritos();
-
-    let todosModelos = [];
-
+    const favoritos = obterFavoritos();
     const arquivosModelos = [
         "modelos-analise.csv",
         "modelos-pos-sentenca.csv"
     ];
 
-    for (const arquivo of arquivosModelos) {
+    try {
 
-        const resposta =
-            await fetch(arquivo);
+        const todosModelos = [];
 
-        const buffer =
-            await resposta.arrayBuffer();
+        for (const arquivo of arquivosModelos) {
 
-        const texto =
-            new TextDecoder(
-                "windows-1252"
-            ).decode(buffer);
+            const modelos = await carregarCsv(arquivo);
+            todosModelos.push(...modelos);
 
-        const linhas =
-            texto.split(/\r?\n/);
+        }
 
-        linhas.shift();
+        dados = todosModelos.filter(item =>
+            favoritos.includes(item[0])
+        );
 
-        linhas.forEach(linha => {
+        atualizarFiltroCategorias();
+        pesquisar();
 
-            if (!linha.trim())
-                return;
+    } catch (erro) {
 
-            const colunas =
-                linha.split(";");
-
-            todosModelos.push(
-                colunas.map(c =>
-                    c.trim()
-                )
-            );
-
-        });
+        console.error("Erro:", erro);
+        atualizarContador(0);
+        resultados.innerHTML = `
+            <div class="card card-vazio">
+                <h2>Não foi possível carregar os favoritos.</h2>
+            </div>
+        `;
 
     }
-
-    abaAtual = "favoritos";
-
-    mostrarResultados(
-
-        todosModelos.filter(item =>
-
-            favoritos.includes(
-                item[0]
-            )
-
-        )
-
-    );
 
 }
 
@@ -525,13 +776,12 @@ function trocarAba(tipo, elemento) {
     elemento.classList.add("ativa");
 
     busca.value = "";
+    filtroCategoria.value = "";
+    palavrasPesquisaAtual = [];
 
-    if (
-        tipo === "favoritos"
-    ) {
+    if (tipo === "favoritos") {
 
         carregarFavoritos();
-
         return;
 
     }
@@ -539,3 +789,61 @@ function trocarAba(tipo, elemento) {
     carregarDados(tipo);
 
 }
+
+function inicializarPreferencias() {
+
+    const compactoAtivo =
+        localStorage.getItem("modoCompacto") === "true";
+
+    document.body.classList.toggle("compacto", compactoAtivo);
+    modoCompacto.setAttribute("aria-pressed", String(compactoAtivo));
+
+}
+
+function alternarModoCompacto() {
+
+    const ativo = !document.body.classList.contains("compacto");
+
+    document.body.classList.toggle("compacto", ativo);
+    modoCompacto.setAttribute("aria-pressed", String(ativo));
+    localStorage.setItem("modoCompacto", String(ativo));
+    mostrarToast(ativo ? "Modo compacto ativado" : "Modo compacto desativado");
+
+}
+
+busca.addEventListener("input", pesquisar);
+filtroCategoria.addEventListener("change", pesquisar);
+limparBusca.addEventListener("click", limparPesquisa);
+modoCompacto.addEventListener("click", alternarModoCompacto);
+
+resultados.addEventListener("click", evento => {
+
+    const botaoCopiar = evento.target.closest("[data-copiar]");
+
+    if (botaoCopiar) {
+
+        copiar(botaoCopiar.dataset.copiar);
+        return;
+
+    }
+
+    const botaoEmail = evento.target.closest("[data-email]");
+
+    if (botaoEmail) {
+
+        abrirEmail(botaoEmail.dataset.email);
+        return;
+
+    }
+
+    const botaoFavorito = evento.target.closest("[data-favorito]");
+
+    if (botaoFavorito) {
+
+        alternarFavorito(
+            botaoFavorito.dataset.favorito
+        );
+
+    }
+
+});
