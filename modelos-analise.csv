@@ -23,10 +23,11 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6041;Certidão - Emissão de Mandado de Prisão;Certidão;Servidor;emissão mandado prisão,expedir mandado prisão,prisão decretada;Apenas PJE
 6043;Certidão - Audiência por Video Sem Link;Certidão;Servidor;audiência sem link,videoconferência sem link,problema audiência virtual;Apenas PJE
 6045;Certidão - Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav;Apenas PJE
+6047;Certidão - Instanciamento;Certidão;Gestor;Instanciamento, secretaria, gestor;Apenas PJE
 964;MANDADO DE CITAÇÃO (Réu Solto);MANDADO;Servidor;citação,reu solto,denuncia,citar acusado,resposta acusacao,chamar reu;SAJ e PJe
 4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso;SAJ e PJe
 1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Magistrado;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia;SAJ e PJe
-1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA         ;MANDADO;Magistrado;vitima,conducao coercitiva,vitima faltosa,audiencia;SAJ e PJe
+1949;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA – VÍTIMA;MANDADO;Magistrado;vitima,conducao coercitiva,vitima faltosa,audiencia;SAJ e PJe
 1876;MANDADO DE INTIMAÇÃO GENÉRICO - URGENTE (Réu Preso);MANDADO;Servidor;intimacao generica,intimar parte,intimar acusado,comunicacao processual;SAJ e PJe
 1874;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO – URGENTE (Réu Preso);MANDADO;Servidor;novo advogado,defensor renunciou,advogado renunciou,constituir advogado,reu preso;SAJ e PJe
 1461;MANDADO DE AVALIAÇÃO;MANDADO;Servidor;avaliacao,bem apreendido,avaliar objeto,avaliar patrimonio;SAJ e PJe
@@ -35,7 +36,7 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 3216;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Magistrado;oficio,malote digital,comunicacao generica;SAJ e PJe
 3365;Requisição de Perícia Genérica - PEFOCE;OFÍCIO;Servidor;pefoce,pericia,exame pericial,perito,pericia generica;SAJ e PJe
 3911;CRIME - DE ORDEM - Requisição de Laudo Pericial Genérico (E-mail);OFÍCIO;Servidor;laudo pericial,pefoce,resultado pericia,laudo,exame;SAJ e PJe
-3913;Concessão de uso de monitoramento eletrônico                                                                                                                           ;OFÍCIO;Servidor;tornozeleira,monitoramento eletronico,instalar tornozeleira;SAJ e PJe
+3913;Concessão de uso de monitoramento eletrônico;OFÍCIO;Servidor;tornozeleira,monitoramento eletronico,instalar tornozeleira;SAJ e PJe
 3914;Retirada do monitoramento eletrônico;OFÍCIO;Servidor;retirar tornozeleira,encerrar monitoramento eletronico;SAJ e PJe
 2672;Requisição de Servidor Público;OFÍCIO;Magistrado;servidor publico,funcionario publico,requisicao servidor;SAJ e PJe
 3988;Encaminhamento de Mandado de Condução Coercitiva - AAPJ;OFÍCIO;Magistrado;conducao coercitiva,encaminhar mandado,aapj,testemunha faltosa;SAJ e PJe
@@ -45,14 +46,14 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 4951;Solicitação de devolução de mandado - CEMAN;OFÍCIO;Servidor;devolucao mandado,ceman,mandado devolvido;SAJ e PJe
 3331;Solicitação de devolução de Carta Precatória;OFÍCIO;Magistrado;devolucao carta precatoria, devolucao, cp cumprida, informacoes;Apenas SAJ
 4063;Ato Ordinatório - PCCE;ATO ORDINATÓRIO;Servidor;pcce,policia civil,oficiar pcce;SAJ e PJe
-40;Ato Ordinatório [Genérico]            ;ATO ORDINATÓRIO;Servidor;ato ordinatorio generico,andamento processual;SAJ e PJe
+40;Ato Ordinatório [Genérico];ATO ORDINATÓRIO;Servidor;ato ordinatorio generico,andamento processual;SAJ e PJe
 6506;Carta Precatória Citatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,citacao,reu em outra comarca;SAJ e PJe
-6508;Carta Precatória para intimar réu a comparecer a audiência                                                                     ;CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu;SAJ e PJe
-6509;Carta Precatória para intimar réu para constituir novo advogado                                                                ;CARTA PRECATÓRIA;Magistrado;carta precatoria,novo advogado,advogado renunciou;SAJ e PJe
-6510;Carta Precatória genérica                                                                                                      ;CARTA PRECATÓRIA;Magistrado;carta precatoria generica,outra comarca;SAJ e PJe
+6508;Carta Precatória para intimar réu a comparecer a audiência;CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu;SAJ e PJe
+6509;Carta Precatória para intimar réu para constituir novo advogado;CARTA PRECATÓRIA;Magistrado;carta precatoria,novo advogado,advogado renunciou;SAJ e PJe
+6510;Carta Precatória genérica;CARTA PRECATÓRIA;Magistrado;carta precatoria generica,outra comarca;SAJ e PJe
 500826;Carta Precatória Notificatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,notificacao,notificar pessoa;SAJ e PJe
-501313;Edital de Citação (15 dias)                                                                                                                                                                     ;EDITAL;Magistrado;edital de citacao,reu nao localizado,paradeiro ignorado;SAJ e PJe
-500028;Edital Genérico                                                                                                                                                                                 ;EDITAL;Magistrado;edital generico,publicacao,dje;SAJ e PJe
+501313;Edital de Citação (15 dias);EDITAL;Magistrado;edital de citacao,reu nao localizado,paradeiro ignorado;SAJ e PJe
+500028;Edital Genérico;EDITAL;Magistrado;edital generico,publicacao,dje;SAJ e PJe
 5435;TODOS - 50271- Carta de Arrematação;CARTA;Magistrado;carta de arrematação,arrematação,bem arrematado,leilão judicial,hasta pública,adjudicação,comprador do bem,transferência de propriedade;SAJ e PJe
 6670;Alvará de Restituição de Bem Apreendido;ALVARÁ;Magistrado;devolver bem,restituicao de bem,bem apreendido,objeto apreendido;SAJ e PJe
 500057;[CORREIOS-AR] - Ofício Genérico;OFÍCIO;Magistrado;correios, ar, ofício, aviso recebimento;Apenas SAJ
@@ -66,29 +67,29 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 3217;Declínio de Competência;OFÍCIO;Magistrado;declínio competência, incompetência;Apenas SAJ
 501371;Informação de que o réu voltou a delinquir;OFÍCIO;Magistrado;voltou delinquir, reincidência;Apenas SAJ
 500039;[CORREIOS-AR] - Ofício Genérico;OFÍCIO;Servidor;correios, ar, ofício;Apenas SAJ
-3225;Solicitação de laudo de exame de corpo de delito - PEFOCE ;OFÍCIO;Servidor;corpo delito, laudo pefoce;Apenas SAJ
+3225;Solicitação de laudo de exame de corpo de delito - PEFOCE;OFÍCIO;Servidor;corpo delito, laudo pefoce;Apenas SAJ
 3363;Solicitação de Identificação Civil-Criminal - PEFOCE;OFÍCIO;Servidor;identificação criminal, pefoce;Apenas SAJ
 3367;Pericia de automóvel - PEFOCE;OFÍCIO;Servidor;perícia veículo, automóvel;Apenas SAJ
 3366;Solicitação de perícia de arma - PEFOCE;OFÍCIO;Servidor;perícia arma;Apenas SAJ
 501897;Solicitação de Diligências;OFÍCIO;Servidor;diligências, diligência;Apenas SAJ
 3361;Fiscalização do benefício da suspensão condicional do processo;OFÍCIO;Servidor;suspensão condicional, fiscalização sursis;Apenas SAJ
 3222;Solicitação de Certidão de Óbito - Cartórios de Fortaleza;OFÍCIO;Servidor;certidão óbito, óbito;Apenas SAJ
-3915;Solicitação de documentos ao Juízo Deprecante  ;OFÍCIO;Servidor;documentos deprecante;Apenas SAJ
+3915;Solicitação de documentos ao Juízo Deprecante;OFÍCIO;Servidor;documentos deprecante;Apenas SAJ
 4950;[CORREIOS-AR] - Solicitação de endereço;OFÍCIO;Servidor;endereço correios, localizar endereço;Apenas SAJ
 4017;[E-MAIL] - Solicitação de endereço;OFÍCIO;Servidor;endereço email, localizar endereço;Apenas SAJ
 3349;Requisição de arma para restituição;OFÍCIO;Servidor;restituição arma;Apenas SAJ
 4952;Comunicação ao Depósito Público;OFÍCIO;Servidor;depósito público;Apenas SAJ
 3352;Destruição de arma;OFÍCIO;Servidor;destruição arma;Apenas SAJ
 3916;Condução do réu para audiência por videoconferência;OFÍCIO;Servidor;videoconferência réu, condução réu;Apenas SAJ
-5620;Informação de que o réu voltou a delinquir                                                                                                                 ;OFÍCIO;Servidor;voltou delinquir, reincidência;Apenas SAJ
-4679;[ATO VINCULADO] - Comunicação para fins de registros nos sistemas policiais                                                                                                            ;ATO ORDINATÓRIO;Servidor;sistemas policiais, registros policiais;Apenas SAJ
+5620;Informação de que o réu voltou a delinquir;OFÍCIO;Servidor;voltou delinquir, reincidência;Apenas SAJ
+4679;[ATO VINCULADO] - Comunicação para fins de registros nos sistemas policiais;ATO ORDINATÓRIO;Servidor;sistemas policiais, registros policiais;Apenas SAJ
 6676;[ÁREA CRIMINAL] – Edital para publicação no DJEN;ATO ORDINATÓRIO;Servidor;edital djen;Apenas SAJ
 1865;MANDADO DE CITAÇÃO - URGENTE (Réu Preso);Mandado;Servidor;citação preso;Apenas SAJ
 4941;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo acusado;Apenas SAJ
 4943;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo testemunha;Apenas SAJ
 4944;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);Mandado;Servidor;audiência vídeo vítima preso;Apenas SAJ
 4945;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo vítima;Apenas SAJ
-2962;Mandado de Busca e Apreensão - SEM COMAN                                                                                                                                          ;Mandado;Servidor;busca apreensão;SAJ e PJe
+2962;Mandado de Busca e Apreensão - SEM COMAN;Mandado;Servidor;busca apreensão;SAJ e PJe
 5617;Requisição de réu para audiência;Ofício;Servidor;requisição réu audiência;Apenas SAJ
 3276;JÚRI - COMAN DIGITAL - Mandado de Citação - URGENTE (Réu Preso);Mandado;Magistrado;júri citação preso;SAJ e PJe
 3283;JÚRI - COMAN DIGITAL- Mandado de Citação (Réu Solto);Mandado;Magistrado;júri citação solto;Apenas SAJ
@@ -108,8 +109,8 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);Mandado;Servidor;desclassificatória;SAJ e PJe
 991;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO (Réu Solto);Mandado;Magistrado;novo advogado solto;Apenas SAJ
 1875;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Preso);Mandado;Magistrado;novo advogado preso;SAJ e PJe
-500853;Certidão de Decurso de Prazo                                                                                                                                                             ;Certidão;Servidor;decurso de prazo, certidão de prazo, término de prazo, sem manifestação, certificar decurso;Apenas SAJ
-501843;Certidão de Atualização de Histórico de Partes                                                                                                                                          ;Certidão;Servidor;atualização de histórico, histórico de partes, certidão de atualização, atualização cadastral, histórico processual, certificar atualização;Apenas SAJ
-3027;Atualização de cadastro de partes e representantes                                                                                                                                   ;Certidão;Servidor;atualização cadastral, cadastro de partes, cadastro de representantes, alteração de dados, atualização de partes, procurador, advogado, representante processual;Apenas SAJ
-5534;Mudança de Competência BNMP                                                                                                                                                             ;Certidão;Servidor;BNMP, mudança de competência, alteração de competência, redistribuição BNMP, transferência de competência, Banco Nacional de Medidas Penais, competência processual;Apenas SAJ
+500853;Certidão de Decurso de Prazo;Certidão;Servidor;decurso de prazo, certidão de prazo, término de prazo, sem manifestação, certificar decurso;Apenas SAJ
+501843;Certidão de Atualização de Histórico de Partes;Certidão;Servidor;atualização de histórico, histórico de partes, certidão de atualização, atualização cadastral, histórico processual, certificar atualização;Apenas SAJ
+3027;Atualização de cadastro de partes e representantes;Certidão;Servidor;atualização cadastral, cadastro de partes, cadastro de representantes, alteração de dados, atualização de partes, procurador, advogado, representante processual;Apenas SAJ
+5534;Mudança de Competência BNMP;Certidão;Servidor;BNMP, mudança de competência, alteração de competência, redistribuição BNMP, transferência de competência, Banco Nacional de Medidas Penais, competência processual;Apenas SAJ
 986;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO (Réu Solto);Mandado;Servidor;novo advogado solto;Apenas SAJ
