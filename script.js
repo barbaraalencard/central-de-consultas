@@ -452,17 +452,23 @@ function mostrarResultados(lista) {
                 <div class="card">
                     <h2>${destacarTexto(item[0])}</h2>
 
-                    <p>
-                        CNPJ: ${destacarTexto(item[1])}
-                    </p>
+                    ${
+    item[1]
+    ? `<p><strong>Nome antigo:</strong> ${item[1]}</p>`
+    : ""
+}
 
-                    <p>
-                        Código: ${destacarTexto(item[2])}
-                    </p>
+<p>
+    CNPJ: ${item[2]}
+</p>
 
-                    <p>
-                        Categoria: ${destacarTexto(item[3])}
-                    </p>
+<p>
+    Código: ${item[3]}
+</p>
+
+<p>
+    Categoria: ${item[4]}
+</p>
 
                     <div class="botoes-convenio">
                         <button
@@ -475,14 +481,14 @@ function mostrarResultados(lista) {
                         <button
                             type="button"
                             class="copiar"
-                            data-copiar="${escaparAtributo(item[2])}">
+                            data-copiar="${escaparAtributo(item[3])}">
                             Copiar Código
                         </button>
 
                         <button
                             type="button"
                             class="copiar"
-                            data-copiar="${escaparAtributo(item[1])}">
+                            data-copiar="${escaparAtributo(item[2])}">
                             Copiar CNPJ
                         </button>
                     </div>
