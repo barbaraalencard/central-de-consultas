@@ -19,6 +19,13 @@ const arquivos = {
     convenios: "convenios.csv"
 };
 
+const colunasConvenios = {
+    nome: 0,
+    cnpj: 1,
+    codigo: 2,
+    categoria: 3
+};
+
 inicializarPreferencias();
 carregarDados("analise");
 
@@ -450,45 +457,39 @@ function mostrarResultados(lista) {
 
             resultados.innerHTML += `
                 <div class="card">
-                    <h2>${destacarTexto(item[0])}</h2>
+                    <h2>${destacarTexto(item[colunasConvenios.nome])}</h2>
 
-                    ${
-    item[1]
-    ? `<p><strong>Nome antigo:</strong> ${item[1]}</p>`
-    : ""
-}
+                    <p>
+                        CNPJ: ${destacarTexto(item[colunasConvenios.cnpj])}
+                    </p>
 
-<p>
-    CNPJ: ${item[2]}
-</p>
+                    <p>
+                        Código: ${destacarTexto(item[colunasConvenios.codigo])}
+                    </p>
 
-<p>
-    Código: ${item[3]}
-</p>
-
-<p>
-    Categoria: ${item[4]}
-</p>
+                    <p>
+                        Categoria: ${destacarTexto(item[colunasConvenios.categoria])}
+                    </p>
 
                     <div class="botoes-convenio">
                         <button
                             type="button"
                             class="copiar"
-                            data-copiar="${escaparAtributo(item[0])}">
+                            data-copiar="${escaparAtributo(item[colunasConvenios.nome])}">
                             Copiar Nome
                         </button>
 
                         <button
                             type="button"
                             class="copiar"
-                            data-copiar="${escaparAtributo(item[3])}">
+                            data-copiar="${escaparAtributo(item[colunasConvenios.codigo])}">
                             Copiar Código
                         </button>
 
                         <button
                             type="button"
                             class="copiar"
-                            data-copiar="${escaparAtributo(item[2])}">
+                            data-copiar="${escaparAtributo(item[colunasConvenios.cnpj])}">
                             Copiar CNPJ
                         </button>
                     </div>
@@ -533,7 +534,7 @@ function obterIndiceCategoria() {
 
     if (abaAtual === "convenios") {
 
-        return 3;
+        return colunasConvenios.categoria;
 
     }
 
