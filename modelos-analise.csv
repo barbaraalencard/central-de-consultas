@@ -114,3 +114,4 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 3027;Atualização de cadastro de partes e representantes;Certidão;Servidor;atualização cadastral, cadastro de partes, cadastro de representantes, alteração de dados, atualização de partes, procurador, advogado, representante processual;Apenas SAJ
 5534;Mudança de Competência BNMP;Certidão;Servidor;BNMP, mudança de competência, alteração de competência, redistribuição BNMP, transferência de competência, Banco Nacional de Medidas Penais, competência processual;Apenas SAJ
 986;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO (Réu Solto);Mandado;Servidor;novo advogado solto;Apenas SAJ
+4919;Envio de Conflito de Competência;Ofício;Magistrado;conflito, competencia, oficio, suscitar;Apenas PJE
