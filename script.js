@@ -2,6 +2,7 @@ let dados = [];
 let abaAtual = "analise";
 let palavrasPesquisaAtual = [];
 let timeoutToast = null;
+let carregamentoAtual = 0;
 
 const busca = document.getElementById("busca");
 const resultados = document.getElementById("resultados");
@@ -21,9 +22,10 @@ const arquivos = {
 
 const colunasConvenios = {
     nome: 0,
-    cnpj: 1,
-    codigo: 2,
-    categoria: 3
+    nomeAntigo: 1,
+    cnpj: 2,
+    codigo: 3,
+    categoria: 4
 };
 
 inicializarPreferencias();
@@ -291,7 +293,11 @@ async function carregarCsv(arquivo) {
     }
 
     const buffer = await resposta.arrayBuffer();
-    const texto = new TextDecoder("windows-1252").decode(buffer);
+    const codificacao =
+        arquivo === arquivos.convenios
+            ? "utf-8"
+            : "windows-1252";
+    const texto = new TextDecoder(codificacao).decode(buffer);
     const registros = lerCsv(texto);
 
     registros.shift();
@@ -302,6 +308,8 @@ async function carregarCsv(arquivo) {
 
 async function carregarDados(tipo) {
 
+    const carregamento = ++carregamentoAtual;
+
     abaAtual = tipo;
     dados = [];
     resultados.innerHTML = "";
@@ -311,10 +319,22 @@ async function carregarDados(tipo) {
 
         dados = await carregarCsv(arquivos[tipo]);
 
+        if (carregamento !== carregamentoAtual) {
+
+            return;
+
+        }
+
         atualizarFiltroCategorias();
         pesquisar();
 
     } catch (erro) {
+
+        if (carregamento !== carregamentoAtual) {
+
+            return;
+
+        }
 
         console.error("Erro:", erro);
         atualizarContador(0);
@@ -458,6 +478,12 @@ function mostrarResultados(lista) {
             resultados.innerHTML += `
                 <div class="card">
                     <h2>${destacarTexto(item[colunasConvenios.nome])}</h2>
+
+                    ${
+                        item[colunasConvenios.nomeAntigo]
+                            ? `<p><strong>Nome antigo:</strong> ${destacarTexto(item[colunasConvenios.nomeAntigo])}</p>`
+                            : ""
+                    }
 
                     <p>
                         CNPJ: ${destacarTexto(item[colunasConvenios.cnpj])}
@@ -730,6 +756,8 @@ function abrirEmail(emails) {
 
 async function carregarFavoritos() {
 
+    const carregamento = ++carregamentoAtual;
+
     abaAtual = "favoritos";
     resultados.innerHTML = "";
     atualizarContador(0, true);
@@ -755,10 +783,22 @@ async function carregarFavoritos() {
             favoritos.includes(item[0])
         );
 
+        if (carregamento !== carregamentoAtual) {
+
+            return;
+
+        }
+
         atualizarFiltroCategorias();
         pesquisar();
 
     } catch (erro) {
+
+        if (carregamento !== carregamentoAtual) {
+
+            return;
+
+        }
 
         console.error("Erro:", erro);
         atualizarContador(0);
