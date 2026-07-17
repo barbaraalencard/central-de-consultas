@@ -12,6 +12,10 @@ const limparBusca = document.getElementById("limparBusca");
 const contadorResultados = document.getElementById("contadorResultados");
 const modoCompacto = document.getElementById("modoCompacto");
 const toast = document.getElementById("toast");
+const avisoAtualizacao = document.getElementById("avisoAtualizacao");
+const marcarAvisoLido = document.getElementById("marcarAvisoLido");
+
+const chaveAvisoConvenios = "avisoConveniosCorrigidosLido";
 
 const arquivos = {
     analise: "modelos-analise.csv",
@@ -29,6 +33,7 @@ const colunasConvenios = {
 };
 
 inicializarPreferencias();
+inicializarAvisoAtualizacao();
 carregarDados("analise");
 
 function normalizar(texto) {
@@ -459,12 +464,6 @@ function mostrarResultados(lista) {
                             Copiar E-mail
                         </button>
 
-                        <button
-                            type="button"
-                            class="botao-email"
-                            data-email="${escaparAtributo(item[1])}">
-                            Abrir e-mail
-                        </button>
                     </div>
                 </div>
             `;
@@ -731,25 +730,6 @@ async function copiar(texto) {
 
 }
 
-function abrirEmail(emails) {
-
-    const destinatarios = emails
-        .split(";")
-        .map(email => email.trim())
-        .filter(Boolean)
-        .join(",");
-
-    if (!destinatarios) {
-
-        mostrarToast("E-mail não encontrado");
-        return;
-
-    }
-
-    window.location.href = `mailto:${destinatarios}`;
-
-}
-
 async function carregarFavoritos() {
 
     const carregamento = ++carregamentoAtual;
@@ -843,6 +823,29 @@ function inicializarPreferencias() {
 
 }
 
+function inicializarAvisoAtualizacao() {
+
+    if (!avisoAtualizacao || !marcarAvisoLido) {
+
+        return;
+
+    }
+
+    const avisoLido =
+        localStorage.getItem(chaveAvisoConvenios) === "true";
+
+    avisoAtualizacao.hidden = avisoLido;
+
+}
+
+function marcarAtualizacaoComoLida() {
+
+    localStorage.setItem(chaveAvisoConvenios, "true");
+    avisoAtualizacao.hidden = true;
+    mostrarToast("Aviso marcado como lido");
+
+}
+
 function alternarModoCompacto() {
 
     const ativo = !document.body.classList.contains("compacto");
@@ -859,6 +862,12 @@ filtroCategoria.addEventListener("change", pesquisar);
 limparBusca.addEventListener("click", limparPesquisa);
 modoCompacto.addEventListener("click", alternarModoCompacto);
 
+if (marcarAvisoLido) {
+
+    marcarAvisoLido.addEventListener("click", marcarAtualizacaoComoLida);
+
+}
+
 resultados.addEventListener("click", evento => {
 
     const botaoCopiar = evento.target.closest("[data-copiar]");
@@ -866,15 +875,6 @@ resultados.addEventListener("click", evento => {
     if (botaoCopiar) {
 
         copiar(botaoCopiar.dataset.copiar);
-        return;
-
-    }
-
-    const botaoEmail = evento.target.closest("[data-email]");
-
-    if (botaoEmail) {
-
-        abrirEmail(botaoEmail.dataset.email);
         return;
 
     }
