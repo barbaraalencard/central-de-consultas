@@ -16,6 +16,7 @@ const avisoAtualizacao = document.getElementById("avisoAtualizacao");
 const marcarAvisoLido = document.getElementById("marcarAvisoLido");
 
 const chaveAvisoConvenios = "avisoConveniosCorrigidosLido";
+const cacheCsv = {};
 
 const arquivos = {
     analise: "modelos-analise.csv",
@@ -289,6 +290,12 @@ function lerCsv(texto) {
 
 async function carregarCsv(arquivo) {
 
+    if (cacheCsv[arquivo]) {
+
+        return cacheCsv[arquivo].map(item => [...item]);
+
+    }
+
     const resposta = await fetch(arquivo);
 
     if (!resposta.ok) {
@@ -302,8 +309,9 @@ async function carregarCsv(arquivo) {
     const registros = lerCsv(texto);
 
     registros.shift();
+    cacheCsv[arquivo] = registros;
 
-    return registros;
+    return registros.map(item => [...item]);
 
 }
 
@@ -389,6 +397,9 @@ function mostrarResultados(lista) {
 
     }
 
+    const htmlCards = [];
+    const favoritos = obterFavoritos();
+
     lista.forEach(item => {
 
         if (
@@ -397,12 +408,11 @@ function mostrarResultados(lista) {
             abaAtual === "favoritos"
         ) {
 
-            const favoritos = obterFavoritos();
             const ehFavorito = favoritos.includes(item[0]);
             const classeFavorito = ehFavorito ? " card-favorito" : "";
             const textoFavorito = ehFavorito ? "★ Favorito" : "☆ Favoritar";
 
-            resultados.innerHTML += `
+            htmlCards.push(`
                 <div class="card${classeFavorito}">
                     <h2>${destacarTexto(item[1])}</h2>
 
@@ -436,13 +446,13 @@ function mostrarResultados(lista) {
                         </button>
                     </div>
                 </div>
-            `;
+            `);
 
         } else if (abaAtual === "contatos") {
 
             const nomeAntigo = item[2] || "";
 
-            resultados.innerHTML += `
+            htmlCards.push(`
                 <div class="card">
                     <h2>${destacarTexto(item[0])}</h2>
 
@@ -466,11 +476,11 @@ function mostrarResultados(lista) {
 
                     </div>
                 </div>
-            `;
+            `);
 
         } else if (abaAtual === "convenios") {
 
-            resultados.innerHTML += `
+            htmlCards.push(`
                 <div class="card">
                     <h2>${destacarTexto(item[colunasConvenios.nome])}</h2>
 
@@ -515,11 +525,13 @@ function mostrarResultados(lista) {
                         </button>
                     </div>
                 </div>
-            `;
+            `);
 
         }
 
     });
+
+    resultados.innerHTML = htmlCards.join("");
 
 }
 
