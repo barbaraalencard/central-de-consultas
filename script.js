@@ -293,11 +293,7 @@ async function carregarCsv(arquivo) {
     }
 
     const buffer = await resposta.arrayBuffer();
-    const codificacao =
-        arquivo === arquivos.convenios
-            ? "utf-8"
-            : "windows-1252";
-    const texto = new TextDecoder(codificacao).decode(buffer);
+    const texto = new TextDecoder("windows-1252").decode(buffer);
     const registros = lerCsv(texto);
 
     registros.shift();
