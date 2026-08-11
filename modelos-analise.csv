@@ -24,6 +24,8 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6043;Certidão - Audiência por Video Sem Link;Certidão;Servidor;audiência sem link,videoconferência sem link,problema audiência virtual;Apenas PJE
 6045;Certidão - Audiência - Pendente SAV;Certidão;Servidor;audiência pendente sav,sav pendente,aguardando sav;Apenas PJE
 6047;Certidão - Instanciamento;Certidão;Gestor;Instanciamento, secretaria, gestor;Apenas PJE
+6049;Certidão - Sigilo aos Autos - Impossibilidade;Certidão;Servidor;Sigilo, processo, pje, impossibilidade, gabinete;Apenas PJE
+6051;Certidão - Processo em tarefa de gabinete - Cumprimento de determinação frustrado;Certidão;Servidor;certidão, processo, tarefa, gabinete, instanciamento;Apenas PJE
 964;MANDADO DE CITAÇÃO (Réu Solto);MANDADO;Servidor;citação,reu solto,denuncia,citar acusado,resposta acusacao,chamar reu;SAJ e PJe
 4940;MANDADO DE INTIMAÇÃO DE ACUSADO PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);MANDADO;Servidor;reu preso,audiencia,videoconferencia,intimacao urgente,acusado preso;SAJ e PJe
 1948;MANDADO DE INTIMAÇÃO E CONDUÇÃO COERCITIVA DE TESTEMUNHA;MANDADO;Magistrado;testemunha,conducao coercitiva,testemunha faltosa,levar testemunha,audiencia;SAJ e PJe
@@ -89,7 +91,7 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 4943;MANDADO DE NOTIFICAÇÃO DE TESTEMUNHA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo testemunha;Apenas SAJ
 4944;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA – URGENTE (Réu Preso);Mandado;Servidor;audiência vídeo vítima preso;Apenas SAJ
 4945;MANDADO DE NOTIFICAÇÃO DE VÍTIMA PARA AUDIÊNCIA POR VIDEOCONFERÊNCIA (Réu Solto);Mandado;Servidor;audiência vídeo vítima;Apenas SAJ
-2962;Mandado de Busca e Apreensão - SEM COMAN;Mandado;Servidor;busca apreensão;SAJ e PJe
+2962;Mandado de Busca e Apreensão - SEM COMAN;Mandado;Magistrado;busca apreensão;SAJ e PJe
 5617;Requisição de réu para audiência;Ofício;Servidor;requisição réu audiência;Apenas SAJ
 3276;JÚRI - COMAN DIGITAL - Mandado de Citação - URGENTE (Réu Preso);Mandado;Magistrado;júri citação preso;SAJ e PJe
 3283;JÚRI - COMAN DIGITAL- Mandado de Citação (Réu Solto);Mandado;Magistrado;júri citação solto;Apenas SAJ
