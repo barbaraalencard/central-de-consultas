@@ -52,7 +52,7 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6506;Carta Precatória Citatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,citacao,reu em outra comarca;SAJ e PJe
 6508;Carta Precatória para intimar réu a comparecer a audiência;CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu;SAJ e PJe
 6509;Carta Precatória para intimar réu para constituir novo advogado;CARTA PRECATÓRIA;Magistrado;carta precatoria,novo advogado,advogado renunciou;SAJ e PJe
-6510;Carta Precatória genérica;CARTA PRECATÓRIA;Magistrado;carta precatoria generica,outra comarca;SAJ e PJe
+6510;Carta Precatória Genérica;CARTA PRECATÓRIA;Magistrado;carta precatoria generica,outra comarca;SAJ e PJe
 500826;Carta Precatória Notificatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,notificacao,notificar pessoa;SAJ e PJe
 501313;Edital de Citação (15 dias);EDITAL;Magistrado;edital de citacao,reu nao localizado,paradeiro ignorado;SAJ e PJe
 500028;Edital Genérico;EDITAL;Magistrado;edital generico,publicacao,dje;SAJ e PJe
@@ -116,4 +116,6 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 3027;Atualização de cadastro de partes e representantes;Certidão;Servidor;atualização cadastral, cadastro de partes, cadastro de representantes, alteração de dados, atualização de partes, procurador, advogado, representante processual;Apenas SAJ
 5534;Mudança de Competência BNMP;Certidão;Servidor;BNMP, mudança de competência, alteração de competência, redistribuição BNMP, transferência de competência, Banco Nacional de Medidas Penais, competência processual;Apenas SAJ
 986;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO (Réu Solto);Mandado;Servidor;novo advogado solto;Apenas SAJ
-4919;Envio de Conflito de Competência;Ofício;Magistrado;conflito, competencia, oficio, suscitar;Apenas PJE
+4919;Envio de Conflito de Competência - Varas;Ofício;Magistrado;conflito, competencia, oficio, suscitar, varas;Apenas PJE
+6053;Envio de Conflito de Competência - PGJ;Ofício;Magistrado;conflito, competencia, oficio, suscitar, ministerio publico, pgj;Apenas PJE
+6055;Redistribuição de Autos - Outros Sistemas;Ofício;Magistrado;redistribuição, sistemas, diversos;Apenas PJE
