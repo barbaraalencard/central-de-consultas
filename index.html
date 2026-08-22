@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central de Consultas</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260822-sem-aviso">
 </head>
 
 <body>
@@ -63,20 +63,6 @@
     </div>
 
     <main class="container">
-        <section id="avisoAtualizacao" class="aviso-atualizacao" aria-label="Aviso de atualização">
-            <div>
-                <strong>Atualização:</strong>
-                A aba Convênios foi corrigida. As categorias e os botões de copiar já estão funcionando com os dados certos.
-            </div>
-
-            <button
-                type="button"
-                id="marcarAvisoLido"
-                class="botao-aviso">
-                Marcar como lido
-            </button>
-        </section>
-
         <section class="painel-controles" aria-label="Controles de pesquisa">
             <div class="linha-pesquisa">
                 <input
@@ -106,6 +92,21 @@
                     </select>
                 </div>
 
+                <fieldset id="grupoFiltroSistema" class="grupo-filtro-sistema">
+                    <legend>Sistema</legend>
+
+                    <div class="controle-segmentado">
+                        <input type="radio" name="filtroSistema" id="sistemaTodos" value="" checked>
+                        <label for="sistemaTodos">Todos</label>
+
+                        <input type="radio" name="filtroSistema" id="sistemaPje" value="PJE">
+                        <label for="sistemaPje">PJe</label>
+
+                        <input type="radio" name="filtroSistema" id="sistemaSaj" value="SAJ">
+                        <label for="sistemaSaj">SAJ</label>
+                    </div>
+                </fieldset>
+
                 <div class="resumo-acoes">
                     <p id="contadorResultados" class="contador-resultados">
                         Carregando...
@@ -127,7 +128,7 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script src="script.js?v=20260716-performance"></script>
+    <script src="script.js?v=20260822-sem-aviso"></script>
 
 </body>
 

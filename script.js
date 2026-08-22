@@ -8,14 +8,13 @@ const busca = document.getElementById("busca");
 const resultados = document.getElementById("resultados");
 const filtroCategoria = document.getElementById("filtroCategoria");
 const grupoFiltro = document.querySelector(".grupo-filtro");
+const grupoFiltroSistema = document.getElementById("grupoFiltroSistema");
+const filtrosSistema = document.querySelectorAll('input[name="filtroSistema"]');
 const limparBusca = document.getElementById("limparBusca");
 const contadorResultados = document.getElementById("contadorResultados");
 const modoCompacto = document.getElementById("modoCompacto");
 const toast = document.getElementById("toast");
-const avisoAtualizacao = document.getElementById("avisoAtualizacao");
-const marcarAvisoLido = document.getElementById("marcarAvisoLido");
 
-const chaveAvisoConvenios = "avisoConveniosCorrigidosLido";
 const cacheCsv = {};
 
 const arquivos = {
@@ -34,7 +33,6 @@ const colunasConvenios = {
 };
 
 inicializarPreferencias();
-inicializarAvisoAtualizacao();
 carregarDados("analise");
 
 function normalizar(texto) {
@@ -357,29 +355,6 @@ async function carregarDados(tipo) {
 
 }
 
-function obterBadgeSistema(sistema) {
-
-    const sistemaNormalizado = normalizar(sistema).toUpperCase();
-
-    if (
-        sistemaNormalizado.includes("SAJ") &&
-        sistemaNormalizado.includes("PJE")
-    ) {
-
-        return `<span class="badge badge-ambos">SAJ e PJe</span>`;
-
-    }
-
-    if (sistemaNormalizado.includes("PJE")) {
-
-        return `<span class="badge badge-pje">PJe</span>`;
-
-    }
-
-    return `<span class="badge badge-saj">SAJ</span>`;
-
-}
-
 function mostrarResultados(lista) {
 
     resultados.innerHTML = "";
@@ -415,8 +390,6 @@ function mostrarResultados(lista) {
             htmlCards.push(`
                 <div class="card${classeFavorito}">
                     <h2>${destacarTexto(item[1])}</h2>
-
-                    ${obterBadgeSistema(item[5] || "")}
 
                     <p class="codigo">
                         Código: ${destacarTexto(item[0])}
@@ -577,6 +550,11 @@ function obterIndiceCategoria() {
 
 function atualizarFiltroCategorias() {
 
+    const ehAbaModelos =
+        abaAtual === "analise" || abaAtual === "possentenca";
+
+    grupoFiltroSistema.hidden = !ehAbaModelos;
+
     if (
         abaAtual !== "analise" &&
         abaAtual !== "possentenca" &&
@@ -647,6 +625,9 @@ function pesquisar() {
 
     const termo = busca.value.trim();
     const categoriaSelecionada = filtroCategoria.value;
+    const filtroSistemaSelecionado = document.querySelector(
+        'input[name="filtroSistema"]:checked'
+    )?.value || "";
 
     palavrasPesquisaAtual = obterPalavrasPesquisa(termo);
 
@@ -664,6 +645,19 @@ function pesquisar() {
         lista = lista.filter(item =>
             normalizar(item[indiceCategoria]) ===
             normalizar(categoriaSelecionada)
+        );
+
+    }
+
+    if (
+        filtroSistemaSelecionado &&
+        (abaAtual === "analise" || abaAtual === "possentenca")
+    ) {
+
+        lista = lista.filter(item =>
+            normalizar(item[5]).includes(
+                normalizar(filtroSistemaSelecionado)
+            )
         );
 
     }
@@ -695,6 +689,7 @@ function limparPesquisa() {
 
     busca.value = "";
     filtroCategoria.value = "";
+    document.getElementById("sistemaTodos").checked = true;
     palavrasPesquisaAtual = [];
     pesquisar();
     busca.focus();
@@ -812,6 +807,7 @@ function trocarAba(tipo, elemento) {
 
     busca.value = "";
     filtroCategoria.value = "";
+    document.getElementById("sistemaTodos").checked = true;
     palavrasPesquisaAtual = [];
 
     if (tipo === "favoritos") {
@@ -835,29 +831,6 @@ function inicializarPreferencias() {
 
 }
 
-function inicializarAvisoAtualizacao() {
-
-    if (!avisoAtualizacao || !marcarAvisoLido) {
-
-        return;
-
-    }
-
-    const avisoLido =
-        localStorage.getItem(chaveAvisoConvenios) === "true";
-
-    avisoAtualizacao.hidden = avisoLido;
-
-}
-
-function marcarAtualizacaoComoLida() {
-
-    localStorage.setItem(chaveAvisoConvenios, "true");
-    avisoAtualizacao.hidden = true;
-    mostrarToast("Aviso marcado como lido");
-
-}
-
 function alternarModoCompacto() {
 
     const ativo = !document.body.classList.contains("compacto");
@@ -871,14 +844,11 @@ function alternarModoCompacto() {
 
 busca.addEventListener("input", pesquisar);
 filtroCategoria.addEventListener("change", pesquisar);
+filtrosSistema.forEach(filtro =>
+    filtro.addEventListener("change", pesquisar)
+);
 limparBusca.addEventListener("click", limparPesquisa);
 modoCompacto.addEventListener("click", alternarModoCompacto);
-
-if (marcarAvisoLido) {
-
-    marcarAvisoLido.addEventListener("click", marcarAtualizacaoComoLida);
-
-}
 
 resultados.addEventListener("click", evento => {
 
