@@ -119,3 +119,4 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 4919;Envio de Conflito de Competência - Varas;Ofício;Magistrado;conflito, competencia, oficio, suscitar, varas;Apenas PJE
 6053;Envio de Conflito de Competência - PGJ;Ofício;Magistrado;conflito, competencia, oficio, suscitar, ministerio publico, pgj;Apenas PJE
 6055;Redistribuição de Autos - Outros Sistemas;Ofício;Magistrado;redistribuição, sistemas, diversos;Apenas PJE
+6071;Certidão de Intimação - Processo Migrado;Certidão;Servidor;certidão, intimação, processo, migrado;Apenas PJE
