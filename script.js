@@ -21,6 +21,19 @@ const voltarTopo = document.getElementById("voltarTopo");
 const cacheCsv = {};
 const novosModelos = new Set();
 const duracaoSeloNovo = 14 * 24 * 60 * 60 * 1000;
+const modelosNovosCentral = {
+    "4919": "2026-08-27T09:04:16-03:00",
+    "6047": "2026-08-27T09:04:16-03:00",
+    "6049": "2026-08-27T09:04:16-03:00",
+    "6051": "2026-08-27T09:04:16-03:00",
+    "6053": "2026-08-27T09:04:16-03:00",
+    "6055": "2026-08-27T09:04:16-03:00",
+    "6057": "2026-08-27T09:04:16-03:00",
+    "6059": "2026-08-27T09:04:16-03:00",
+    "6061": "2026-08-27T09:04:16-03:00",
+    "6063": "2026-08-27T09:04:16-03:00",
+    "6071": "2026-08-27T09:04:16-03:00"
+};
 
 const arquivos = {
     analise: "modelos-analise.csv",
@@ -227,7 +240,7 @@ function agendarExpiracaoSeloNovo(codigo, dataInclusao, chaveDatas) {
 
         novosModelos.delete(codigo);
 
-        try {
+        if (chaveDatas) try {
 
             const datasNovos =
                 JSON.parse(localStorage.getItem(chaveDatas)) || {};
@@ -306,6 +319,23 @@ function registrarNovosModelos(arquivo, registros) {
     const chaveConhecidos = `modelosConhecidos:${arquivo}`;
     const chaveDatas = `modelosNovosDatas:${arquivo}`;
     const codigosAtuais = registros.map(item => item[0]).filter(Boolean);
+    const codigosAtuaisSet = new Set(codigosAtuais);
+
+    Object.entries(modelosNovosCentral).forEach(([codigo, dataInclusao]) => {
+
+        const data = new Date(dataInclusao).getTime();
+
+        if (
+            codigosAtuaisSet.has(codigo) &&
+            Date.now() - data <= duracaoSeloNovo
+        ) {
+
+            novosModelos.add(codigo);
+            agendarExpiracaoSeloNovo(codigo, data, null);
+
+        }
+
+    });
 
     let conhecidos = [];
     let datasNovos = {};
