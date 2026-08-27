@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central de Consultas</title>
 
-    <link rel="stylesheet" href="style.css?v=20260822-sem-aviso">
+    <link rel="stylesheet" href="style.css?v=20260827-favoritos-novos">
 </head>
 
 <body>
@@ -107,6 +107,21 @@
                     </div>
                 </fieldset>
 
+                <fieldset id="grupoFiltroFavoritos" class="grupo-filtro-sistema" hidden>
+                    <legend>Tipo de favorito</legend>
+
+                    <div class="controle-segmentado controle-favoritos">
+                        <input type="radio" name="filtroFavoritos" id="favoritosTodos" value="" checked>
+                        <label for="favoritosTodos">Todos</label>
+
+                        <input type="radio" name="filtroFavoritos" id="favoritosModelos" value="modelo">
+                        <label for="favoritosModelos">Modelos</label>
+
+                        <input type="radio" name="filtroFavoritos" id="favoritosConvenios" value="convenio">
+                        <label for="favoritosConvenios">Convênios</label>
+                    </div>
+                </fieldset>
+
                 <div class="resumo-acoes">
                     <p id="contadorResultados" class="contador-resultados">
                         Carregando...
@@ -126,9 +141,18 @@
         <div id="resultados"></div>
     </main>
 
+    <button
+        type="button"
+        id="voltarTopo"
+        class="voltar-topo"
+        aria-label="Voltar ao topo"
+        title="Voltar ao topo">
+        &#8593;
+    </button>
+
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script src="script.js?v=20260822-sem-aviso"></script>
+    <script src="script.js?v=20260827-novos-14-dias"></script>
 
 </body>
 

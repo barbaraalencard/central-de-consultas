@@ -10,12 +10,17 @@ const filtroCategoria = document.getElementById("filtroCategoria");
 const grupoFiltro = document.querySelector(".grupo-filtro");
 const grupoFiltroSistema = document.getElementById("grupoFiltroSistema");
 const filtrosSistema = document.querySelectorAll('input[name="filtroSistema"]');
+const grupoFiltroFavoritos = document.getElementById("grupoFiltroFavoritos");
+const filtrosFavoritos = document.querySelectorAll('input[name="filtroFavoritos"]');
 const limparBusca = document.getElementById("limparBusca");
 const contadorResultados = document.getElementById("contadorResultados");
 const modoCompacto = document.getElementById("modoCompacto");
 const toast = document.getElementById("toast");
+const voltarTopo = document.getElementById("voltarTopo");
 
 const cacheCsv = {};
+const novosModelos = new Set();
+const duracaoSeloNovo = 14 * 24 * 60 * 60 * 1000;
 
 const arquivos = {
     analise: "modelos-analise.csv",
@@ -186,9 +191,76 @@ function salvarFavoritos(favoritos) {
 
 }
 
-function alternarFavorito(codigo) {
+function obterFavoritosConvenios() {
 
-    let favoritos = obterFavoritos();
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("favoritosConvenios")
+        ) || [];
+
+    } catch (erro) {
+
+        return [];
+
+    }
+
+}
+
+function salvarFavoritosConvenios(favoritos) {
+
+    localStorage.setItem(
+        "favoritosConvenios",
+        JSON.stringify(favoritos)
+    );
+
+}
+
+function agendarExpiracaoSeloNovo(codigo, dataInclusao, chaveDatas) {
+
+    const tempoRestante =
+        duracaoSeloNovo - (Date.now() - Number(dataInclusao));
+
+    if (tempoRestante <= 0) return;
+
+    window.setTimeout(() => {
+
+        novosModelos.delete(codigo);
+
+        try {
+
+            const datasNovos =
+                JSON.parse(localStorage.getItem(chaveDatas)) || {};
+
+            delete datasNovos[codigo];
+            localStorage.setItem(chaveDatas, JSON.stringify(datasNovos));
+
+        } catch (erro) {
+
+            localStorage.setItem(chaveDatas, JSON.stringify({}));
+
+        }
+
+        if (
+            abaAtual === "analise" ||
+            abaAtual === "possentenca" ||
+            abaAtual === "favoritos"
+        ) {
+
+            pesquisar();
+
+        }
+
+    }, tempoRestante + 100);
+
+}
+
+function alternarFavorito(codigo, tipo = "modelo") {
+
+    const ehConvenio = tipo === "convenio";
+    let favoritos = ehConvenio
+        ? obterFavoritosConvenios()
+        : obterFavoritos();
     const jaExiste = favoritos.includes(codigo);
 
     if (jaExiste) {
@@ -206,8 +278,90 @@ function alternarFavorito(codigo) {
 
     }
 
-    salvarFavoritos(favoritos);
+    if (ehConvenio) {
+
+        salvarFavoritosConvenios(favoritos);
+
+    } else {
+
+        salvarFavoritos(favoritos);
+
+    }
+
+    if (abaAtual === "favoritos") {
+
+        carregarFavoritos();
+        return;
+
+    }
+
     pesquisar();
+
+}
+
+function registrarNovosModelos(arquivo, registros) {
+
+    if (!arquivo.startsWith("modelos-")) return;
+
+    const chaveConhecidos = `modelosConhecidos:${arquivo}`;
+    const chaveDatas = `modelosNovosDatas:${arquivo}`;
+    const codigosAtuais = registros.map(item => item[0]).filter(Boolean);
+
+    let conhecidos = [];
+    let datasNovos = {};
+
+    try {
+
+        conhecidos = JSON.parse(localStorage.getItem(chaveConhecidos)) || [];
+        datasNovos = JSON.parse(localStorage.getItem(chaveDatas)) || {};
+
+    } catch (erro) {
+
+        conhecidos = [];
+        datasNovos = {};
+
+    }
+
+    if (conhecidos.length === 0) {
+
+        localStorage.setItem(chaveConhecidos, JSON.stringify(codigosAtuais));
+        localStorage.setItem(chaveDatas, JSON.stringify({}));
+        return;
+
+    }
+
+    const agora = Date.now();
+    const conhecidosSet = new Set(conhecidos);
+
+    codigosAtuais.forEach(codigo => {
+
+        if (!conhecidosSet.has(codigo)) {
+
+            datasNovos[codigo] = agora;
+            conhecidosSet.add(codigo);
+
+        }
+
+    });
+
+    Object.entries(datasNovos).forEach(([codigo, data]) => {
+
+        if (agora - Number(data) <= duracaoSeloNovo) {
+
+            novosModelos.add(codigo);
+            agendarExpiracaoSeloNovo(codigo, data, chaveDatas);
+
+        } else {
+
+            novosModelos.delete(codigo);
+            delete datasNovos[codigo];
+
+        }
+
+    });
+
+    localStorage.setItem(chaveConhecidos, JSON.stringify([...conhecidosSet]));
+    localStorage.setItem(chaveDatas, JSON.stringify(datasNovos));
 
 }
 
@@ -307,6 +461,7 @@ async function carregarCsv(arquivo) {
     const registros = lerCsv(texto);
 
     registros.shift();
+    registrarNovosModelos(arquivo, registros);
     cacheCsv[arquivo] = registros;
 
     return registros.map(item => [...item]);
@@ -374,13 +529,17 @@ function mostrarResultados(lista) {
 
     const htmlCards = [];
     const favoritos = obterFavoritos();
+    const favoritosConvenios = obterFavoritosConvenios();
 
     lista.forEach(item => {
+
+        const tipoItem = item.tipoFavorito ||
+            (abaAtual === "convenios" ? "convenio" : "modelo");
 
         if (
             abaAtual === "analise" ||
             abaAtual === "possentenca" ||
-            abaAtual === "favoritos"
+            (abaAtual === "favoritos" && tipoItem === "modelo")
         ) {
 
             const ehFavorito = favoritos.includes(item[0]);
@@ -389,7 +548,10 @@ function mostrarResultados(lista) {
 
             htmlCards.push(`
                 <div class="card${classeFavorito}">
-                    <h2>${destacarTexto(item[1])}</h2>
+                    <div class="titulo-card">
+                        <h2>${destacarTexto(item[1])}</h2>
+                        ${novosModelos.has(item[0]) ? `<span class="selo-novo">Novo</span>` : ""}
+                    </div>
 
                     <p class="codigo">
                         Código: ${destacarTexto(item[0])}
@@ -407,7 +569,8 @@ function mostrarResultados(lista) {
                         <button
                             type="button"
                             class="favorito${ehFavorito ? " ativo" : ""}"
-                            data-favorito="${escaparAtributo(item[0])}">
+                            data-favorito="${escaparAtributo(item[0])}"
+                            data-tipo-favorito="modelo">
                             ${textoFavorito}
                         </button>
 
@@ -451,10 +614,18 @@ function mostrarResultados(lista) {
                 </div>
             `);
 
-        } else if (abaAtual === "convenios") {
+        } else if (
+            abaAtual === "convenios" ||
+            (abaAtual === "favoritos" && tipoItem === "convenio")
+        ) {
+
+            const codigoConvenio = item[colunasConvenios.codigo];
+            const ehFavorito = favoritosConvenios.includes(codigoConvenio);
+            const classeFavorito = ehFavorito ? " card-favorito" : "";
+            const textoFavorito = ehFavorito ? "★ Favorito" : "☆ Favoritar";
 
             htmlCards.push(`
-                <div class="card">
+                <div class="card${classeFavorito}">
                     <h2>${destacarTexto(item[colunasConvenios.nome])}</h2>
 
                     ${
@@ -476,6 +647,14 @@ function mostrarResultados(lista) {
                     </p>
 
                     <div class="botoes-convenio">
+                        <button
+                            type="button"
+                            class="favorito${ehFavorito ? " ativo" : ""}"
+                            data-favorito="${escaparAtributo(codigoConvenio)}"
+                            data-tipo-favorito="convenio">
+                            ${textoFavorito}
+                        </button>
+
                         <button
                             type="button"
                             class="copiar"
@@ -512,7 +691,13 @@ function obterMensagemVazia() {
 
     if (abaAtual === "favoritos") {
 
-        return "Nenhum modelo favorito ainda.";
+        const tipo = document.querySelector(
+            'input[name="filtroFavoritos"]:checked'
+        )?.value;
+
+        if (tipo === "modelo") return "Nenhum modelo favorito ainda.";
+        if (tipo === "convenio") return "Nenhum convênio favorito ainda.";
+        return "Nenhum favorito ainda.";
 
     }
 
@@ -554,6 +739,7 @@ function atualizarFiltroCategorias() {
         abaAtual === "analise" || abaAtual === "possentenca";
 
     grupoFiltroSistema.hidden = !ehAbaModelos;
+    grupoFiltroFavoritos.hidden = abaAtual !== "favoritos";
 
     if (
         abaAtual !== "analise" &&
@@ -628,6 +814,9 @@ function pesquisar() {
     const filtroSistemaSelecionado = document.querySelector(
         'input[name="filtroSistema"]:checked'
     )?.value || "";
+    const filtroFavoritosSelecionado = document.querySelector(
+        'input[name="filtroFavoritos"]:checked'
+    )?.value || "";
 
     palavrasPesquisaAtual = obterPalavrasPesquisa(termo);
 
@@ -662,6 +851,14 @@ function pesquisar() {
 
     }
 
+    if (filtroFavoritosSelecionado && abaAtual === "favoritos") {
+
+        lista = lista.filter(item =>
+            item.tipoFavorito === filtroFavoritosSelecionado
+        );
+
+    }
+
     if (palavrasPesquisaAtual.length === 0) {
 
         mostrarResultados(lista);
@@ -690,6 +887,7 @@ function limparPesquisa() {
     busca.value = "";
     filtroCategoria.value = "";
     document.getElementById("sistemaTodos").checked = true;
+    document.getElementById("favoritosTodos").checked = true;
     palavrasPesquisaAtual = [];
     pesquisar();
     busca.focus();
@@ -746,6 +944,7 @@ async function carregarFavoritos() {
     atualizarContador(0, true);
 
     const favoritos = obterFavoritos();
+    const favoritosConvenios = obterFavoritosConvenios();
     const arquivosModelos = [
         "modelos-analise.csv",
         "modelos-pos-sentenca.csv"
@@ -758,13 +957,23 @@ async function carregarFavoritos() {
         for (const arquivo of arquivosModelos) {
 
             const modelos = await carregarCsv(arquivo);
+            modelos.forEach(item => item.tipoFavorito = "modelo");
             todosModelos.push(...modelos);
 
         }
 
-        dados = todosModelos.filter(item =>
+        const modelosFavoritos = todosModelos.filter(item =>
             favoritos.includes(item[0])
         );
+
+        const convenios = await carregarCsv(arquivos.convenios);
+        convenios.forEach(item => item.tipoFavorito = "convenio");
+
+        const conveniosFavoritos = convenios.filter(item =>
+            favoritosConvenios.includes(item[colunasConvenios.codigo])
+        );
+
+        dados = [...modelosFavoritos, ...conveniosFavoritos];
 
         if (carregamento !== carregamentoAtual) {
 
@@ -808,6 +1017,7 @@ function trocarAba(tipo, elemento) {
     busca.value = "";
     filtroCategoria.value = "";
     document.getElementById("sistemaTodos").checked = true;
+    document.getElementById("favoritosTodos").checked = true;
     palavrasPesquisaAtual = [];
 
     if (tipo === "favoritos") {
@@ -847,8 +1057,23 @@ filtroCategoria.addEventListener("change", pesquisar);
 filtrosSistema.forEach(filtro =>
     filtro.addEventListener("change", pesquisar)
 );
+filtrosFavoritos.forEach(filtro =>
+    filtro.addEventListener("change", pesquisar)
+);
 limparBusca.addEventListener("click", limparPesquisa);
 modoCompacto.addEventListener("click", alternarModoCompacto);
+
+window.addEventListener("scroll", () => {
+
+    voltarTopo.classList.toggle("visivel", window.scrollY > 500);
+
+}, { passive: true });
+
+voltarTopo.addEventListener("click", () => {
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+});
 
 resultados.addEventListener("click", evento => {
 
@@ -866,7 +1091,8 @@ resultados.addEventListener("click", evento => {
     if (botaoFavorito) {
 
         alternarFavorito(
-            botaoFavorito.dataset.favorito
+            botaoFavorito.dataset.favorito,
+            botaoFavorito.dataset.tipoFavorito
         );
 
     }

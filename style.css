@@ -149,6 +149,10 @@ header p{
     box-shadow:0 3px 8px rgba(0,0,0,.08);
 }
 
+.controle-favoritos{
+    grid-template-columns:repeat(3, minmax(90px, 1fr));
+}
+
 .controle-segmentado input{
     position:absolute;
     opacity:0;
@@ -309,6 +313,29 @@ header p{
     line-height:1.25;
 }
 
+.titulo-card{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.titulo-card h2{
+    flex:1 1 360px;
+}
+
+.selo-novo{
+    display:inline-flex;
+    align-items:center;
+    min-height:28px;
+    padding:5px 10px;
+    border-radius:8px;
+    background:#dff4e4;
+    color:#17652a;
+    font-size:.82rem;
+    font-weight:700;
+}
+
 .card p{
     margin-bottom:10px;
     line-height:1.5;
@@ -365,6 +392,41 @@ mark{
 .toast.visivel{
     opacity:1;
     transform:translateY(0);
+}
+
+body:has(.voltar-topo.visivel) .toast{
+    bottom:82px;
+}
+
+.voltar-topo{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:9;
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:50%;
+    background:#003f88;
+    color:#ffffff;
+    font-size:1.5rem;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,.22);
+    opacity:0;
+    transform:translateY(12px);
+    pointer-events:none;
+    transition:.2s;
+}
+
+.voltar-topo.visivel{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+.voltar-topo:hover{
+    background:#0056b3;
 }
 
 body.compacto header{
@@ -468,6 +530,15 @@ body.compacto .botao-email{
         right:16px;
         bottom:16px;
         text-align:center;
+    }
+
+    body:has(.voltar-topo.visivel) .toast{
+        bottom:76px;
+    }
+
+    .voltar-topo{
+        right:16px;
+        bottom:16px;
     }
 
 }
