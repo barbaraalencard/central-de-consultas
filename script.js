@@ -580,7 +580,7 @@ function mostrarResultados(lista) {
                 <div class="card${classeFavorito}">
                     <div class="titulo-card">
                         <h2>${destacarTexto(item[1])}</h2>
-                        ${novosModelos.has(item[0]) ? `<span class="selo-novo">Novo</span>` : ""}
+                        ${novosModelos.has(item[0]) ? `<span class="selo-novo"><span aria-hidden="true">★</span> Novo modelo</span>` : ""}
                     </div>
 
                     <p class="codigo">
