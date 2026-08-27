@@ -111,11 +111,16 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 5120;Mandado de INTIMAÇÃO do RÉU da DECISÃO DESCLASSIFICATÓRIA (Réu Solto);Mandado;Servidor;desclassificatória;SAJ e PJe
 991;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO (Réu Solto);Mandado;Magistrado;novo advogado solto;Apenas SAJ
 1875;Mandado de INTIMAÇÃO do ACUSADO para CONSTITUIR NOVO ADVOGADO - URGENTE (Réu Preso);Mandado;Magistrado;novo advogado preso;SAJ e PJe
-500853;Certidão de Decurso de Prazo;Certidão;Servidor;decurso de prazo, certidão de prazo, término de prazo, sem manifestação, certificar decurso;Apenas SAJ
-501843;Certidão de Atualização de Histórico de Partes;Certidão;Servidor;atualização de histórico, histórico de partes, certidão de atualização, atualização cadastral, histórico processual, certificar atualização;Apenas SAJ
-3027;Atualização de cadastro de partes e representantes;Certidão;Servidor;atualização cadastral, cadastro de partes, cadastro de representantes, alteração de dados, atualização de partes, procurador, advogado, representante processual;Apenas SAJ
-5534;Mudança de Competência BNMP;Certidão;Servidor;BNMP, mudança de competência, alteração de competência, redistribuição BNMP, transferência de competência, Banco Nacional de Medidas Penais, competência processual;Apenas SAJ
+500853;Certidão - Decurso de Prazo;Certidão;Servidor;decurso de prazo, certidão de prazo, término de prazo, sem manifestação, certificar decurso;Apenas SAJ
+501843;Certidão - Atualização de Histórico de Partes;Certidão;Servidor;atualização de histórico, histórico de partes, certidão de atualização, atualização cadastral, histórico processual, certificar atualização;Apenas SAJ
+3027;Certidão - Atualização de cadastro de partes e representantes;Certidão;Servidor;atualização cadastral, cadastro de partes, cadastro de representantes, alteração de dados, atualização de partes, procurador, advogado, representante processual;Apenas SAJ
+5534;Certidão - Mudança de Competência BNMP;Certidão;Servidor;BNMP, mudança de competência, alteração de competência, redistribuição BNMP, transferência de competência, Banco Nacional de Medidas Penais, competência processual;Apenas SAJ
 986;MANDADO DE INTIMAÇÃO – ACUSADO PARA CONSTITUIR NOVO ADVOGADO (Réu Solto);Mandado;Servidor;novo advogado solto;Apenas SAJ
 4919;Envio de Conflito de Competência - Varas;Ofício;Magistrado;conflito, competencia, oficio, suscitar, varas;Apenas PJE
 6053;Envio de Conflito de Competência - PGJ;Ofício;Magistrado;conflito, competencia, oficio, suscitar, ministerio publico, pgj;Apenas PJE
 6055;Redistribuição de Autos - Outros Sistemas;Ofício;Magistrado;redistribuição, sistemas, diversos;Apenas PJE
+6071;Certidão - Intimação - Processo Migrado;Certidão;Servidor;certidão, intimação, processo, migrado;Apenas PJE
+6057;Certidão - Desmembramento - Para ser utilizada no processo antigo;Certidão;Servidor;certidão, desmembramento, antigo;Apenas PJE
+6059;Certidão - Desmembramento - Para ser utilizada no processo novo;Certidão;Servidor;certidão, desmembramento, novo;Apenas PJE
+6061;Certidão - Movimentação de Suspensão - Impossibilidade;Certidão;Servidor;certidão, suspensão, impossibilidade ;Apenas PJE
+6063;Certidão - Atualização de Eventos Criminais;Certidão;Servidor;certidão, atualização, eventos, criminais;Apenas PJE
