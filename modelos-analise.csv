@@ -103,8 +103,8 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 3624;JÚRI - Mandado de INTIMAÇÃO de ACUSADO para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri acusado audiência urgente;SAJ e PJe
 3266;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA (Réu Solto);Mandado;Magistrado;júri vítima audiência;Apenas SAJ
 3274;JÚRI - Mandado de NOTIFICAÇÃO da VÍTIMA para AUDIÊNCIA - URGENTE (Réu Preso);Mandado;Magistrado;júri vítima audiência urgente;SAJ e PJe
-501128;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;email ofício;Apenas SAJ
-3912;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;malote digital;Apenas SAJ
+501128;[E-MAIL] - Ofício Genérico;OFÍCIO;Servidor;email ofício;SAJ e PJe
+3912;[MALOTE DIGITAL] - Ofício Genérico;OFÍCIO;Servidor;malote digital;SAJ e PJe
 1010;Mandado de Intimação Genérico (Réu Solto);Mandado;Servidor;intimação genérica;Apenas SAJ
 1012;JÚRI - Mandado de INTIMAÇÃO - Genérico (Réu Solto);Mandado;Magistrado;júri intimação genérica;Apenas SAJ
 1877;JÚRI - Mandado de INTIMAÇÃO - Genérico – URGENTE (Réu Preso);Mandado;Magistrado;júri intimação genérica urgente;SAJ e PJe
