@@ -124,3 +124,5 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6059;Certidão - Desmembramento - Para ser utilizada no processo novo;Certidão;Servidor;certidão, desmembramento, novo;Apenas PJE
 6061;Certidão - Movimentação de Suspensão - Impossibilidade;Certidão;Servidor;certidão, suspensão, impossibilidade ;Apenas PJE
 6063;Certidão - Atualização de Eventos Criminais;Certidão;Servidor;certidão, atualização, eventos, criminais;Apenas PJE
+6065;Certidão - Suspensão dos autos - 90 dias - Prazo Genérico;Certidão;Servidor;certidão, suspensão, prazo, genérico, 90 dias;Apenas PJE
+6067;Certidão - Aguardar realização de audiência;Certidão;Servidor;certidão, aguardar, audiência, inexiste, fila;Apenas PJE
