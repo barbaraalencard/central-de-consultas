@@ -39,7 +39,8 @@ const arquivos = {
     analise: "modelos-analise.csv",
     possentenca: "modelos-pos-sentenca.csv",
     contatos: "contatos.csv",
-    convenios: "convenios.csv"
+    convenios: "convenios.csv",
+    links: "links.csv"
 };
 
 const colunasConvenios = {
@@ -48,6 +49,13 @@ const colunasConvenios = {
     cnpj: 2,
     codigo: 3,
     categoria: 4
+};
+
+const colunasLinks = {
+    nome: 0,
+    url: 1,
+    categoria: 2,
+    palavrasChave: 3
 };
 
 inicializarPreferencias();
@@ -229,6 +237,31 @@ function salvarFavoritosConvenios(favoritos) {
 
 }
 
+function obterFavoritosLinks() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("favoritosLinks")
+        ) || [];
+
+    } catch (erro) {
+
+        return [];
+
+    }
+
+}
+
+function salvarFavoritosLinks(favoritos) {
+
+    localStorage.setItem(
+        "favoritosLinks",
+        JSON.stringify(favoritos)
+    );
+
+}
+
 function agendarExpiracaoSeloNovo(codigo, dataInclusao, chaveDatas) {
 
     const tempoRestante =
@@ -271,9 +304,12 @@ function agendarExpiracaoSeloNovo(codigo, dataInclusao, chaveDatas) {
 function alternarFavorito(codigo, tipo = "modelo") {
 
     const ehConvenio = tipo === "convenio";
+    const ehLink = tipo === "link";
     let favoritos = ehConvenio
         ? obterFavoritosConvenios()
-        : obterFavoritos();
+        : ehLink
+            ? obterFavoritosLinks()
+            : obterFavoritos();
     const jaExiste = favoritos.includes(codigo);
 
     if (jaExiste) {
@@ -294,6 +330,10 @@ function alternarFavorito(codigo, tipo = "modelo") {
     if (ehConvenio) {
 
         salvarFavoritosConvenios(favoritos);
+
+    } else if (ehLink) {
+
+        salvarFavoritosLinks(favoritos);
 
     } else {
 
@@ -487,7 +527,17 @@ async function carregarCsv(arquivo) {
     }
 
     const buffer = await resposta.arrayBuffer();
-    const texto = new TextDecoder("windows-1252").decode(buffer);
+    let texto;
+
+    try {
+
+        texto = new TextDecoder("utf-8", { fatal: true }).decode(buffer);
+
+    } catch (erro) {
+
+        texto = new TextDecoder("windows-1252").decode(buffer);
+
+    }
     const registros = lerCsv(texto);
 
     registros.shift();
@@ -560,11 +610,16 @@ function mostrarResultados(lista) {
     const htmlCards = [];
     const favoritos = obterFavoritos();
     const favoritosConvenios = obterFavoritosConvenios();
+    const favoritosLinks = obterFavoritosLinks();
 
     lista.forEach(item => {
 
         const tipoItem = item.tipoFavorito ||
-            (abaAtual === "convenios" ? "convenio" : "modelo");
+            (abaAtual === "convenios"
+                ? "convenio"
+                : abaAtual === "links"
+                    ? "link"
+                    : "modelo");
 
         if (
             abaAtual === "analise" ||
@@ -709,6 +764,62 @@ function mostrarResultados(lista) {
                 </div>
             `);
 
+        } else if (
+            abaAtual === "links" ||
+            (abaAtual === "favoritos" && tipoItem === "link")
+        ) {
+
+            const url = item[colunasLinks.url];
+            const urlSegura = /^https?:\/\//i.test(url) ? url : "";
+            const ehFavorito = favoritosLinks.includes(url);
+            const classeFavorito = ehFavorito ? " card-favorito" : "";
+            const textoFavorito = ehFavorito ? "★ Favorito" : "☆ Favoritar";
+            let enderecoExibido = url;
+
+            try {
+
+                enderecoExibido = new URL(url).host;
+
+            } catch (erro) {
+
+                enderecoExibido = "Endereço indisponível";
+
+            }
+
+            htmlCards.push(`
+                <div class="card card-link${classeFavorito}">
+                    <h2>${destacarTexto(item[colunasLinks.nome])}</h2>
+
+                    <p>
+                        Categoria: ${destacarTexto(item[colunasLinks.categoria])}
+                    </p>
+
+                    <p class="endereco-link">
+                        ${destacarTexto(enderecoExibido)}
+                    </p>
+
+                    <div class="acoes-modelo">
+                        <button
+                            type="button"
+                            class="favorito${ehFavorito ? " ativo" : ""}"
+                            data-favorito="${escaparAtributo(url)}"
+                            data-tipo-favorito="link">
+                            ${textoFavorito}
+                        </button>
+
+                        ${urlSegura ? `
+                            <a
+                                class="abrir-link"
+                                href="${escaparAtributo(urlSegura)}"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                Abrir acesso &#8599;
+                            </a>
+                        ` : ""}
+                    </div>
+                </div>
+            `);
+
         }
 
     });
@@ -727,6 +838,7 @@ function obterMensagemVazia() {
 
         if (tipo === "modelo") return "Nenhum modelo favorito ainda.";
         if (tipo === "convenio") return "Nenhum convênio favorito ainda.";
+        if (tipo === "link") return "Nenhum link favorito ainda.";
         return "Nenhum favorito ainda.";
 
     }
@@ -759,6 +871,12 @@ function obterIndiceCategoria() {
 
     }
 
+    if (abaAtual === "links") {
+
+        return colunasLinks.categoria;
+
+    }
+
     return 2;
 
 }
@@ -774,7 +892,8 @@ function atualizarFiltroCategorias() {
     if (
         abaAtual !== "analise" &&
         abaAtual !== "possentenca" &&
-        abaAtual !== "convenios"
+        abaAtual !== "convenios" &&
+        abaAtual !== "links"
     ) {
 
         grupoFiltro.style.display = "none";
@@ -856,7 +975,8 @@ function pesquisar() {
         categoriaSelecionada &&
         (abaAtual === "analise" ||
          abaAtual === "possentenca" ||
-         abaAtual === "convenios")
+         abaAtual === "convenios" ||
+         abaAtual === "links")
     ) {
 
         const indiceCategoria = obterIndiceCategoria();
@@ -975,6 +1095,7 @@ async function carregarFavoritos() {
 
     const favoritos = obterFavoritos();
     const favoritosConvenios = obterFavoritosConvenios();
+    const favoritosLinks = obterFavoritosLinks();
     const arquivosModelos = [
         "modelos-analise.csv",
         "modelos-pos-sentenca.csv"
@@ -1003,7 +1124,18 @@ async function carregarFavoritos() {
             favoritosConvenios.includes(item[colunasConvenios.codigo])
         );
 
-        dados = [...modelosFavoritos, ...conveniosFavoritos];
+        const links = await carregarCsv(arquivos.links);
+        links.forEach(item => item.tipoFavorito = "link");
+
+        const linksFavoritos = links.filter(item =>
+            favoritosLinks.includes(item[colunasLinks.url])
+        );
+
+        dados = [
+            ...modelosFavoritos,
+            ...conveniosFavoritos,
+            ...linksFavoritos
+        ];
 
         if (carregamento !== carregamentoAtual) {
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Central de Consultas</title>
 
-    <link rel="stylesheet" href="style.css?v=20260827-selo-destaque">
+    <link rel="stylesheet" href="style.css?v=20260903-links-rapidos">
 </head>
 
 <body>
@@ -59,6 +59,13 @@
             class="aba"
             onclick="trocarAba('convenios', this)">
             &#127970; Convênios
+        </button>
+
+        <button
+            type="button"
+            class="aba"
+            onclick="trocarAba('links', this)">
+            &#128279; Links rápidos
         </button>
     </div>
 
@@ -119,6 +126,9 @@
 
                         <input type="radio" name="filtroFavoritos" id="favoritosConvenios" value="convenio">
                         <label for="favoritosConvenios">Convênios</label>
+
+                        <input type="radio" name="filtroFavoritos" id="favoritosLinks" value="link">
+                        <label for="favoritosLinks">Links</label>
                     </div>
                 </fieldset>
 
@@ -152,7 +162,7 @@
 
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-    <script src="script.js?v=20260827-selo-destaque"></script>
+    <script src="script.js?v=20260903-links-rapidos"></script>
 
 </body>
 

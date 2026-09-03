@@ -150,7 +150,7 @@ header p{
 }
 
 .controle-favoritos{
-    grid-template-columns:repeat(3, minmax(90px, 1fr));
+    grid-template-columns:repeat(4, minmax(82px, 1fr));
 }
 
 .controle-segmentado input{
@@ -234,7 +234,8 @@ header p{
 .botao-secundario,
 .copiar,
 .favorito,
-.botao-email{
+.botao-email,
+.abrir-link{
     border:none;
     border-radius:10px;
     padding:12px 18px;
@@ -257,14 +258,23 @@ header p{
 }
 
 .copiar,
-.botao-email{
+.botao-email,
+.abrir-link{
     background:#0056b3;
     color:white;
 }
 
 .copiar:hover,
-.botao-email:hover{
+.botao-email:hover,
+.abrir-link:hover{
     background:#003f88;
+}
+
+.abrir-link{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
 }
 
 .favorito{
@@ -327,13 +337,39 @@ header p{
 .selo-novo{
     display:inline-flex;
     align-items:center;
-    min-height:28px;
-    padding:5px 10px;
+    justify-content:center;
+    gap:7px;
+    min-height:38px;
+    padding:8px 14px;
+    border:2px solid #c87800;
     border-radius:8px;
-    background:#dff4e4;
-    color:#17652a;
-    font-size:.82rem;
-    font-weight:700;
+    background:#fff2c7;
+    color:#633800;
+    font-size:1rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0;
+    box-shadow:0 3px 10px rgba(184,107,0,.24);
+    animation:destaque-novo 1.6s ease-in-out 3;
+}
+
+@keyframes destaque-novo{
+    0%, 100%{
+        transform:scale(1);
+        box-shadow:0 3px 10px rgba(184,107,0,.24);
+    }
+
+    50%{
+        transform:scale(1.06);
+        box-shadow:0 5px 16px rgba(184,107,0,.38);
+    }
+}
+
+@media (prefers-reduced-motion:reduce){
+
+    .selo-novo{
+        animation:none;
+    }
 }
 
 .card p{
@@ -352,6 +388,15 @@ header p{
     gap:10px;
     flex-wrap:wrap;
     margin-top:15px;
+}
+
+.card-link{
+    border-left:5px solid #1f7a55;
+}
+
+.endereco-link{
+    color:#526579;
+    font-size:.95rem;
 }
 
 .badge-antigo{
@@ -479,7 +524,8 @@ body.compacto .card p{
 
 body.compacto .copiar,
 body.compacto .favorito,
-body.compacto .botao-email{
+body.compacto .botao-email,
+body.compacto .abrir-link{
     margin-top:0;
     padding:9px 14px;
 }
@@ -521,7 +567,8 @@ body.compacto .botao-email{
 
     .copiar,
     .favorito,
-    .botao-email{
+    .botao-email,
+    .abrir-link{
         width:100%;
     }
 
