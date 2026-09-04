@@ -8,7 +8,7 @@ SIGEPEN;http://172.24.21.2:82/;Sistemas;sigepen sistema prisional
 Malote Digital;https://hermes.tjce.jus.br/malotedigital/login.jsf;Sistemas;malote digital hermes
 CANCUN;https://cancun.tjce.jus.br/cancun-web/pages/antecedentes/pesquisa_escolha.jsf;Sistemas;cancun antecedentes pesquisa
 SCN - Número de Ofícios;https://scn.tjce.jus.br/login;Sistemas;scn número ofícios login
-BNMP 3.0;bnmp.pdpj.jus.br;Sistemas;bnmp mandados prisão
+BNMP 3.0;https://bnmp.pdpj.jus.br/;Sistemas;bnmp mandados prisão
 Glossário de Siglas;https://link.tjce.jus.br/43e562;Materiais;glossário siglas consulta
 Aulas Introdutórias;https://link.tjce.jus.br/8e4c49;Materiais;aulas introdutórias treinamento
 Manuais - PJe;https://link.tjce.jus.br/a3c436;Materiais;manuais pje instruções
