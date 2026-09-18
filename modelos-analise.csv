@@ -11,7 +11,6 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6017;Certidão - Ausência de Autos Principais;Certidão;Servidor;autos principais ausentes,processo principal não localizado,falta autos;Apenas PJE
 6019;Certidão - Falta de Clareza;Certidão;Servidor;falta clareza,dúvida processual,informação insuficiente,documento incompleto;Apenas PJE
 6021;Certidão - Alvará de Soltura;Certidão;Servidor;alvará de soltura,soltura do preso,colocação em liberdade;Apenas PJE
-6023;Certidão - Designação de Audiência;Certidão;Servidor;audiência designada,marcação audiência,agendamento audiência;Apenas PJE
 6025;Certidão - Apensamento de Autos;Certidão;Servidor;apensamento,juntar processos,processos relacionados;Apenas PJE
 6027;Certidão - Traslado de Documentos;Certidão;Servidor;traslado,cópia de documentos,encaminhamento documentos;Apenas PJE
 6029;Certidão - Apensamento, traslado e histórico;Certidão;Servidor;apensamento e traslado,histórico processual,juntar processos;Apenas PJE
