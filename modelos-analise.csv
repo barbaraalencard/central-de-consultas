@@ -46,7 +46,7 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 2671;Requisição de Guarda Municipal;OFÍCIO;Magistrado;guarda municipal,gcm,agente municipal;SAJ e PJe
 4951;Solicitação de devolução de mandado - CEMAN;OFÍCIO;Servidor;devolucao mandado,ceman,mandado devolvido;SAJ e PJe
 3331;Solicitação de devolução de Carta Precatória;OFÍCIO;Magistrado;devolucao carta precatoria, devolucao, cp cumprida, informacoes;Apenas SAJ
-4063;Ato Ordinatório - PCCE;ATO ORDINATÓRIO;Servidor;pcce,policia civil,oficiar pcce;SAJ e PJe
+4063;Ato Ordinatório - PCCE;ATO ORDINATÓRIO;Servidor;pcce,policia civil,oficiar pcce;Apenas SAJ
 40;Ato Ordinatório [Genérico];ATO ORDINATÓRIO;Servidor;ato ordinatorio generico,andamento processual;SAJ e PJe
 6506;Carta Precatória Citatória;CARTA PRECATÓRIA;Magistrado;carta precatoria,citacao,reu em outra comarca;SAJ e PJe
 6508;Carta Precatória para intimar réu a comparecer a audiência;CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu;SAJ e PJe
@@ -126,3 +126,4 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6065;Certidão - Suspensão dos autos - 90 dias - Prazo Genérico;Certidão;Servidor;certidão, suspensão, prazo, genérico, 90 dias;Apenas PJE
 6067;"Certidão - Aguardar/Designar Audiência - Inclusão dos autos em ""Gerênciar Audiência""";Certidão;Servidor;certidão, aguardar, audiência, inexiste, fila;Apenas PJE
 6069;Ceridão - Desmembramento - Impossibilidade - Erro do Sistema;Certidão;Servidor;certidão, desmebramento, impossibilidade, erro, sistema;Apenas PJE
+6073;Certidão - Devolução de Carta Precatória;Certidão;Servidor;certidão, devolução, carta precatória;Apenas PJE
