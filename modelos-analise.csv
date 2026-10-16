@@ -129,3 +129,5 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6073;Certidão - Devolução de Carta Precatória;Certidão;Servidor;certidão, devolução, carta precatória;Apenas PJE
 6075;Requisição de Policial Civil para Audiência;Ofício;Magistrado;oficio, requisição, policial civil, delegado, audiencia;Apenas PJE
 6079;Certidão - Eventos Criminais - Impossibilidade de Salvar o Registro;Certidão;Servidor;certidão, eventos criminais, histórico de partes, impossibilidade, pje;Apenas PJE
+6081;"Carta Precatória para intimar réu a comparecer a audiência (quando não for possível expedir pela tarefa ""Analisar Processos"")";CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu;Apenas PJE
+6083;"Carta Precatória Notificatória (quando não for possível expedir pela tarefa ""Analisar Processos"")";CARTA PRECATÓRIA;Magistrado;carta precatoria,notificacao,notificar pessoa, audiencia;Apenas PJE
