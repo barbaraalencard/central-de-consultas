@@ -131,3 +131,4 @@ Codigo;Nome do Modelo;Categoria;Perfil;Palavras_Chave;Sistema
 6079;Certidão - Eventos Criminais - Impossibilidade de Salvar o Registro;Certidão;Servidor;certidão, eventos criminais, histórico de partes, impossibilidade, pje;Apenas PJE
 6081;"Carta Precatória para intimar réu a comparecer a audiência (quando não for possível expedir pela tarefa ""Analisar Processos"")";CARTA PRECATÓRIA;Magistrado;carta precatoria,audiencia,reu outra comarca,intimar reu;Apenas PJE
 6083;"Carta Precatória Notificatória (quando não for possível expedir pela tarefa ""Analisar Processos"")";CARTA PRECATÓRIA;Magistrado;carta precatoria,notificacao,notificar pessoa, audiencia;Apenas PJE
+6085;Certidão - Indicar que o processo já se encontra na tarefa;Certidão;Servidor;certidão, processo, tarefa;Apenas PJE
